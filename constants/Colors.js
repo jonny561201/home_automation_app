@@ -1,19 +1,36 @@
-const tintColorLight = "#2f95dc";
-const tintColorDark = "#fff";
-
 export default {
   light: {
-    text: "#000",
-    background: "#fff",
-    tint: tintColorLight,
-    tabIconDefault: "#ccc",
-    tabIconSelected: tintColorLight,
+    primaryMobileColor: '#ffffff',
+    primaryColor: '#ffffff',
+    secondaryColor: '#2f343d',
+    inputColor: '#ffffff',
+    switchColor: '#ffffff',
+    inputFont: '#000000',
+    fontColor: '#3e454f',
+    selectedRadioColor: '#3f51b5',
+    selectedBorderColor: '#3f51b5',
+    radioColor: '#ffffff',
+    radioRing: '#6e6e6e',
+    headerFontColor: '#ffffff',
+    panelFontColor: '#000000',
+    lightButton: '#c7c7c7',
+    borderColor: '#bdbdbd',
   },
   dark: {
-    text: "#fff",
-    background: "#000",
-    tint: tintColorDark,
-    tabIconDefault: "#ccc",
-    tabIconSelected: tintColorDark,
+    primaryMobileColor: '#2f343d',
+    primaryColor: '#2f343d',
+    secondaryColor: '#181616',
+    inputColor:'#6e6e6e',
+    switchColor: '#aaaaaa',
+    inputFont: '#000000',
+    fontColor: '#aaaaaa',
+    selectedRadioColor: '#3f51b5',
+    selectedBorderColor:'#aaaaaa',
+    radioColor: '#aaaaaa',
+    radioRing: '#aaaaaa',
+    headerFontColor: '#ffffff',
+    panelFontColor: '#ffffff',
+    lightButton: '#aaaaaa',
+    borderColor: '#4f4f4f'
   },
-};
+}
