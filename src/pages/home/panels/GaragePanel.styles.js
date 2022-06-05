@@ -11,12 +11,12 @@ export default StyleSheet.create({
         shadowRadius: 8,
     },
     garageHeader: {
-        marginLeft: 14,
+        marginLeft: 16,
     },
 
     statusTextBold: {
         fontWeight: 'bold',
-        fontSize: 16,
+        fontSize: 18,
         marginLeft: 0.5,
         marginRight: 0.5,
     },
@@ -27,13 +27,11 @@ export default StyleSheet.create({
     },
 
     titleGroup: {
-        display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
     },
 
     doorGroups: {
-        display: 'flex',
         justifyContent: 'space-between',
         flexDirection: 'column',
         paddingTop: 8,
@@ -50,18 +48,17 @@ export default StyleSheet.create({
 
     smallTextGroup: {
         marginLeft: 24,
-        display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'center',
     },
 
-    smallTextContainer: {
-        display: 'flex',
-    },
-    
     iconImage: {
         height: 82,
         width: 82,
         resizeMode: 'contain',
+    },
+
+    openText: {
+        color: 'red',
+        fontWeight: 'bold',
     },
 });
