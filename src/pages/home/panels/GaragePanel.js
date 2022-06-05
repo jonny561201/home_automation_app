@@ -1,11 +1,12 @@
 import React, { useContext, useState } from 'react';
 import { Divider } from '@react-native-material/core';
 import Accordian from '../../../components/Accordion';
-import { View, Text, Image, Button } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import { Context } from '../../../state/Store';
 import GarageDoor from '../segments/GarageDoor';
 import GarageIcon from '../../../resources/panelIcons/GarageDoorIcon.png'
 import styles from './GaragePanel.styles';
+import { GreenButton } from '../../../components/controls/Buttons';
 
 
 export default function GaragePanel() {
@@ -50,22 +51,24 @@ export default function GaragePanel() {
                 </View>
             </View>
             {state.devicesToRegister
-                ? <View>
-                    <View styles={styles.doorGroups}>
-                        <Text styles={styles.statusTextBold}>Register New Device!</Text>
-                        <Divider />
-                        <View>
-                            <Text style={styles.statusText}>A new device has been detected and needs to be registered.</Text>
+                ? <View style={styles.registerDoor}>
+                        <View style={styles.registerGroup}>
+                            <Text style={[styles.statusTextBold, styles.registerText]}>Register Garage Door</Text>
+                            <Divider />
                         </View>
-                        <View>
-                            <Button onClick={() => setDisplayRegister(true)}>Register</Button>
+                        <View style={styles.registerBody}>
+                            <View style={styles.registerGroup}>
+                                <Text style={[styles.statusText, styles.registerText]}>A new device has been detected and needs to be registered.</Text>
+                            </View>
+                            <View>
+                                <GreenButton onPress={() => setDisplayRegister(true)}>Register</GreenButton>
+                            </View>
+                            {/* <View ref={(node) => { setWrapperRef(node) }}>
+                                {displayRegister && <RegisterDevice close={closeModal} parentRef={wrapperRef} />}
+                            </View> */}
                         </View>
-                        <View ref={(node) => { setWrapperRef(node) }}>
-                            {displayRegister && <RegisterDevice close={closeModal} parentRef={wrapperRef} />}
-                        </View>
-                    </View>
-                </View>
-                : <View styles={styles.doorGroups}>{renderDoors()}</View>
+                  </View>
+                : <View style={styles.doorGroups}>{renderDoors()}</View>
             }
         </Accordian>
     );

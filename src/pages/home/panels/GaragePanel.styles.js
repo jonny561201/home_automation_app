@@ -40,6 +40,25 @@ export default StyleSheet.create({
         paddingLeft: 15,
     },
 
+    registerGroup: {
+        paddingBottom: 12,
+    },
+
+    registerBody: {
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
+    registerDoor: {
+        paddingBottom: 8,
+        paddingRight: 15,
+        paddingLeft: 15,
+    },
+
+    registerText: {
+        textAlign: 'center'
+    },
+
     smallText: {
         marginLeft: 10,
         fontSize: 12,
