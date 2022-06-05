@@ -30,8 +30,8 @@ export default function GaragePanel() {
     }
 
     return (
-        <Accordian style={styles.garagePanel}>
-            <View onClick={() => { setOpen(!open) }}>
+        <Accordian style={styles.garagePanel} onPress={() => { setOpen(!open) }}>
+            <View>
                 <View style={styles.titleGroup}>
                     <Image style={styles.iconImage} source={GarageIcon} />
                     <View style={styles.garageHeader}>

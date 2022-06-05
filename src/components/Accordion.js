@@ -26,6 +26,7 @@ export default function Accordian(props) {
     }
 
     const toggleExpand = () => {
+        props.onPress();
         LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
         const shouldExpand = !expanded;
         setExpanded(shouldExpand);
