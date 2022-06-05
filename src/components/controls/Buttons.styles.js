@@ -26,4 +26,16 @@ export default StyleSheet.create({
         borderWidth: 2,
         color: 'white'
     },
+
+    toggleButton: {
+        width: 60,
+        textAlign: 'center',
+        paddingBottom: 9.4,
+        paddingTop: 9.4,
+        borderRadius: 8,
+        fontSize: 16,
+        borderColor: '#5c5c5c',
+        borderWidth: 2,
+        color: 'white'
+    },
 });

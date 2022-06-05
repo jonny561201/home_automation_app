@@ -14,7 +14,7 @@ export function GreenButton(props) {
 export function BlueButton(props) {
     return (
         <TouchableOpacity>
-            <Text type="submit" style={[styles.blue, styles.myButton]} disabled={props.disabled} onClick={props.onPress}>{props.children}</Text>
+            <Text type="submit" style={[styles.blue, styles.toggleButton]} disabled={props.disabled} onClick={props.onPress}>{props.children}</Text>
         </TouchableOpacity>
     )
 }
