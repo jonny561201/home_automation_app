@@ -20,11 +20,12 @@ export default StyleSheet.create({
     },
 
     myButton: {
-        width: 80,
         textAlign: 'center',
+        width: 80,
+        height: 40,
         paddingBottom: 6,
-        paddingTop: 6,
-        borderRadius: 8,
+        paddingTop: 8,
+        borderRadius: 10,
         fontSize: 16,
         borderColor: '#5c5c5c',
         borderWidth: 2,
@@ -33,10 +34,11 @@ export default StyleSheet.create({
 
     toggleButton: {
         width: 50,
+        height: 40,
         textAlign: 'center',
         paddingBottom: 9.4,
-        paddingTop: 9.4,
-        borderRadius: 8,
+        paddingTop: 10,
+        borderRadius: 10,
         fontSize: 16,
         borderColor: '#5c5c5c',
         borderWidth: 2,
