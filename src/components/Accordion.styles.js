@@ -2,8 +2,12 @@ import { StyleSheet } from 'react-native';
 
 
 export default StyleSheet.create({
+
     container: {
-        margin: 8,
+        marginRight: 4,
+        marginLeft: 4,
+        marginBottom: 2,
+        marginTop: 2,
         shadowColor: 'black',
         elevation: 5,
         borderRadius: 8,
@@ -12,27 +16,29 @@ export default StyleSheet.create({
         shadowOpacity: 0.3,
         shadowRadius: 8,
     },
-    otherContainer: {
-    },
-    header: {
-        padding: 12,
-    },
-    title: {
-        fontSize: 16,
-    },
+
     row: {
+        minHeight: 80,
         flexDirection: 'row',
         justifyContent: 'space-between',
-        height: 56,
         paddingLeft: 25,
         paddingRight: 18,
         alignItems: 'center',
+        marginTop: 14,
+        marginBottom: 14,
     },
-    parentHr: {
-        height: 1,
-        width: '100%'
+
+    expansion: {
+        alignItems: 'center',
     },
+
+    divider: {
+        width: '96%'
+    },
+    
     child: {
-        padding: 16,
+        marginTop: 6,
+        marginBottom: 8,
+        padding: 10,
     }
 });

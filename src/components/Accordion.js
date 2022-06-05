@@ -56,25 +56,21 @@ export default function Accordian(props) {
 
     return (
         <View style={styles.container}>
-            <View style={styles.otherContainer}>
-                <View style={styles.header}>
-                    <TouchableOpacity style={styles.row} onPress={toggleExpand}>
-                        <Text style={[styles.title, styles.font]}>{props.children[0]}</Text>
-                        <Animated.View style={rotateStyle}>
-                            <Icon name='keyboard-arrow-down' size={30} />
-                        </Animated.View>
-                    </TouchableOpacity>
-                    {
-                        expanded &&
-                        <View>
-                            <Divider />
-                            <View style={styles.child}>
-                                <Text>{props.children[1]}</Text>
-                            </View>
-                        </View>
-                    }
+            <TouchableOpacity style={styles.row} onPress={toggleExpand}>
+                <View>{props.children[0]}</View>
+                <Animated.View style={rotateStyle}>
+                    <Icon name='keyboard-arrow-down' size={30} />
+                </Animated.View>
+            </TouchableOpacity>
+            {
+                expanded &&
+                <View style={styles.expansion}>
+                    <Divider style={styles.divider} />
+                    <View style={styles.child}>
+                        <View>{props.children[1]}</View>
+                    </View>
                 </View>
-            </View>
+            }
         </View>
     )
 }
