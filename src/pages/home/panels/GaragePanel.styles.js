@@ -44,7 +44,7 @@ export default StyleSheet.create({
 
     smallText: {
         marginLeft: 10,
-        fontSize: 10,
+        fontSize: 12,
         alignItems: 'center',
     },
 
