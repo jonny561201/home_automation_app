@@ -28,7 +28,7 @@ export default StyleSheet.create({
     },
 
     toggleButton: {
-        width: 60,
+        width: 50,
         textAlign: 'center',
         paddingBottom: 9.4,
         paddingTop: 9.4,
