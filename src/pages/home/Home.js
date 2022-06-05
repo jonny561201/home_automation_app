@@ -1,7 +1,6 @@
-import { View, Text } from 'react-native';
-import Accordian from '../../components/Accordion';
-import styles from './Home.styles';
+import { View } from 'react-native';
 import Header from '../../header/Header';
+import styles from './Home.styles';
 import GaragePanel from './panels/GaragePanel';
 
 
@@ -12,10 +11,6 @@ export default function Home(props) {
                 <Header toggleMenu={props.navigation.toggleDrawer}></Header>
             </View>
             <View>
-                <Accordian>
-                    <Text>This fucking sucks</Text>
-                    <Text>really big piece of shit</Text>
-                </Accordian>
                 <GaragePanel/>
             </View>
         </>
