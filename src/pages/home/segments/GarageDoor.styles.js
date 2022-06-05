@@ -5,20 +5,12 @@ export default StyleSheet.create({
     garageDoorContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-evenly',
+        justifyContent: 'space-between',
     },
 
     statusTextGroup: {
+        marginRight: 30,
         alignItems: 'center',
-    },
-
-    statusText: {
-        fontSize: 12,
-    },
-
-    garageBigText: {
-        fontSize: 16,
-        fontWeight: 'bold',
     },
 
     garageTextBold: {
@@ -26,7 +18,17 @@ export default StyleSheet.create({
         fontWeight: 'bold',
     },
 
+    garageBigText: {
+        fontSize: 16,
+        fontWeight: 'bold',
+    },
+
+    timeText: {
+        fontSize: 12,
+    },
+
     statusButtonGroup: {
+        marginLeft: 30,
         flexDirection: 'row',
     },
 
@@ -39,19 +41,8 @@ export default StyleSheet.create({
         flexDirection: 'row',
     },
 
-    toggleButton: {
-        backgroundColor: '#1a75ff',
-    },
-
-    closeButton: {
-        backgroundColor: '#ff3333',
-    },
-
-    open: {
-        color: '#00c774',
-    },
-
-    close: {
-        color: '#ff3333',
+    button: {
+        marginLeft: 10,
+        marginRight: 10,
     },
 });

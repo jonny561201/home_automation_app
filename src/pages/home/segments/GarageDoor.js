@@ -41,28 +41,24 @@ export default function GarageDoor(props) {
     };
 
     return (
-        <View>
-            <View>
-                <View style={styles.garageDoorContainer}>
-                    <View style={styles.statusTextGroup}>
-                        <Text style={styles.garageTextBold}>{props.device.doorName}</Text>
-                        {props.device.isOpen
-                            ? <Text style={styles.garageBigText}>Opened</Text>
-                            : <Text style={styles.garageBigText}>Closed</Text>}
-                        {statusDays === 0
-                            ? <Text style={styles.statusText}>{statusHours}Hrs {statusMins}Min</Text>
-                            : <Text style={styles.statusText}>{statusDays}Days {statusHours}Hrs</Text>}
-                    </View >
-                    <View style={styles.statusButtonGroup}>
-                        {props.device.isOpen
-                            ? <RedButton onPress={() => openCloseGarageDoor(false)}>Close</RedButton>
-                            : <GreenButton onPress={() => openCloseGarageDoor(true)}>Open</GreenButton>}
-                        <BlueButton onPress={toggleDoor}>
-                            <Image alt="UpDown" style={styles.iconImage} source={UpDownIcon} />
-                        </BlueButton>
-                    </View >
-                </View >
-            </View>
+        <View style={styles.garageDoorContainer}>
+            <View style={styles.statusTextGroup}>
+                <Text style={styles.garageTextBold}>{props.device.doorName}</Text>
+                {props.device.isOpen
+                    ? <Text style={styles.garageBigText}>Opened</Text>
+                    : <Text style={styles.garageBigText}>Closed</Text>}
+                {statusDays === 0
+                    ? <Text style={styles.timeText}>{statusHours}Hrs {statusMins}Min</Text>
+                    : <Text style={styles.timeText}>{statusDays}Days {statusHours}Hrs</Text>}
+            </View >
+            <View style={styles.statusButtonGroup}>
+                {props.device.isOpen
+                    ? <RedButton style={styles.button} onPress={() => openCloseGarageDoor(false)}>Close</RedButton>
+                    : <GreenButton style={styles.button} onPress={() => openCloseGarageDoor(true)}>Open</GreenButton>}
+                <BlueButton style={styles.button} onPress={toggleDoor}>
+                    <Image alt="UpDown" style={styles.iconImage} source={UpDownIcon} />
+                </BlueButton>
+            </View >
         </View >
     );
 }
