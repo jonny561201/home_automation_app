@@ -4,6 +4,8 @@ import theme from '../../constants/Colors';
 
 export default StyleSheet.create({
     homeHeader: {
+        paddingTop: 20,
+        paddingBottom: 10,
         backgroundColor: '#00c774',
         padding: 1,
         alignItems: 'center',

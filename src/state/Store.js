@@ -12,7 +12,7 @@ const initialState = {
     garageRole: [],
     addedGarageNode: false,
     garageCoords: null,
-    garageDoors: [],
+    garageDoors: [{doorName: "Jon's", isOpen: false}],
     userCoords: null,
     lights: [],
     sumpData: {},

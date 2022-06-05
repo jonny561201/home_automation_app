@@ -2,6 +2,7 @@ import { View, Text } from 'react-native';
 import Accordian from '../../components/Accordion';
 import styles from './Home.styles';
 import Header from '../../header/Header';
+import GaragePanel from './panels/GaragePanel';
 
 
 export default function Home(props) {
@@ -15,6 +16,7 @@ export default function Home(props) {
                     <Text>This fucking sucks</Text>
                     <Text>really big piece of shit</Text>
                 </Accordian>
+                <GaragePanel/>
             </View>
         </>
     )
