@@ -3,6 +3,10 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
 
+    buttonContainer: {
+        padding: 2,
+    },
+
     green: {
         backgroundColor: '#00c774',
     },
