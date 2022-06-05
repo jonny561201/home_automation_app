@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
     garageDoorContainer: {
+        padding: 10,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -15,15 +16,18 @@ export default StyleSheet.create({
 
     garageTextBold: {
         fontSize: 12,
+        lineHeight: 12,
         fontWeight: 'bold',
     },
 
     garageBigText: {
-        fontSize: 16,
+        fontSize: 18,
+        lineHeight: 18,
         fontWeight: 'bold',
     },
 
     timeText: {
+        lineHeight: 12,
         fontSize: 12,
     },
 
