@@ -3,15 +3,13 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
     garageDoorContainer: {
-        display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-around',
+        justifyContent: 'space-evenly',
     },
 
     statusTextGroup: {
-        display: 'flex',
-        flexDirection: 'column',
+        alignItems: 'center',
     },
 
     statusText: {
@@ -19,17 +17,16 @@ export default StyleSheet.create({
     },
 
     garageBigText: {
-        fontSize: 1.2,
+        fontSize: 16,
         fontWeight: 'bold',
     },
 
     garageTextBold: {
-        fontSize: 0.8,
+        fontSize: 12,
         fontWeight: 'bold',
     },
 
     statusButtonGroup: {
-        display: 'flex',
         flexDirection: 'row',
     },
 
