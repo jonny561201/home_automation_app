@@ -66,9 +66,6 @@ export default function GaragePanel() {
                             <Modal animationType="slide" visible={displayRegister} onRequestClose={() => setDisplayRegister(false)}>
                                 <AddGarage></AddGarage>
                             </Modal>
-                            {/* <View ref={(node) => { setWrapperRef(node) }}>
-                                {displayRegister && <RegisterDevice close={closeModal} parentRef={wrapperRef} />}
-                            </View> */}
                         </View>
                   </View>
                 : <View style={styles.doorGroups}>{renderDoors()}</View>
