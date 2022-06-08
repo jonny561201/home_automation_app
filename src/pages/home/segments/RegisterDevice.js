@@ -58,7 +58,7 @@ export default function RegisterDevice(props) {
                 : <View>
                     <View className="device-group">
                         <Text className=" device-text text">Add Device</Text>
-                        <CloseIcon data-testid={"close-button"} onClick={() => props.close()} className="close-icon" />
+                        <CloseIcon onPress={() => props.close()} className="close-icon" />
                     </View>
                     <form onSubmit={submitDevice}>
                         <View className="account-row">
