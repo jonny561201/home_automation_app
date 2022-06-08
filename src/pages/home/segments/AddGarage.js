@@ -2,10 +2,9 @@ import React, { useState, useContext } from 'react';
 import { View, Text } from 'react-native';
 import styles from './AddGarage.styles.js';
 import { Context } from '../../../state/Store';
-import { GreenButton } from '../../../components/controls/Buttons.js';
-import { MaterialIcons } from '@expo/vector-icons' 
+import { GreenButton, GreenSwitch } from '../../../components/controls/Buttons.js';
+import { MaterialIcons } from '@expo/vector-icons'
 import { TextInput } from '@react-native-material/core';
-import { Checkbox } from 'react-native-paper';
 
 export default function AddGarage(props) {
     const [state, dispatch] = useContext(Context);
@@ -26,7 +25,6 @@ export default function AddGarage(props) {
     }
 
     const submitGarageDoor = async (event) => {
-        event.preventDefault();
         (garageTouched && isNameValid)
             ? updateGarageNode()
             : setIsNameValid(false);
@@ -59,18 +57,18 @@ export default function AddGarage(props) {
     }
 
     return (
-        <View>
+        <View style={styles.addGarageContainer}>
             {succeeded
                 ? <View>
                     <View style={styles.deviceGroup}>
                         <View style={styles.deviceGroup}>
                             <View style={styles.borderSuccessIcon}>
-                                <MaterialIcons name='check_circle' style={styles.garageSuccessText}/>
+                                <MaterialIcons name='check_circle' style={styles.garageSuccessText} />
                                 {/* <CheckCircle style={styles.garageSuccessText} /> */}
                             </View>
-                            <Text style={styles.deviceText}>Successfully Added</Text>
+                            <Text style={[styles.headerText]}>Successfully Added</Text>
                         </View>
-                        <CloseIcon onPress={() => props.close()} style={styles.close-icon} />
+                        <CloseIcon onPress={() => props.close()} style={styles.close - icon} />
                     </View>
                     <View style={styles.deviceRow}>
                         <Text style={styles.deviceText}>Would you like to setup the remaining ({availableNodes}) openers?</Text>
@@ -78,16 +76,14 @@ export default function AddGarage(props) {
                     <GreenButton onClick={resetDevices}>Add</GreenButton>
                 </View>
                 : <View>
-                    <View style={styles.deviceGroup}>
-                        <Text style={styles.deviceText}>Add Garage Door</Text>
+                    <Text style={[styles.headerText]}>Add Garage Door</Text>
+                    <View style={styles.addDoorGroup}>
+                        <GreenSwitch status={preferred} label="Preferred Door" onPress={() => setPreferred(!preferred)} />
                     </View>
-                    <View>
-                        <View style={styles.accountRow}>
-                            <TextInput value={garageName} error={!isNameValid} onChange={checkGarageName} variant="outlined" label="Garage Name" />
-                        </View>
-                        <View style={styles.accountRow}>
-                            <Checkbox value={state.checkedG} onValueChange={() => setPreferred(!preferred)} name="checkedG" />
-                        </View>
+                    <View style={styles.addDoorGroup}>
+                        <TextInput color='#00c774' value={garageName} error={!isNameValid} onChange={checkGarageName} variant="outlined" label="Garage Name" />
+                    </View>
+                    <View style={{ alignItems: 'center', padding: 6 }}>
                         <GreenButton onPress={submitGarageDoor}>Add</GreenButton>
                     </View>
                 </View>

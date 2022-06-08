@@ -51,6 +51,6 @@ export default StyleSheet.create({
     },
 
     switchText: {
-        fontSize: 14,
+        fontSize: 16,
     },
 });
