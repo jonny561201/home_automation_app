@@ -44,4 +44,13 @@ export default StyleSheet.create({
         borderWidth: 2,
         color: 'white'
     },
+
+    switchContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+
+    switchText: {
+        fontSize: 14,
+    },
 });

@@ -1,5 +1,6 @@
 import React from 'react';
-import { TouchableOpacity, Text } from 'react-native';
+import { TouchableOpacity, Text, Switch } from 'react-native';
+
 import styles from './Buttons.styles';
 
 
@@ -23,6 +24,16 @@ export function RedButton(props) {
     return (
         <TouchableOpacity style={styles.buttonContainer}>
             <Text type="submit" style={[styles.red, styles.myButton, props.style]} disabled={props.disabled} onPress={props.onPress}>{props.children}</Text>
+        </TouchableOpacity>
+    )
+}
+
+
+export function GreenSwitch(props) {
+    return (
+        <TouchableOpacity style={styles.switchContainer} onPress={props.onPress} >
+            <Switch thumbColor={props.status ? "#00c774" : "#f4f3f4"} value={props.status} onValueChange={props.onPress}/>
+            <Text style={styles.switchText}>{props.label}</Text>
         </TouchableOpacity>
     )
 }
