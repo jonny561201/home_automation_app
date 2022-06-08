@@ -1,19 +1,19 @@
 import React, { useContext, useState } from 'react';
 import { Divider } from '@react-native-material/core';
 import Accordian from '../../../components/Accordion';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, Modal } from 'react-native';
 import { Context } from '../../../state/Store';
 import GarageDoor from '../segments/GarageDoor';
 import GarageIcon from '../../../resources/panelIcons/GarageDoorIcon.png'
-import styles from './GaragePanel.styles';
 import { GreenButton } from '../../../components/controls/Buttons';
+import styles from './GaragePanel.styles';
+import AddGarage from '../segments/AddGarage';
 
 
 export default function GaragePanel() {
     const [open, setOpen] = useState(false);
     const [state, dispatch] = useContext(Context);
     const [displayRegister, setDisplayRegister] = useState(false);
-    const [wrapperRef, setWrapperRef] = useState(null);
 
     const renderDoors = () => {
         // //TODO: need to test all of this behavior
@@ -53,7 +53,7 @@ export default function GaragePanel() {
             {state.devicesToRegister
                 ? <View style={styles.registerDoor}>
                         <View style={styles.registerGroup}>
-                            <Text style={[styles.statusTextBold, styles.registerText]}>Register Garage Door</Text>
+                            <Text style={[styles.statusTextBold, styles.registerText]}>Register Garage Opener</Text>
                             <Divider />
                         </View>
                         <View style={styles.registerBody}>
@@ -63,6 +63,9 @@ export default function GaragePanel() {
                             <View>
                                 <GreenButton onPress={() => setDisplayRegister(true)}>Register</GreenButton>
                             </View>
+                            <Modal animationType="slide" visible={displayRegister} onRequestClose={() => setDisplayRegister(false)}>
+                                <AddGarage></AddGarage>
+                            </Modal>
                             {/* <View ref={(node) => { setWrapperRef(node) }}>
                                 {displayRegister && <RegisterDevice close={closeModal} parentRef={wrapperRef} />}
                             </View> */}
