@@ -67,7 +67,9 @@ export default StyleSheet.create({
 
     smallTextGroup: {
         marginLeft: 24,
+        width: 120,
         flexDirection: 'row',
+        justifyContent: 'space-between'
     },
 
     iconImage: {

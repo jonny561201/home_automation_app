@@ -37,37 +37,35 @@ export default function GaragePanel() {
                     <Image style={styles.iconImage} source={GarageIcon} />
                     <View style={styles.garageHeader}>
                         <Text style={styles.statusTextBold}>Garage</Text>
-                        <View>
-                            {!open &&
-                                state.garageDoors.map(x => {
-                                    return <View style={styles.smallTextGroup} key={`door-notify-${x.doorName}`}>
-                                                <Text style={styles.smallText}>{x.doorName}:</Text>
-                                                <Text style={[styles.smallText, x.isOpen ? styles.openText : null]}>{x.isOpen ? 'Open' : 'Closed'}</Text>
-                                           </View>
-                                })
-                            }
-                        </View>
+                        {!open &&
+                            state.garageDoors.map(x => {
+                                return <View style={styles.smallTextGroup} key={`door-notify-${x.doorName}`}>
+                                    <Text style={styles.smallText}>{x.doorName}:</Text>
+                                    <Text style={[styles.smallText, x.isOpen ? styles.openText : null]}>{x.isOpen ? 'Open' : 'Closed'}</Text>
+                                </View>
+                            })
+                        }
                     </View>
                 </View>
             </View>
             {state.devicesToRegister
                 ? <View style={styles.registerDoor}>
+                    <View style={styles.registerGroup}>
+                        <Text style={[styles.statusTextBold, styles.registerText]}>Register Garage Opener</Text>
+                        <Divider />
+                    </View>
+                    <View style={styles.registerBody}>
                         <View style={styles.registerGroup}>
-                            <Text style={[styles.statusTextBold, styles.registerText]}>Register Garage Opener</Text>
-                            <Divider />
+                            <Text style={[styles.statusText, styles.registerText]}>A new device has been detected and needs to be registered.</Text>
                         </View>
-                        <View style={styles.registerBody}>
-                            <View style={styles.registerGroup}>
-                                <Text style={[styles.statusText, styles.registerText]}>A new device has been detected and needs to be registered.</Text>
-                            </View>
-                            <View>
-                                <GreenButton onPress={() => setDisplayRegister(true)}>Register</GreenButton>
-                            </View>
-                            <Modal animationType="slide" visible={displayRegister} onRequestClose={() => setDisplayRegister(false)}>
-                                <AddGarage></AddGarage>
-                            </Modal>
+                        <View>
+                            <GreenButton onPress={() => setDisplayRegister(true)}>Register</GreenButton>
                         </View>
-                  </View>
+                        <Modal animationType="slide" visible={displayRegister} onRequestClose={() => setDisplayRegister(false)}>
+                            <AddGarage></AddGarage>
+                        </Modal>
+                    </View>
+                </View>
                 : <View style={styles.doorGroups}>{renderDoors()}</View>
             }
         </Accordian>
