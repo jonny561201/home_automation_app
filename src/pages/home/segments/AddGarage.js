@@ -18,10 +18,9 @@ export default function AddGarage(props) {
 
     const checkGarageName = (input) => {
         if (availableNodes > 0) {
-            const name = input.target.value;
             setGarageTouched(true);
-            setIsNameValid(name !== "");
-            setGarageName(name);
+            setIsNameValid(input !== "");
+            setGarageName(input);
         }
     }
 
@@ -32,9 +31,9 @@ export default function AddGarage(props) {
     }
 
     const updateGarageNode = async () => {
-        console.log('----- Updating ------')
         const response = await addUserDeviceNode(state.user.userId, state.auth.bearer, state.deviceId, garageName, preferred);
         console.log(JSON.stringify(response))
+        console.log('----- Updating Roles -----')
         updateRoles();
         setSucceeded(response.ok);
         setPreferred(false);
@@ -84,7 +83,7 @@ export default function AddGarage(props) {
                         <GreenSwitch status={preferred} label="Preferred Door" onPress={() => setPreferred(!preferred)} />
                     </View>
                     <View style={styles.addDoorGroup}>
-                        <TextInput mode='outlined' activeOutlineColor='#00c774' value={garageName} error={!isNameValid} onChange={checkGarageName} label="Garage Name" />
+                        <TextInput mode='outlined' activeOutlineColor='#00c774' value={garageName} error={!isNameValid} onChangeText={checkGarageName} label="Garage Name" />
                     </View>
                     <View style={{ alignItems: 'center', padding: 6 }}>
                         <GreenButton onPress={submitGarageDoor}>Add</GreenButton>
