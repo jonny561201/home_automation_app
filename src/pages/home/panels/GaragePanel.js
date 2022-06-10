@@ -16,7 +16,6 @@ export default function GaragePanel() {
     const [displayRegister, setDisplayRegister] = useState(false);
 
     const renderDoors = () => {
-        // //TODO: need to test all of this behavior
         const devices = state.garageDoors;
         if (devices && devices.length > 0) {
             return devices.map(x => <GarageDoor key={`door-${x.doorName}`} device={x} />);

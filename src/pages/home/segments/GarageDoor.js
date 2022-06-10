@@ -1,43 +1,43 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { View, Text, Image } from 'react-native';
 import styles from './GarageDoor.styles';
 import { BlueButton, GreenButton, RedButton } from '../../../components/controls/Buttons';
-
+import moment from 'moment';
 
 import { Context } from '../../../state/Store';
-// import { useInterval } from '../../../utilities/UseInterval';
+import { useInterval } from '../../../utilities/UseInterval';
 import UpDownIcon from '../../../resources/panelIcons/UpDown.png';
-// import { toggleGarageDoor, updateGarageState } from '../../../utilities/RestApi';
+import { toggleGarageDoor, updateGarageState } from '../../../utilities/RestApi';
 
 
 export default function GarageDoor(props) {
-    // const [ding] = useSound(dingSound, { volume: 0.25 });
-    // const [click] = useSound(clickSound, { volume: 0.25 });
     const [state, dispatch] = useContext(Context);
     const [statusDays, setStatusDays] = useState();
     const [statusMins, setStatusMins] = useState();
     const [statusHours, setStatusHours] = useState();
 
-    // useInterval(() => {
-    //     updateGarageDuration();
-    // }, 2000);
+    useEffect(() => {
+        updateGarageDuration();
+    })
+
+    useInterval(() => {
+        updateGarageDuration();
+    }, 2000);
 
     const updateGarageDuration = () => {
-        const diffMs = new Date() - new Date(props.device.duration);
+        const diffMs = new Date() - moment(props.device.duration).toDate();
         setStatusDays(Math.floor(diffMs / 86400000));
         setStatusHours(Math.floor((diffMs % 86400000) / 3600000));
         setStatusMins(Math.round(((diffMs % 86400000) % 3600000) / 60000));
     };
 
     const openCloseGarageDoor = async (newState) => {
-        // newState ? ding() : click();
-        // const response = await updateGarageState(state.user.userId, state.auth.bearer, newState, props.device.doorId);
+        const response = await updateGarageState(state.user.userId, state.auth.bearer, newState, props.device.doorId);
         dispatch({ type: 'UPDATE_GARAGE_DOORS', payload: { doorName: props.device.doorName, doorId: props.device.doorId, isOpen: response.isGarageOpen, duration: new Date() } });
     };
 
     const toggleDoor = () => {
-        // toggleGarageDoor(state.user.userId, state.auth.bearer, props.device.doorId);
-        // click();
+        toggleGarageDoor(state.user.userId, state.auth.bearer, props.device.doorId);
     };
 
     return (
