@@ -1,10 +1,11 @@
 import React, { useState, useContext } from 'react';
+import { addUserDeviceNode } from '../../../utilities/RestApi.js';
 import { View, Text } from 'react-native';
 import styles from './AddGarage.styles.js';
 import { Context } from '../../../state/Store';
 import { GreenButton, GreenSwitch } from '../../../components/controls/Buttons.js';
-import { MaterialIcons } from '@expo/vector-icons'
-import { TextInput } from '@react-native-material/core';
+import { MaterialIcons } from '@expo/vector-icons';
+import { TextInput } from 'react-native-paper';
 
 export default function AddGarage(props) {
     const [state, dispatch] = useContext(Context);
@@ -25,13 +26,15 @@ export default function AddGarage(props) {
     }
 
     const submitGarageDoor = async (event) => {
-        (garageTouched && isNameValid)
+        garageTouched && isNameValid
             ? updateGarageNode()
             : setIsNameValid(false);
     }
 
     const updateGarageNode = async () => {
-        // const response = await addUserDeviceNode(state.user.userId, state.auth.bearer, state.deviceId, garageName, preferred);
+        console.log('----- Updating ------')
+        const response = await addUserDeviceNode(state.user.userId, state.auth.bearer, state.deviceId, garageName, preferred);
+        console.log(JSON.stringify(response))
         updateRoles();
         setSucceeded(response.ok);
         setPreferred(false);
@@ -81,7 +84,7 @@ export default function AddGarage(props) {
                         <GreenSwitch status={preferred} label="Preferred Door" onPress={() => setPreferred(!preferred)} />
                     </View>
                     <View style={styles.addDoorGroup}>
-                        <TextInput color='#00c774' value={garageName} error={!isNameValid} onChange={checkGarageName} variant="outlined" label="Garage Name" />
+                        <TextInput mode='outlined' activeOutlineColor='#00c774' value={garageName} error={!isNameValid} onChange={checkGarageName} label="Garage Name" />
                     </View>
                     <View style={{ alignItems: 'center', padding: 6 }}>
                         <GreenButton onPress={submitGarageDoor}>Add</GreenButton>
