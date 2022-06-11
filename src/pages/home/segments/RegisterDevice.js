@@ -1,30 +1,25 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { View, Text, Button } from 'react-native';
-import { TextField } from '@material-ui/core';
+import { View, Text } from 'react-native';
+import { TextInput } from 'react-native-paper';
 import { isValidIpAddress, debounchApi } from '../../../utilities/Services';
 import { addUserDevice } from '../../../utilities/RestApi';
-import CloseIcon from '@material-ui/icons/Close';
+import { MaterialIcons } from '@expo/vector-icons';
 import AddGarage from './AddGarage';
-import './RegisterDevice.styles.js';
+import styles from './RegisterDevice.styles'
 import { Context } from '../../../state/Store';
+import { GreenButton } from '../../../components/controls/Buttons';
 
 
 export default function RegisterDevice(props) {
-    const [wrapperRef, setWrapperRef] = useState(null);
     const [state, dispatch] = useContext(Context);
     const [ipAddress, setIpAddress] = useState('');
     const [touched, setTouched] = useState(false);
     const [isIpValid, setIsIpValid] = useState(true);
     const [startedRegistration, setStartedRegistration] = useState(false);
-    const [transitionComponent, setTransitionComponent] = useState(null);
+    const [transitionComponent, setTransitionComponent] = useState(false);
 
     useEffect(() => {
-        document.addEventListener("mousedown", handleClickOutside);
-        setStartedRegistration(state.startedGarageRegistration);
-
-        return function cleanupListener() {
-            document.removeEventListener("mousedown", handleClickOutside);
-        }
+        setStartedRegistration(state.devicesToRegister.garage.started);
     });
 
     const checkIpAddress = (input) => {
@@ -34,14 +29,7 @@ export default function RegisterDevice(props) {
         setTouched(true);
     }
 
-    const handleClickOutside = (event) => {
-        if (wrapperRef && !props.parentRef.contains(event.target) && !wrapperRef.contains(event.target)) {
-            props.close();
-        }
-    }
-
     const submitDevice = async (event) => {
-        event.preventDefault();
         if (isIpValid && touched) {
             const response = await addUserDevice(state.user.userId, state.auth.bearer, 'garage_door', ipAddress)
             const responseObj = await response.json();
@@ -52,20 +40,21 @@ export default function RegisterDevice(props) {
     }
 
     return (
-        <View className="device-menu" ref={(node) => { setWrapperRef(node) }}>
+        <View>
             {transitionComponent || startedRegistration
                 ? <AddGarage close={props.close} />
                 : <View>
-                    <View className="device-group">
-                        <Text className=" device-text text">Add Device</Text>
-                        <CloseIcon onPress={() => props.close()} className="close-icon" />
+                    <View style={styles.deviceHeaderGroup}>
+                        <View></View>
+                        <Text style={styles.headerText}>Add Device</Text>
+                        <MaterialIcons style={styles.closeIcon} onPress={() => props.close()} name='close' />
                     </View>
-                    <form onSubmit={submitDevice}>
-                        <View className="account-row">
-                            <TextField value={ipAddress} error={!isIpValid} onChange={checkIpAddress} variant="outlined" label="IP Address" />
-                        </View>
-                        <Button>Next</Button>
-                    </form>
+                    <View style={styles.addIPGroup}>
+                        <TextInput value={ipAddress} error={!isIpValid} onChangeText={checkIpAddress} activeOutlineColor='#00c774' mode='outlined' label="IP Address" />
+                    </View>
+                    <View style={{ alignItems: 'center', padding: 6 }}>
+                        <GreenButton onPress={submitDevice}>Next</GreenButton>
+                    </View>
                 </View>
             }
         </View>

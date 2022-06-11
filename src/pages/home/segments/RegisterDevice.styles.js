@@ -1,36 +1,36 @@
-.device-menu {
-    margin: 0.5rem;
-    background-color: var(--primary-color);
-    border-radius: 10px;
-    width: 400px;
-    position: absolute;
-    z-index: 10;
-    top: 50%;
-    right: 15%;
-    box-shadow: 0px 0px 1px 5000px rgba(0,0,0,0.7);
-    /* box-shadow: 0px 10px 15px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12); */
-}
+import { StyleSheet } from 'react-native';
 
-@media (max-width: 479px) {
-    .device-menu {
-        width: 300px;
-        right: 10%;
-    }
-}
 
-.device-text {
-    margin-left: 1rem;
-}
+export default StyleSheet.create({
 
-.close-icon {
-    cursor: pointer;
-    color: grey;
-    align-self: center;
-    margin: 1rem;
-}
+    deviceText: {
+        marginLeft: 1,
+    },
 
-.device-group {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
+    headerText: {
+        paddingTop: 12,
+        paddingBottom: 12,
+        alignSelf: 'center',
+        fontSize: 24,
+        fontWeight: 'bold',
+    },
+
+    closeIcon: {
+        paddingTop: 12,
+        paddingBottom: 12,
+        paddingRight: 12,
+        color: 'grey',
+        alignSelf: 'center',
+        fontSize: 28,
+    },
+
+    addIPGroup: {
+        padding: 16,
+    },
+
+    deviceHeaderGroup: {
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+
+});
