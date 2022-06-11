@@ -46,6 +46,7 @@ export default StyleSheet.create({
     },
 
     switchContainer: {
+        padding: 12,
         flexDirection: 'row',
         alignItems: 'center',
     },
