@@ -7,7 +7,7 @@ import GarageDoor from '../segments/GarageDoor';
 import GarageIcon from '../../../resources/panelIcons/GarageDoorIcon.png'
 import { GreenButton } from '../../../components/controls/Buttons';
 import styles from './GaragePanel.styles';
-import AddGarage from '../segments/AddGarage';
+import RegisterDevice from '../segments/RegisterDevice';
 
 
 export default function GaragePanel() {
@@ -47,7 +47,7 @@ export default function GaragePanel() {
                     </View>
                 </View>
             </View>
-            {state.devicesToRegister
+            {state.devicesToRegister.garage.newDevice
                 ? <View style={styles.registerDoor}>
                     <View style={styles.registerGroup}>
                         <Text style={[styles.statusTextBold, styles.registerText]}>Register Garage Opener</Text>
@@ -61,7 +61,7 @@ export default function GaragePanel() {
                             <GreenButton onPress={() => setDisplayRegister(true)}>Register</GreenButton>
                         </View>
                         <Modal animationType="slide" visible={displayRegister} onRequestClose={() => setDisplayRegister(false)}>
-                            <AddGarage></AddGarage>
+                            <RegisterDevice close={closeModal}></RegisterDevice>
                         </Modal>
                     </View>
                 </View>
