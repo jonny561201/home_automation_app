@@ -32,8 +32,6 @@ export default function AddGarage(props) {
 
     const updateGarageNode = async () => {
         const response = await addUserDeviceNode(state.user.userId, state.auth.bearer, state.deviceId, garageName, preferred);
-        console.log(JSON.stringify(response))
-        console.log('----- Updating Roles -----')
         updateRoles();
         setSucceeded(response.ok);
         setPreferred(false);
@@ -59,7 +57,7 @@ export default function AddGarage(props) {
     }
 
     return (
-        <View style={styles.addGarageContainer}>
+        <View >
             {succeeded
                 ? <View>
                     <View style={styles.deviceGroup}>
@@ -78,15 +76,22 @@ export default function AddGarage(props) {
                     <GreenButton onClick={resetDevices}>Add</GreenButton>
                 </View>
                 : <View>
-                    <Text style={[styles.headerText]}>Add Garage Door</Text>
-                    <View style={styles.addDoorGroup}>
-                        <GreenSwitch status={preferred} label="Preferred Door" onPress={() => setPreferred(!preferred)} />
+                    <View style={styles.doorHeaderGroup}>
+                        <View></View>
+                        <Text style={styles.headerText}>Add Garage Door</Text>
+                        <MaterialIcons style={styles.closeIcon} onPress={() => props.close()} name='close' />
                     </View>
+
                     <View style={styles.addDoorGroup}>
-                        <TextInput mode='outlined' activeOutlineColor='#00c774' value={garageName} error={!isNameValid} onChangeText={checkGarageName} label="Garage Name" />
-                    </View>
-                    <View style={{ alignItems: 'center', padding: 6 }}>
-                        <GreenButton onPress={submitGarageDoor}>Add</GreenButton>
+                        <View>
+                            <GreenSwitch status={preferred} label="Preferred Door" onPress={() => setPreferred(!preferred)} />
+                        </View>
+                        <View style={styles.addDoorGroup}>
+                            <TextInput value={garageName} error={!isNameValid} onChangeText={checkGarageName} mode='outlined' activeOutlineColor='#00c774' label="Garage Name" />
+                        </View>
+                        <View style={{ alignItems: 'center', padding: 6 }}>
+                            <GreenButton onPress={submitGarageDoor}>Add</GreenButton>
+                        </View>
                     </View>
                 </View>
             }

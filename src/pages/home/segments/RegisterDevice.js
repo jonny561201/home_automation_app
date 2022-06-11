@@ -23,9 +23,8 @@ export default function RegisterDevice(props) {
     });
 
     const checkIpAddress = (input) => {
-        const ipAddress = input.target.value;
-        debounchApi(() => setIsIpValid(isValidIpAddress(ipAddress)));
-        setIpAddress(ipAddress);
+        debounchApi(() => setIsIpValid(isValidIpAddress(input)));
+        setIpAddress(input);
         setTouched(true);
     }
 
@@ -49,11 +48,14 @@ export default function RegisterDevice(props) {
                         <Text style={styles.headerText}>Add Device</Text>
                         <MaterialIcons style={styles.closeIcon} onPress={() => props.close()} name='close' />
                     </View>
+
                     <View style={styles.addIPGroup}>
-                        <TextInput value={ipAddress} error={!isIpValid} onChangeText={checkIpAddress} activeOutlineColor='#00c774' mode='outlined' label="IP Address" />
-                    </View>
-                    <View style={{ alignItems: 'center', padding: 6 }}>
-                        <GreenButton onPress={submitDevice}>Next</GreenButton>
+                        <View style={styles.addIPGroup}>
+                            <TextInput value={ipAddress} error={!isIpValid} onChangeText={checkIpAddress} activeOutlineColor='#00c774' mode='outlined' label="IP Address" />
+                        </View>
+                        <View style={{ alignItems: 'center', padding: 6 }}>
+                            <GreenButton onPress={submitDevice}>Next</GreenButton>
+                        </View>
                     </View>
                 </View>
             }

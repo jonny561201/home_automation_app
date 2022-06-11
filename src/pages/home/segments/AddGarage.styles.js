@@ -2,9 +2,6 @@ import { StyleSheet } from 'react-native';
 
 
 export default StyleSheet.create({
-    addGarageContainer: {
-        padding: 16,
-    },
 
     garageSuccessText: {
         color: '#055219',
@@ -20,9 +17,10 @@ export default StyleSheet.create({
     },
 
      headerText: {
-         padding: 12,
+         paddingTop: 12,
+         paddingBottom: 12,
          alignSelf: 'center',
-         fontSize: 18,
+         fontSize: 24,
          fontWeight: 'bold',
      },
 
@@ -37,7 +35,12 @@ export default StyleSheet.create({
     },
 
     addDoorGroup: {
-        padding: 6,
+        padding: 16,
+    },
+
+    doorHeaderGroup: {
+        flexDirection: 'row',
+        justifyContent: 'space-between'
     },
 
     preferredGarage: {
@@ -48,5 +51,14 @@ export default StyleSheet.create({
     deviceRow: {
         flexDirection: 'row',
         marginTop: 0.5,
+    },    
+    
+    closeIcon: {
+        paddingTop: 12,
+        paddingBottom: 12,
+        paddingRight: 12,
+        color: 'grey',
+        alignSelf: 'center',
+        fontSize: 28,
     },
 });
