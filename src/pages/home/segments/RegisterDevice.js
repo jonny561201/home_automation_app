@@ -28,7 +28,7 @@ export default function RegisterDevice(props) {
         setTouched(true);
     }
 
-    const submitDevice = async (event) => {
+    const submitDevice = async () => {
         if (isIpValid && touched) {
             const response = await addUserDevice(state.user.userId, state.auth.bearer, 'garage_door', ipAddress)
             const responseObj = await response.json();
