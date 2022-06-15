@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { View, Text } from 'react-native';
 import { TextInput } from 'react-native-paper';
-import { isValidIpAddress, debounchApi } from '../../../utilities/Services';
+import { isValidIpAddress } from '../../../utilities/Services';
 import { addUserDevice } from '../../../utilities/RestApi';
 import { MaterialIcons } from '@expo/vector-icons';
 import AddGarage from './AddGarage';
@@ -23,7 +23,7 @@ export default function RegisterDevice(props) {
     });
 
     const checkIpAddress = (input) => {
-        debounchApi(() => setIsIpValid(isValidIpAddress(input)));
+        setIsIpValid(isValidIpAddress(input));
         setIpAddress(input);
         setTouched(true);
     }
