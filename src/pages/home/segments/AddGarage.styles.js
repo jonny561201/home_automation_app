@@ -3,16 +3,15 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
 
-    garageSuccessText: {
+    garageSuccessIcon: {
         color: '#055219',
         alignSelf: 'center',
+        padding: 6,
+        fontSize: 48,
     },
 
     borderSuccessIcon: {
-        borderRadius: 40,
         backgroundColor: 'white',
-        height: 1.5,
-        width: 1.5,
         alignSelf: 'center',
     },
 
@@ -25,13 +24,13 @@ export default StyleSheet.create({
      },
 
     deviceText: {
-        fontSize: 14,
+        fontSize: 16,
         marginLeft: 1,
     },
 
     deviceGroup: {
-        flexDirection: 'column',
-        justifyContent: 'space-between',
+        flexDirection: 'row',
+        // justifyContent: 'space-between',
     },
 
     addDoorGroup: {
