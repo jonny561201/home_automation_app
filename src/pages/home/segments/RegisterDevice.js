@@ -32,8 +32,7 @@ export default function RegisterDevice(props) {
         if (isIpValid && touched) {
             const response = await addUserDevice(state.user.userId, state.auth.bearer, 'garage_door', ipAddress)
             const responseObj = await response.json();
-            dispatch({ type: 'SET_STARTED_GARAGE_REGISTRATION', payload: true })
-            dispatch({ type: 'SET_DEVICE_ID', payload: responseObj.deviceId });
+            dispatch({ type: 'UPDATE_GARAGE_REGISTRATION', payload: {deviceId: responseObj.deviceId, started: true} });
             setTransitionComponent(response.ok);
         }
     }
@@ -46,7 +45,7 @@ export default function RegisterDevice(props) {
                     <View style={styles.deviceHeaderGroup}>
                         <View></View>
                         <Text style={styles.headerText}>Add Device</Text>
-                        <MaterialIcons style={styles.closeIcon} onPress={() => props.close()} name='close' />
+                        <MaterialIcons style={styles.closeIcon} onPress={props.close} name='close' />
                     </View>
 
                     <View style={styles.addIPGroup}>
