@@ -17,32 +17,38 @@ const Reducer = (state, action) => {
                 ...state,
                 user: action.payload
             }
-        case 'SET_DEVICE_ID':
+        // case 'SET_DEVICE_ID':
+        //     return {
+        //         ...state,
+        //         deviceId: action.payload
+        //     };
+        case 'UPDATE_GARAGE_REGISTRATION':
+            const updatedGarage = { ...state.devicesToRegister.garage, ...action.payload };
             return {
                 ...state,
-                deviceId: action.payload
+                devicesToRegister: { ...state.devicesToRegister.garage, garage: updatedGarage }
+
             };
-        case 'SET_STARTED_GARAGE_REGISTRATION':
-            const updatedGarage = { ...state.devicesToRegister.garage, started: action.payload };
+        case 'REGISTER_GARAGE_DOOR':
             return {
                 ...state,
-                devicesToRegister: { ...state.devicesToRegister, garage: updatedGarage}
+                garageDoors: [...state.garageDoors, action.payload]
             };
-        case 'SET_DEVICES_TO_REGISTER':
-            return {
-                ...state,
-                devicesToRegister: action.payload
-            };
-        case 'SET_GARAGE_ROLE':
-            return {
-                ...state,
-                garageRole: action.payload
-            };
-        case 'SET_ADDED_GARAGE_NODE':
-            return {
-                ...state,
-                addedGarageNode: action.payload
-            };
+        //     const updatedGarage = { ...state.devicesToRegister.garage, started: action.payload };
+        //     return {
+        //         ...state,
+        //         devicesToRegister: { ...state.devicesToRegister, garage: updatedGarage}
+        //     };
+        // case 'SET_DEVICES_TO_REGISTER':
+        //     return {
+        //         ...state,
+        //         devicesToRegister: action.payload
+        //     };
+        // case 'SET_ADDED_GARAGE_NODE':
+        //     return {
+        //         ...state,
+        //         addedGarageNode: action.payload
+        //     };
         case 'SET_GARAGE_COORDS':
             return {
                 ...state,
