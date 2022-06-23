@@ -3,7 +3,7 @@ import { addUserDeviceNode } from '../../../utilities/RestApi.js';
 import { View, Text } from 'react-native';
 import styles from './AddGarage.styles.js';
 import { Context } from '../../../state/Store';
-import { GreenButton, GreenSwitch } from '../../../components/controls/Buttons.js';
+import { GreenButton, GreenSwitch, RedButton } from '../../../components/controls/Buttons.js';
 import { MaterialIcons } from '@expo/vector-icons';
 import { TextInput } from 'react-native-paper';
 
@@ -24,30 +24,27 @@ export default function AddGarage(props) {
         }
     }
 
-    const submitGarageDoor = async (event) => {
+    const submitGarageDoor = async () => {
         garageTouched && isNameValid
             ? updateGarageNode()
             : setIsNameValid(false);
     }
 
     const updateGarageNode = async () => {
-        const response = await addUserDeviceNode(state.user.userId, state.auth.bearer, state.deviceId, garageName, preferred);
-        updateRoles();
+        const response = await addUserDeviceNode(state.user.userId, state.auth.bearer, state.devicesToRegister.garage.deviceId, garageName, preferred);
         setSucceeded(response.ok);
         setPreferred(false);
         const jsonResponse = await response.json();
         setAvailableNodes(jsonResponse.availableNodes);
-        dispatch({ type: "SET_ADDED_GARAGE_NODE", payload: true })
+        dispatch({ type: 'REGISTER_GARAGE_DOOR', payload: jsonResponse.device});
         if (jsonResponse.availableNodes === 0) {
+            completeRegistration();
             props.close();
         }
     }
 
-    const updateRoles = async () => {
-        // const userRoles = await getRolesByUserId(state.user.userId, state.auth.bearer);
-        await dispatch({ type: 'SET_USER_DATA', payload: { ...state.user, roles: userRoles.roles } });
-        const garageRole = userRoles.roles.find(x => x.role_name === 'garage_door');
-        await dispatch({ type: 'SET_GARAGE_ROLE', payload: garageRole });
+    const completeRegistration = () => {
+        dispatch({ type: 'UPDATE_GARAGE_REGISTRATION', payload: { started: false, newDevice: false} });
     }
 
     const resetDevices = () => {
@@ -60,28 +57,32 @@ export default function AddGarage(props) {
         <View >
             {succeeded
                 ? <View>
-                    <View style={styles.deviceGroup}>
+                    <View style={styles.doorHeaderGroup}>
                         <View style={styles.deviceGroup}>
                             <View style={styles.borderSuccessIcon}>
-                                <MaterialIcons name='check_circle' style={styles.garageSuccessText} />
-                                {/* <CheckCircle style={styles.garageSuccessText} /> */}
+                                <MaterialIcons name='check-circle' style={styles.garageSuccessIcon}/>
                             </View>
                             <Text style={[styles.headerText]}>Successfully Added</Text>
                         </View>
-                        <CloseIcon onPress={() => props.close()} style={styles.close - icon} />
+                        <MaterialIcons name='close' style={styles.closeIcon} onPress={props.close} />
                     </View>
-                    <View style={styles.deviceRow}>
-                        <Text style={styles.deviceText}>Would you like to setup the remaining ({availableNodes}) openers?</Text>
+                    <View style={styles.addDoorGroup}>
+                        <View style={styles.addDoorGroup}>
+                            <Text style={styles.deviceText}>Setup remaining ({availableNodes}) openers?</Text>
+                        </View>
+                        <View style={{ alignItems: 'center', padding: 6 }}>
+                            <GreenButton onPress={resetDevices}>Continue</GreenButton>
+                            <RedButton onPress={completeRegistration} >Done</RedButton>
+                        </View>
                     </View>
-                    <GreenButton onClick={resetDevices}>Add</GreenButton>
                 </View>
+
                 : <View>
                     <View style={styles.doorHeaderGroup}>
                         <View></View>
                         <Text style={styles.headerText}>Add Garage Door</Text>
-                        <MaterialIcons style={styles.closeIcon} onPress={() => props.close()} name='close' />
+                        <MaterialIcons name='close' style={styles.closeIcon} onPress={props.close} />
                     </View>
-
                     <View style={styles.addDoorGroup}>
                         <View>
                             <GreenSwitch status={preferred} label="Preferred Door" onPress={() => setPreferred(!preferred)} />
