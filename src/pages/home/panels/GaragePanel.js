@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Divider } from '@react-native-material/core';
-import Accordian from '../../../components/Accordion';
+import Accordion from '../../../components/Accordion';
 import { View, Text, Image, Modal } from 'react-native';
 import { Context } from '../../../state/Store';
 import GarageDoor from '../segments/GarageDoor';
@@ -30,7 +30,7 @@ export default function GaragePanel() {
     }
 
     return (
-        <Accordian style={styles.garagePanel} onPress={() => { setOpen(!open) }}>
+        <Accordion style={styles.garagePanel} onPress={() => { setOpen(!open) }}>
             <View>
                 <View style={styles.titleGroup}>
                     <Image style={styles.iconImage} source={GarageIcon} />
@@ -67,6 +67,6 @@ export default function GaragePanel() {
                 </View>
                 : <View style={styles.doorGroups}>{renderDoors()}</View>
             }
-        </Accordian>
+        </Accordion>
     );
 }

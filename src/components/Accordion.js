@@ -4,7 +4,7 @@ import { Animated, LayoutAnimation, Platform, Text, TouchableOpacity, UIManager,
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import styles from './Accordion.styles';
 
-export default function Accordian(props) {
+export default function Accordion(props) {
     const [expanded, setExpanded] = useState(false);
     const [rotateAnimation,] = useState(new Animated.Value(0));
 
