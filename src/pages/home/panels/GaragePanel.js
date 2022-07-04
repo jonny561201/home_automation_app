@@ -47,6 +47,7 @@ export default function GaragePanel() {
                     </View>
                 </View>
             </View>
+            {/* TODO: move this to common component under account drop down!!! */}
             {state.devicesToRegister.garage.newDevice
                 ? <View style={styles.registerDoor}>
                     <View style={styles.registerGroup}>

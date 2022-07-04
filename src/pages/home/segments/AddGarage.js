@@ -72,7 +72,7 @@ export default function AddGarage(props) {
                         </View>
                         <View style={styles.addButtonGroup}>
                             <GreenButton onPress={resetDevices}>Continue</GreenButton>
-                            <RedButton onPress={completeRegistration} >Done</RedButton>
+                            <RedButton onPress={completeRegistration}>Done</RedButton>
                         </View>
                     </View>
                 </View>
