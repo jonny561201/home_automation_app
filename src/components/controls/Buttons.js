@@ -1,6 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, Text, Switch } from 'react-native';
-
+import { MaterialIcons } from '@expo/vector-icons';
 import styles from './Buttons.styles';
 
 
@@ -34,6 +34,14 @@ export function GreenSwitch(props) {
         <TouchableOpacity style={styles.switchContainer} onPress={props.onPress} >
             <Switch thumbColor={props.status ? "#00c774" : "#f4f3f4"} value={props.status} onValueChange={props.onPress}/>
             <Text style={styles.switchText}>{props.label}</Text>
+        </TouchableOpacity>
+    )
+}
+
+export function ExpandButton(props) {
+    return (
+        <TouchableOpacity style={[styles.expandButton, props.style]} onPress={props.onPress}>
+            <MaterialIcons name='chevron-right' style={styles.expandChevron}/>
         </TouchableOpacity>
     )
 }

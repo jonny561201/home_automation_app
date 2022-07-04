@@ -54,4 +54,13 @@ export default StyleSheet.create({
     switchText: {
         fontSize: 16,
     },
+
+    expandButton: {
+        padding: 8,
+        borderRadius: 40,
+    },
+
+    expandChevron: {
+        fontSize: 30,
+    },
 });
