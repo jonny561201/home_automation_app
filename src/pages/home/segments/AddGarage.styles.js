@@ -28,6 +28,13 @@ export default StyleSheet.create({
         marginLeft: 1,
     },
 
+    addButtonGroup: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 6,
+        flexDirection: 'row',
+    },
+
     deviceGroup: {
         flexDirection: 'row',
         // justifyContent: 'space-between',

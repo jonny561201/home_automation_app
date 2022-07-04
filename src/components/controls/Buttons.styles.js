@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
 
     buttonContainer: {
-        padding: 2,
+        margin: 8,
     },
 
     green: {
