@@ -12,7 +12,7 @@ import RegisterDevice from '../segments/RegisterDevice';
 
 export default function GaragePanel() {
     const [open, setOpen] = useState(false);
-    const [state, ] = useContext(Context);
+    const [state,] = useContext(Context);
     const [displayRegister, setDisplayRegister] = useState(false);
 
     const renderDoors = () => {
@@ -31,20 +31,18 @@ export default function GaragePanel() {
 
     return (
         <Accordian style={styles.garagePanel} onPress={() => { setOpen(!open) }}>
-            <View>
-                <View style={styles.titleGroup}>
-                    <Image style={styles.iconImage} source={GarageIcon} />
-                    <View style={styles.garageHeader}>
-                        <Text style={styles.statusTextBold}>Garage</Text>
-                        {!open &&
-                            state.garageDoors.map(x => {
-                                return <View style={styles.smallTextGroup} key={`door-notify-${x.doorName}`}>
-                                    <Text style={styles.smallText}>{x.doorName}:</Text>
-                                    <Text style={[styles.smallText, x.isOpen ? styles.openText : null]}>{x.isOpen ? 'Open' : 'Closed'}</Text>
-                                </View>
-                            })
-                        }
-                    </View>
+            <View style={styles.titleGroup}>
+                <Image style={styles.iconImage} source={GarageIcon} />
+                <View style={styles.garageHeader}>
+                    <Text style={styles.statusTextBold}>Garage</Text>
+                    {!open &&
+                        state.garageDoors.map(x => {
+                            return <View style={styles.smallTextGroup} key={`door-notify-${x.doorName}`}>
+                                <Text style={styles.smallText}>{x.doorName}:</Text>
+                                <Text style={[styles.smallText, x.isOpen ? styles.openText : null]}>{x.isOpen ? 'Open' : 'Closed'}</Text>
+                            </View>
+                        })
+                    }
                 </View>
             </View>
             {/* TODO: move this to common component under account drop down!!! */}
