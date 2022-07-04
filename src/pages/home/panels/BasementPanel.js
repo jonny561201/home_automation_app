@@ -37,8 +37,8 @@ export default function BasementPanel() {
                     {!open &&
                         <View style={styles.smallTextGroup}>
                             <Text style={styles.smallText}>Depth:</Text>
-                            <Text style={[styles.smallText, state.sumpData.warningLevel === 3 ? 'alert' : 'healthy']}>{state.sumpData.currentDepth}</Text>
-                            <Text style={[styles.smallText, state.sumpData.warningLevel === 3 ? 'alert' : 'healthy']}>{state.sumpData.depthUnit}</Text>
+                            <Text style={[styles.smallText, state.sumpData.warningLevel === 3 ? styles.alert : styles.healthy]}>{state.sumpData.currentDepth}</Text>
+                            <Text style={[styles.smallText, state.sumpData.warningLevel === 3 ? styles.alert : styles.healthy]}>{state.sumpData.depthUnit}</Text>
                         </View>
                     }
                 </View>
@@ -49,8 +49,8 @@ export default function BasementPanel() {
                 <View className={styles.sumpMeasureGroup}>
                     <View style={styles.sumpTextGroup}>
                         <Text className={[styles.currentText, styles.sumpText]}>Current: </Text>
-                        <Text style={"current-depth sump-text text " + (state.sumpData.warningLevel === 3 ? 'alert' : 'healthy')}>{state.sumpData.currentDepth}</Text>
-                        <Text style={"current-text sump-text text " + (state.sumpData.warningLevel === 3 ? 'alert' : 'healthy')}>{state.sumpData.depthUnit}</Text>
+                        <Text style={[styles.currentDepth, styles.sumpText, state.sumpData.warningLevel === 3 ? styles.alert : styles.healthy]}>{state.sumpData.currentDepth}</Text>
+                        <Text style={[styles.currentText, styles.sumpText, state.sumpData.warningLevel === 3 ? styles.alert : styles.healthy]}>{state.sumpData.depthUnit}</Text>
                     </View>
                     <View style={styles.sumpTextGroup}>
                         <Text style={[styles.averageText, styles.sumpText]}>Average: </Text>

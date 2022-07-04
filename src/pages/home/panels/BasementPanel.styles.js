@@ -38,6 +38,13 @@ export default StyleSheet.create({
         marginRight: 0.5,
     },
 
+    smallText: {
+        marginLeft: 10,
+        fontSize: 12,
+        alignItems: 'center',
+    },
+
+
     iconImage: {
         height: 82,
         width: 82,
