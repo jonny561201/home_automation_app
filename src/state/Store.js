@@ -18,18 +18,24 @@ const initialState = {
     // deviceId: 'a79a8520-7127-4802-a84a-16ec1945adc3',
     devicesToRegister: {
         garage: {
-            newDevice: true,
+            newDevice: false,
             started: false,
             deviceId: 'a79a8520-7127-4802-a84a-16ec1945adc3',
         }
     },
     garageCoords: null,
+    //TODO: !!!!! need login to return this separate from garage role !!!!!
     garageDoors: [
-        // {doorId: 1, doorName: "Jons", isOpen: true }, {doorId: 2, doorName: "Kalynns", isOpen: true }
+        {doorId: 1, doorName: "Jons", isOpen: true }, {doorId: 2, doorName: "Kalynns", isOpen: true }
     ],
     userCoords: null,
     lights: [],
-    sumpData: {},
+    sumpData: {
+        warningLevel: 0,
+        currentDepth: 13.0,
+        averageDepth: 14.0,
+        depthUnit: 'in',
+    },
     tempData: { gaugeColor: '#A0A0A0', currentDesiredTemp: 0.0 },
     forecastData: { description: '' },
     preferences: {},
