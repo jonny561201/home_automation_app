@@ -18,11 +18,11 @@ export default function StateUtil() {
         // await refreshBearerToken();
     }, 20000);
 
-    // useInterval(async () => {
+    useInterval(async () => {
     //     getTempData();
     //     getForecastData();
-    //     getLights();
-    // }, 60000);
+        getLights();
+    }, 60000);
 
     useInterval(async () => {
         await getSumpData();
@@ -32,7 +32,7 @@ export default function StateUtil() {
 
     useEffect(() => {
         if (!state.loadedUtils) {
-            // getLights();
+            getLights();
             getGarageData();
             getSumpData();
             // getTempData();
@@ -90,13 +90,12 @@ export default function StateUtil() {
     //     dispatch({ type: 'SET_SCHEDULED_TASK', payload: activities });
     // }
 
-    // const getLights = async () => {
-    //     const groups = await getLightGroups(state.auth.bearer);
-    //     if (groups && groups.length) {
-    //         dispatch({ type: 'SET_LIGHTS', payload: groups });
-    //     }
-
-    // }
+    const getLights = async () => {
+        const groups = await getLightGroups(state.auth.bearer);
+        if (groups && groups.length) {
+            dispatch({ type: 'SET_LIGHTS', payload: groups });
+        }
+    }
 
     // const refreshBearerToken = async () => {
     //     const fiveMinutes = 300000;

@@ -32,8 +32,8 @@ const initialState = {
     lights: [],
     sumpData: {
         warningLevel: 0,
-        currentDepth: 13.0,
-        averageDepth: 14.0,
+        currentDepth: 0.0,
+        averageDepth: 0.0,
         depthUnit: 'in',
     },
     tempData: { gaugeColor: '#A0A0A0', currentDesiredTemp: 0.0 },
