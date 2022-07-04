@@ -16,43 +16,40 @@ export default function BasementPanel() {
 
     const getSumpIcon = () => {
         if (state.sumpData.warningLevel === 0) {
-            return <Image alt="sump pump" style={styles.sumpIcon} source={SumpPumpLowIcon} label="warning-low" />
+            return <Image style={styles.sumpIcon} source={SumpPumpLowIcon} />
         } else if (state.sumpData.warningLevel === 1) {
-            return <Image alt="sump pump" style={styles.sumpIcon} source={SumpPumpMediumLowIcon} label="warning-medium-low" />
+            return <Image style={styles.sumpIcon} source={SumpPumpMediumLowIcon} />
         } else if (state.sumpData.warningLevel === 2) {
-            return <Image alt="sump pump" style={styles.sumpIcon} source={SumpPumpMediumHighIcon} label="warning-medium-high" />
+            return <Image style={styles.sumpIcon} source={SumpPumpMediumHighIcon} />
         } else if (state.sumpData.warningLevel === 3) {
-            return <Image alt="sump pump" style={styles.sumpIcon} source={SumpPumpHighIcon} label="warning-high" />
+            return <Image style={styles.sumpIcon} source={SumpPumpHighIcon} />
         }
     }
 
     return (
         <Accordian style={styles.basementPanel} onPress={() => { setOpen(!open) }}>
             <View style={styles.titleGroup}>
-                <Image alt="basement" style={styles.iconImage} source={BasementIcon} />
+                <Image style={styles.iconImage} source={BasementIcon} />
                 <View style={styles.basementHeader}>
                     <Text style={styles.statusTextBold}>Basement</Text>
                     {!open &&
                         <View style={styles.smallTextGroup}>
                             <Text style={styles.smallText}>Depth:</Text>
-                            <Text style={[styles.smallText, state.sumpData.warningLevel === 3 ? styles.alert : styles.healthy]}>{state.sumpData.currentDepth}</Text>
-                            <Text style={[styles.smallText, state.sumpData.warningLevel === 3 ? styles.alert : styles.healthy]}>{state.sumpData.depthUnit}</Text>
+                            <Text style={[styles.smallText, state.sumpData.warningLevel === 3 ? styles.alert : styles.healthy]}>{state.sumpData.currentDepth} {state.sumpData.depthUnit}</Text>
                         </View>
                     }
                 </View>
             </View>
             <View style={styles.sumpGroup}>
                 {getSumpIcon()}
-                <View className={styles.sumpMeasureGroup}>
-                    <View style={styles.sumpTextGroup}>
-                        <Text className={[styles.currentText, styles.sumpText]}>Current: </Text>
-                        <Text style={[styles.currentDepth, styles.sumpText, state.sumpData.warningLevel === 3 ? styles.alert : styles.healthy]}>{state.sumpData.currentDepth}</Text>
-                        <Text style={[styles.currentText, styles.sumpText, state.sumpData.warningLevel === 3 ? styles.alert : styles.healthy]}>{state.sumpData.depthUnit}</Text>
+                <View style={styles.sumpMeasureGroup}>
+                    <View style={styles.smallTextGroup}>
+                        <Text>Current: </Text>
+                        <Text style={[state.sumpData.warningLevel === 3 ? styles.alert : styles.healthy]}>{state.sumpData.currentDepth} {state.sumpData.depthUnit}</Text>
                     </View>
-                    <View style={styles.sumpTextGroup}>
-                        <Text style={[styles.averageText, styles.sumpText]}>Average: </Text>
-                        <Text style={[styles.averageDepth, styles.sumpText]}>{state.sumpData.averageDepth}</Text>
-                        <Text style={[styles.averageText, styles.sumpText]}>{state.sumpData.depthUnit}</Text>
+                    <View style={styles.smallTextGroup}>
+                        <Text>Average: </Text>
+                        <Text>{state.sumpData.averageDepth} {state.sumpData.depthUnit}</Text>
                     </View>
                 </View>
             </View>
