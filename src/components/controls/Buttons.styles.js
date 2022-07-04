@@ -56,10 +56,12 @@ export default StyleSheet.create({
     },
 
     expandButton: {
-        height: 30,
-        width: 30,
+        height: 36,
+        width: 36,
         margin: 2,
         borderRadius: 20,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
 
     expandChevron: {

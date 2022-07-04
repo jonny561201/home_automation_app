@@ -38,6 +38,8 @@ export function GreenSwitch(props) {
 }
 
 export function ExpandButton(props) {
+    const iconDirection = props.direction;
+    const rotate = props.rotate;
     const [expanded, setExpandeded] = useState(false);
     const [rotateAnimation,] = useState(new Animated.Value(0));
 
@@ -47,7 +49,7 @@ export function ExpandButton(props) {
 
     const interpolateRotating = rotateAnimation.interpolate({
         inputRange: [0, 1],
-        outputRange: ['0deg', '90deg'],
+        outputRange: ['0deg', `${rotate}deg`],
     });
 
     const rotateStyle = {
@@ -58,11 +60,24 @@ export function ExpandButton(props) {
         ],
     };
 
+    const getIcon = () => {
+        if (iconDirection === 'up')
+            return 'expand-less'
+        else if (iconDirection === 'down')
+            return 'expand-more'
+        else if (iconDirection === 'left')
+            return 'chevron-left'
+        else if (iconDirection === 'right')
+            return 'chevron-right'
+        else
+            return 'expand-more'
+    };
+
     const toggle = () => {
-        // props.onPress();
+        props.onPress();
         expanded ? collapse() : expand()
         setExpandeded(!expanded);
-    }
+    };
 
     const expand = () => {
         Animated.timing(rotateAnimation, {
@@ -87,7 +102,7 @@ export function ExpandButton(props) {
     return (
         <TouchableOpacity style={[styles.expandButton]} onPress={toggle}>
             <Animated.View style={rotateStyle}>
-                <MaterialIcons name='chevron-right' style={styles.expandChevron} />
+                <MaterialIcons name={getIcon()} style={styles.expandChevron} />
             </Animated.View>
         </TouchableOpacity>
     )
