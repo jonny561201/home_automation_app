@@ -24,17 +24,17 @@ export default function StateUtil() {
     //     getLights();
     // }, 60000);
 
-    // useInterval(async () => {
-    //     await getSumpData();
+    useInterval(async () => {
+        await getSumpData();
     //     await getPreferences();
     //     await getActivities();
-    // }, 120000);
+    }, 120000);
 
     useEffect(() => {
         if (!state.loadedUtils) {
             // getLights();
             getGarageData();
-            // getSumpData();
+            getSumpData();
             // getTempData();
             // getForecastData();
             // getPreferences();
@@ -54,10 +54,10 @@ export default function StateUtil() {
         }
     };
 
-    // const getSumpData = async () => {
-    //     const sump = await getSumpLevels(state.user.userId, state.auth.bearer);
-    //     dispatch({ type: 'SET_SUMP_DATA', payload: { ...sump, currentDepth: sump.currentDepth.toFixed(1), averageDepth: sump.averageDepth.toFixed(1) } });
-    // }
+    const getSumpData = async () => {
+        const sump = await getSumpLevels(state.user.userId, state.auth.bearer);
+        dispatch({ type: 'SET_SUMP_DATA', payload: { ...sump, currentDepth: sump.currentDepth.toFixed(1), averageDepth: sump.averageDepth.toFixed(1) } });
+    }
 
     // const getTempData = async () => {
     //     const temp = await getCurrentTemperature(state.user.userId, state.auth.bearer);
