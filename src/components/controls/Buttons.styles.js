@@ -56,8 +56,10 @@ export default StyleSheet.create({
     },
 
     expandButton: {
-        padding: 8,
-        borderRadius: 40,
+        height: 30,
+        width: 30,
+        margin: 2,
+        borderRadius: 20,
     },
 
     expandChevron: {
