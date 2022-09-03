@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
 
     buttonContainer: {
-        padding: 2,
+        margin: 8,
     },
 
     green: {
@@ -53,5 +53,18 @@ export default StyleSheet.create({
 
     switchText: {
         fontSize: 16,
+    },
+
+    expandButton: {
+        height: 36,
+        width: 36,
+        margin: 2,
+        borderRadius: 20,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+
+    expandChevron: {
+        fontSize: 30,
     },
 });

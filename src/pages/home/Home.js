@@ -1,6 +1,7 @@
 import { View } from 'react-native';
 import Header from '../../header/Header';
 import styles from './Home.styles';
+import BasementPanel from './panels/BasementPanel';
 import GaragePanel from './panels/GaragePanel';
 
 
@@ -12,6 +13,7 @@ export default function Home(props) {
             </View>
             <View>
                 <GaragePanel/>
+                <BasementPanel/>
             </View>
         </>
     )

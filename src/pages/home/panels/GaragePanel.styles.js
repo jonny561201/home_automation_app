@@ -10,6 +10,7 @@ export default StyleSheet.create({
         shadowOpacity: 0.3,
         shadowRadius: 8,
     },
+    
     garageHeader: {
         marginLeft: 16,
     },

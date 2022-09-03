@@ -18,23 +18,23 @@ export default function StateUtil() {
         // await refreshBearerToken();
     }, 20000);
 
-    // useInterval(async () => {
+    useInterval(async () => {
     //     getTempData();
     //     getForecastData();
-    //     getLights();
-    // }, 60000);
+        getLights();
+    }, 60000);
 
-    // useInterval(async () => {
-    //     await getSumpData();
+    useInterval(async () => {
+        await getSumpData();
     //     await getPreferences();
     //     await getActivities();
-    // }, 120000);
+    }, 120000);
 
     useEffect(() => {
         if (!state.loadedUtils) {
-            // getLights();
+            getLights();
             getGarageData();
-            // getSumpData();
+            getSumpData();
             // getTempData();
             // getForecastData();
             // getPreferences();
@@ -54,10 +54,10 @@ export default function StateUtil() {
         }
     };
 
-    // const getSumpData = async () => {
-    //     const sump = await getSumpLevels(state.user.userId, state.auth.bearer);
-    //     dispatch({ type: 'SET_SUMP_DATA', payload: { ...sump, currentDepth: sump.currentDepth.toFixed(1), averageDepth: sump.averageDepth.toFixed(1) } });
-    // }
+    const getSumpData = async () => {
+        const sump = await getSumpLevels(state.user.userId, state.auth.bearer);
+        dispatch({ type: 'SET_SUMP_DATA', payload: { ...sump, currentDepth: sump.currentDepth.toFixed(1), averageDepth: sump.averageDepth.toFixed(1) } });
+    }
 
     // const getTempData = async () => {
     //     const temp = await getCurrentTemperature(state.user.userId, state.auth.bearer);
@@ -90,13 +90,12 @@ export default function StateUtil() {
     //     dispatch({ type: 'SET_SCHEDULED_TASK', payload: activities });
     // }
 
-    // const getLights = async () => {
-    //     const groups = await getLightGroups(state.auth.bearer);
-    //     if (groups && groups.length) {
-    //         dispatch({ type: 'SET_LIGHTS', payload: groups });
-    //     }
-
-    // }
+    const getLights = async () => {
+        const groups = await getLightGroups(state.auth.bearer);
+        if (groups && groups.length) {
+            dispatch({ type: 'SET_LIGHTS', payload: groups });
+        }
+    }
 
     // const refreshBearerToken = async () => {
     //     const fiveMinutes = 300000;

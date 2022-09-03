@@ -70,9 +70,9 @@ export default function AddGarage(props) {
                         <View style={styles.addDoorGroup}>
                             <Text style={styles.deviceText}>Setup remaining ({availableNodes}) openers?</Text>
                         </View>
-                        <View style={{ alignItems: 'center', padding: 6 }}>
+                        <View style={styles.addButtonGroup}>
                             <GreenButton onPress={resetDevices}>Continue</GreenButton>
-                            <RedButton onPress={completeRegistration} >Done</RedButton>
+                            <RedButton onPress={completeRegistration}>Done</RedButton>
                         </View>
                     </View>
                 </View>

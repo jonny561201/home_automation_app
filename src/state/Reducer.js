@@ -34,21 +34,6 @@ const Reducer = (state, action) => {
                 ...state,
                 garageDoors: [...state.garageDoors, action.payload]
             };
-        //     const updatedGarage = { ...state.devicesToRegister.garage, started: action.payload };
-        //     return {
-        //         ...state,
-        //         devicesToRegister: { ...state.devicesToRegister, garage: updatedGarage}
-        //     };
-        // case 'SET_DEVICES_TO_REGISTER':
-        //     return {
-        //         ...state,
-        //         devicesToRegister: action.payload
-        //     };
-        // case 'SET_ADDED_GARAGE_NODE':
-        //     return {
-        //         ...state,
-        //         addedGarageNode: action.payload
-        //     };
         case 'SET_GARAGE_COORDS':
             return {
                 ...state,
