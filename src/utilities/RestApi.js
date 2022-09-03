@@ -1,7 +1,3 @@
-import jwt_decode from 'jwt-decode';
-import { getStore } from '../state/GlobalState';
-
-
 const baseUrl = 'http://192.168.0.18:5000';
 // const baseUrl = 'https://www.soaringleafsolutions.com';
 const accountBaseUrl = `${baseUrl}/account`;
@@ -20,12 +16,7 @@ export const getBearerToken = async (username, password) => {
 
     const response = await fetch(`${baseUrl}/token`, options);
     if (response.ok) {
-        const jsonResponse = await response.json();
-        const bearerToken = jsonResponse.bearerToken;
-        const dataStore = getStore();
-        const decodedToken = jwt_decode(bearerToken);
-        dataStore.setUserRoles(decodedToken.user.roles);
-        return jsonResponse;
+        return await response.json();
     }
     return null;
 }

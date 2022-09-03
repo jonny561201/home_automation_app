@@ -2,7 +2,6 @@ import React, { useState, useContext } from 'react';
 import LogoHeader from './LogoHeader';
 import AccountIcon from './AccountIcon';
 import { Context } from '../state/Store';
-import { getStore } from '../state/GlobalState';
 // import UserLocation from '../../pages/Home/segments/UserLocation';
 import { View, Text } from 'react-native';
 import StateUtil from '../utilities/StateUtil';
@@ -11,7 +10,7 @@ import styles from './Header.styles';
 
 export default function Header(props) {
     const [state,] = useContext(Context);
-    const activePage = getStore().getActivePage();
+    const activePage = state.activePage;
 
     StateUtil();
 

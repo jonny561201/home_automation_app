@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { View, Text} from 'react-native';
+import { View, Text } from 'react-native';
 import jwt_decode from 'jwt-decode';
 import { Context } from '../../state/Store';
 import { getBearerToken } from '../../utilities/RestApi';
@@ -51,9 +51,6 @@ export default function UserPass() {
         return false;
     };
 
-    if (state.auth.isAuthenticated) {
-        // return <Redirect to='/home-automation-ui/home' />
-    }
     return (
         <View>
             <View style={styles.userPassBody}>
