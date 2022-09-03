@@ -19,6 +19,10 @@ export default StyleSheet.create({
     },
 
     userPassInput: {
-        width: 270,
+        width: 300,
+    },
+
+    inputContainer: {
+        padding: 10,
     },
 });
