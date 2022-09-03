@@ -1,17 +1,15 @@
 import React, { useState, useContext } from 'react';
-import useSound from 'use-sound';
-import jwt_decode from 'jwt-decode';
-import clickSound from '../../resources/click.mp3';
-import { Redirect } from 'react-router-dom';
+import { View, Text} from 'react-native';
+// import jwt_decode from 'jwt-decode';
+// import { Redirect } from 'react-router-dom';
 import { Context } from '../../state/Store';
 import { getBearerToken } from '../../utilities/RestApi';
-import { TextField } from '@material-ui/core';
+import { TextInput } from "react-native-paper";
 import { GreenButton } from '../../components/controls/Buttons';
-import './UserPass.css';
+import styles from './UserPass.styles';
 
 
 export default function UserPass() {
-    const [click] = useSound(clickSound, { volume: 0.25 });
     const [state, dispatch] = useContext(Context);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -19,9 +17,7 @@ export default function UserPass() {
     const [isPasswordInvalid, setIsPasswordInvalid] = useState(undefined);
     const [isValidLogin, setIsValidLogin] = useState(true);
 
-    const validateCredentials = async (event) => {
-        event.preventDefault();
-        click();
+    const validateCredentials = async () => {
         const userInvalid = username === '';
         const passInvalid = password === '';
         setIsUsernameInvalid(userInvalid);
@@ -34,14 +30,15 @@ export default function UserPass() {
             const response = await getBearerToken(username, password);
             setIsValidLogin(response);
             if (response) {
-                const decodedToken = jwt_decode(response.bearerToken);
-                await dispatch({ type: 'SET_USER_DATA', payload: { userId: decodedToken.user.user_id, firstName: decodedToken.user.first_name, lastName: decodedToken.user.last_name, roles: decodedToken.user.roles } });
-                const garageRole = decodedToken.user.roles.find(x => x.role_name === 'garage_door');
-                await dispatch({ type: 'SET_GARAGE_ROLE', payload: garageRole });
-                await dispatch({ type: 'SET_DEVICES_TO_REGISTER', payload: unregisteredDevices(decodedToken.user.roles) });
-                await dispatch({ type: 'SET_STARTED_GARAGE_REGISTRATION', payload: garageRole && garageRole.device_id ? true : false });
-                await dispatch({ type: 'SET_DEVICE_ID', payload: garageRole && garageRole.device_id ? garageRole.device_id : null });
-                await dispatch({ type: 'SET_AUTH_DATA', payload: { bearer: response.bearerToken, refresh: decodedToken.refresh_token, isAuthenticated: true, exp: decodedToken.exp } });
+                console.log('Succeeded')
+                // const decodedToken = jwt_decode(response.bearerToken);
+                // await dispatch({ type: 'SET_USER_DATA', payload: { userId: decodedToken.user.user_id, firstName: decodedToken.user.first_name, lastName: decodedToken.user.last_name, roles: decodedToken.user.roles } });
+                // const garageRole = decodedToken.user.roles.find(x => x.role_name === 'garage_door');
+                // await dispatch({ type: 'SET_GARAGE_ROLE', payload: garageRole });
+                // await dispatch({ type: 'SET_DEVICES_TO_REGISTER', payload: unregisteredDevices(decodedToken.user.roles) });
+                // await dispatch({ type: 'SET_STARTED_GARAGE_REGISTRATION', payload: garageRole && garageRole.device_id ? true : false });
+                // await dispatch({ type: 'SET_DEVICE_ID', payload: garageRole && garageRole.device_id ? garageRole.device_id : null });
+                // await dispatch({ type: 'SET_AUTH_DATA', payload: { bearer: response.bearerToken, refresh: decodedToken.refresh_token, isAuthenticated: true, exp: decodedToken.exp } });
             }
         }
     };
@@ -57,25 +54,27 @@ export default function UserPass() {
     };
 
     if (state.auth.isAuthenticated) {
-        return <Redirect to='/home-automation-ui/home' />
+        // return <Redirect to='/home-automation-ui/home' />
     }
     return (
-        <div>
-            <form onSubmit={validateCredentials} className="user-pass-body">
-                <div className="column">
-                    <TextField className="user-pass-input" error={isUsernameInvalid} onChange={(e) => setUsername(e.target.value)} value={username} variant="outlined" label="Username" />
-                </div>
-                <div className="column">
-                    <TextField className="user-pass-input" error={isPasswordInvalid} onChange={(e) => setPassword(e.target.value)} value={password} variant="outlined" label="Password" type="password" />
-                </div>
-                <div className="error-text">
+        <View>
+            <View style={styles.userPassBody}>
+                <View>
+                    {/*<TextField style={styles.userPassInput} error={isUsernameInvalid} onChange={(e) => setUsername(e.target.value)} value={username} variant="outlined" label="Username" />*/}
+                    <TextInput style={styles.userPassInput} value={username} error={isUsernameInvalid} onChangeText={(i) => setUsername(i)} mode='outlined' activeOutlineColor='#00c774' label="Username" />
+                </View>
+                <View>
+                    {/*<TextField style={styles.userPassInput} error={isPasswordInvalid} onChange={(e) => setPassword(e.target.value)} value={password} variant="outlined" label="Password" type="password" />*/}
+                    <TextInput style={styles.userPassInput} value={password} error={isPasswordInvalid} onChangeText={(i) => setPassword(i)} mode='outlined' activeOutlineColor='#00c774' label="Password" />
+                </View>
+                <View style={styles.errorText}>
                     {isValidLogin
-                        ? <p></p>
-                        : <p>ERROR: Username or Password is invalid!</p>
+                        ? <Text/>
+                        : <Text>ERROR: Username or Password is invalid!</Text>
                     }
-                </div>
-                <GreenButton className="column button">Login</GreenButton>
-            </form>
-        </div>
+                </View>
+                <GreenButton onPress={validateCredentials}>Login</GreenButton>
+            </View>
+        </View>
     )
 }
