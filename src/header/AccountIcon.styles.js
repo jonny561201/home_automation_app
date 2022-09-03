@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
     accountBorder: {
@@ -22,6 +22,8 @@ export default StyleSheet.create({
     },
 
     accountText: {
-    fontSize: 20,
+        fontSize: 20,
+        color: 'white',
+        fontWeight: 'bold'
     },
 });
