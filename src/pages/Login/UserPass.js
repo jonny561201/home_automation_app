@@ -64,10 +64,10 @@ export default function UserPass() {
                 <View>
                     <TextInput style={styles.userPassInput} value={password} error={isPasswordInvalid} onChangeText={(i) => setPassword(i)} mode='outlined' activeOutlineColor='#00c774' label="Password" secureTextEntry={true} />
                 </View>
-                <View style={styles.errorText}>
+                <View>
                     {isValidLogin
                         ? <Text/>
-                        : <Text>ERROR: Username or Password is invalid!</Text>
+                        : <Text style={styles.errorText}>Username or Password is invalid!</Text>
                     }
                 </View>
                 <GreenButton onPress={validateCredentials}>Login</GreenButton>
