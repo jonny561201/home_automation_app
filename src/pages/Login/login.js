@@ -1,22 +1,23 @@
 import React from 'react';
-import './login.css';
-import LogoHeader from '../../components/header/LogoHeader';
+import LogoHeader from '../../header/LogoHeader';
+import { View, Text } from 'react-native';
 import UserPass from './UserPass';
 import { getStore } from '../../state/GlobalState';
+import styles from './login.styles';
 
 
 export default function Login() {
     getStore().setActivePage('Login');
 
     return (
-        <div className="login-menu column">
-            <div data-testid={"login-header"} className="login-header header-text">
+        <View style={styles.loginMenu}>
+            <View style={styles.loginHeader}>
                 <LogoHeader />
-                <h1>Member Login</h1>
-            </div>
-            <div className="login-body body">
+                <Text>Member Login</Text>
+            </View>
+            <View style={styles.loginBody}>
                 <UserPass />
-            </div>
-        </div>
+            </View>
+        </View>
     );
 }
