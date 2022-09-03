@@ -4,8 +4,6 @@ export default StyleSheet.create({
 
     loginHeader: {
         padding: 40,
-        borderTopRightRadius: 10,
-        borderTopLeftRadius: 10,
         backgroundColor: '#00c774',
         flexDirection: 'column',
         alignItems: 'center',
@@ -19,7 +17,6 @@ export default StyleSheet.create({
 
     loginBody: {
         flexGrow: 10,
-        borderRadius: 12,
         // backgroundColor: var(--primary-color),
         marginTop: 80,
     },
