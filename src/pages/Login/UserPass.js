@@ -57,16 +57,17 @@ export default function UserPass() {
                 <View style={styles.inputContainer}>
                     <TextInput style={styles.userPassInput} value={username} error={isUsernameInvalid} onChangeText={(i) => setUsername(i)} mode='outlined' activeOutlineColor='#00c774' label="Username" />
                 </View>
-                <View>
+                <View style={styles.inputContainer}>
                     <TextInput style={styles.userPassInput} value={password} error={isPasswordInvalid} onChangeText={(i) => setPassword(i)} mode='outlined' activeOutlineColor='#00c774' label="Password" secureTextEntry={true} />
                 </View>
                 <View>
-                    {isValidLogin
-                        ? <Text/>
-                        : <Text style={styles.errorText}>Username or Password is invalid!</Text>
+                    {!isValidLogin &&
+                        <Text style={styles.errorText}>Username or Password is invalid!</Text>
                     }
                 </View>
-                <GreenButton onPress={validateCredentials}>Login</GreenButton>
+                <View style={styles.inputContainer}>
+                    <GreenButton onPress={validateCredentials}>Login</GreenButton>
+                </View>
             </View>
         </View>
     )

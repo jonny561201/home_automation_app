@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import LogoHeader from './LogoHeader';
 import AccountIcon from './AccountIcon';
 import { Context } from '../state/Store';
