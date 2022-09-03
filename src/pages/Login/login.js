@@ -10,10 +10,10 @@ export default function Login() {
     getStore().setActivePage('Login');
 
     return (
-        <View style={styles.loginMenu}>
+        <View>
             <View style={styles.loginHeader}>
                 <LogoHeader />
-                <Text>Member Login</Text>
+                <Text style={styles.loginHeaderText}>Member Login</Text>
             </View>
             <View style={styles.loginBody}>
                 <UserPass />
