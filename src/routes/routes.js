@@ -20,7 +20,6 @@ export default function Routes() {
                         <Drawer.Screen name="Settings" component={Settings}/>
                       </>
                     : <Drawer.Screen name="Login" component={Login}/>
-
                 }
             </Drawer.Navigator>
         </NavigationContainer>

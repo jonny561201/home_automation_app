@@ -3,8 +3,12 @@ import theme from '../../constants/Colors';
 
 
 export default StyleSheet.create({
+    systemIconSpacer: {
+        height: 34,
+        backgroundColor: '#00c774',
+    },
+
     homeHeader: {
-        paddingTop: 20,
         paddingBottom: 10,
         backgroundColor: '#00c774',
         padding: 1,
@@ -18,19 +22,11 @@ export default StyleSheet.create({
         fontSize: 20,
         marginLeft: 5,
         color: theme.dark.headerFontColor,
-        // fontFamily: 'Trebuchet MS',
-    },
-
-    header: {
-        position: 'relative',
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 1,
     },
 
     logoContainer: {
         position: 'absolute',
         left: 1,
+        top: -33
     },
 });

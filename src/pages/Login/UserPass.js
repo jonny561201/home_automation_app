@@ -1,7 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { View, Text} from 'react-native';
 import jwt_decode from 'jwt-decode';
-// import { Redirect } from 'react-router-dom';
 import { Context } from '../../state/Store';
 import { getBearerToken } from '../../utilities/RestApi';
 import { TextInput } from "react-native-paper";

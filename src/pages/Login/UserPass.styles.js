@@ -22,6 +22,6 @@ export default StyleSheet.create({
     },
 
     inputContainer: {
-        padding: 10,
+        padding: 5,
     },
 });

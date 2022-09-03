@@ -26,12 +26,13 @@ export default function Header(props) {
 
 
     return (
-        <View style={styles.header}>
+        <View>
+            <View style={styles.systemIconSpacer}/>
             <View style={styles.homeHeader}>
                 <View style={styles.logoContainer}>
                     <LogoHeader />
                 </View>
-                <View></View>
+                <View style={{width: 40}}/>
                 <View>
                     <Text style={styles.homeHeaderText}>{activePage}</Text>
                 </View>
