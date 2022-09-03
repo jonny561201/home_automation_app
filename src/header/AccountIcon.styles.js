@@ -24,6 +24,6 @@ export default StyleSheet.create({
     accountText: {
         fontSize: 20,
         color: 'white',
-        fontWeight: 'bold'
+        // fontWeight: 'bold'
     },
 });

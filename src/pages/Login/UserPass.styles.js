@@ -6,7 +6,6 @@ export default StyleSheet.create({
         margin: 2,
         color: '#e60000',
         fontSize: 12,
-        // font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif,
     },
 
     errorInput: {

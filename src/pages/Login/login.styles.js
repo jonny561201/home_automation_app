@@ -13,6 +13,7 @@ export default StyleSheet.create({
         color: 'white',
         fontSize: 30,
         fontWeight: "bold",
+        paddingTop: 20,
     },
 
     loginBody: {
