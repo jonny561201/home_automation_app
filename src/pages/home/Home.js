@@ -1,8 +1,9 @@
-import { View } from 'react-native';
+import {View} from 'react-native';
 import Header from '../../header/Header';
 import styles from './Home.styles';
 import BasementPanel from './panels/BasementPanel';
 import GaragePanel from './panels/GaragePanel';
+import React from "react";
 
 
 export default function Home(props) {

@@ -1,25 +1,19 @@
-import { Divider } from '@react-native-material/core';
-import React, { useState } from 'react';
-import { Animated, LayoutAnimation, Platform, TouchableOpacity, UIManager, View } from 'react-native';
+import {Divider} from '@react-native-material/core';
+import React, {useRef, useState} from 'react';
+import {Animated, Button, LayoutAnimation, Platform, TouchableOpacity, UIManager, View} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import styles from './Accordion.styles';
 
 export default function Accordion(props) {
     const [expanded, setExpanded] = useState(false);
+    const [slideDown, setSlideDown] = useState(false);
+    const slide = useRef(new Animated.Value(-100)).current;
     const [rotateAnimation,] = useState(new Animated.Value(0));
 
     const interpolateRotating = rotateAnimation.interpolate({
         inputRange: [0, 1],
         outputRange: ['0deg', '180deg'],
     });
-
-    const rotateStyle = {
-        transform: [
-            {
-                rotate: interpolateRotating,
-            },
-        ],
-    };
 
     if (Platform.OS === 'android') {
         UIManager.setLayoutAnimationEnabledExperimental(true);
@@ -33,33 +27,38 @@ export default function Accordion(props) {
         shouldExpand
             ? expand()
             : collapse()
+        // doStuff();
+    }
+
+    const doStuff = () => {
+        const shouldSlide = !slideDown;
+        setSlideDown(shouldSlide);
+        shouldSlide
+            ? Animated.timing(slide, {toValue: 0, useNativeDriver: true, duration: 200}).start()
+            : Animated.timing(slide, {toValue: -100, useNativeDriver: true, duration: 200}).start()
     }
 
     const expand = () => {
-        Animated.timing(rotateAnimation, {
-            toValue: 1,
-            duration: 100,
-            useNativeDriver: true,
-        }).start(() => {
-            rotateAnimation.setValue(1)
-        });
+        Animated.timing(slide, {toValue: 0, duration: 250, useNativeDriver: true}).start(() => slide.setValue(0));
+        // Animated.timing(rotateAnimation, {toValue: 1, duration: 200, useNativeDriver: true})
+        //     .start(() => {
+        //         rotateAnimation.setValue(1)
+        //     });
     };
 
     const collapse = () => {
-        Animated.timing(rotateAnimation, {
-            toValue: 0,
-            duration: 100,
-            useNativeDriver: true,
-        }).start(() => {
-            rotateAnimation.setValue(0);
-        });
+        Animated.timing(slide, {toValue: -100, duration: 250, useNativeDriver: true}).start(() => slide.setValue(-100));
+        // Animated.timing(rotateAnimation, {toValue: 0, duration: 200, useNativeDriver: true})
+        //     .start(() => {
+        //         rotateAnimation.setValue(0);
+        //     });
     };
 
     return (
         <View style={styles.container}>
             <TouchableOpacity style={styles.row} onPress={toggleExpand}>
                 <View>{props.children[0]}</View>
-                <Animated.View style={rotateStyle}>
+                <Animated.View style={{transform: [{rotate: interpolateRotating}]}}>
                     <Icon name='keyboard-arrow-down' size={30} />
                 </Animated.View>
             </TouchableOpacity>
@@ -68,7 +67,8 @@ export default function Accordion(props) {
                 <View style={styles.expansion}>
                     <Divider style={styles.divider} />
                     <View style={styles.child}>
-                        <View>{props.children[1]}</View>
+                        <Animated.View style={{transform: [{translateY: slide}]}}>{props.children[1]}</Animated.View>
+                        {/*<Button title='Test' onPress={doStuff}/>*/}
                     </View>
                 </View>
             }
