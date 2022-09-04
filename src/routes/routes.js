@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import LogoutDrawer from "./logout-drawer";
 import { NavigationContainer } from "@react-navigation/native";
 import Login from "../pages/Login/login";
 import Home from "../pages/home/Home";
@@ -13,7 +14,7 @@ export default function Routes() {
 
     return (
         <NavigationContainer>
-            <Drawer.Navigator screenOptions={{headerShown: false}} initialRouteName="Home">
+            <Drawer.Navigator screenOptions={{headerShown: false}} initialRouteName="Home" drawerContent={LogoutDrawer}>
                 {state.auth.isAuthenticated
                     ? <>
                         <Drawer.Screen name="Home" component={Home}/>
