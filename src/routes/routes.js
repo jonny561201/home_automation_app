@@ -1,10 +1,10 @@
-import React, {useContext} from 'react';
-import {NavigationContainer} from "@react-navigation/native";
+import React, { useContext } from 'react';
+import { NavigationContainer } from "@react-navigation/native";
 import Login from "../pages/Login/login";
 import Home from "../pages/home/Home";
 import Settings from "../pages/settings/settings";
-import {Context} from "../state/Store";
-import {createDrawerNavigator} from "@react-navigation/drawer";
+import { Context } from "../state/Store";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 
 
 export default function Routes() {

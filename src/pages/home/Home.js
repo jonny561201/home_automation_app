@@ -1,16 +1,26 @@
-import {View} from 'react-native';
+import React, { useContext } from "react";
+import { View } from 'react-native';
 import Header from '../../header/Header';
 import styles from './Home.styles';
 import BasementPanel from './panels/BasementPanel';
 import GaragePanel from './panels/GaragePanel';
-import React from "react";
+import { Context } from "../../state/Store";
+import { useFocusEffect } from "@react-navigation/native";
 
 
 export default function Home(props) {
+    const [, dispatch] = useContext(Context);
+
+    useFocusEffect(
+        React.useCallback(() => {
+            dispatch({type: 'SET_ACTIVE_PAGE', payload: 'Home'});
+        }, [dispatch])
+    );
+
     return (
         <>
-            <View style={styles.pageContainer} >
-                <Header toggleMenu={props.navigation.toggleDrawer}></Header>
+            <View style={styles.pageContainer}>
+                <Header toggleMenu={props.navigation.toggleDrawer} />
             </View>
             <View>
                 <GaragePanel/>
