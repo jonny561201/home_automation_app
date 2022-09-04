@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useCallback } from "react";
 import { View } from 'react-native';
 import Header from '../../header/Header';
 import styles from './Home.styles';
@@ -12,7 +12,7 @@ export default function Home(props) {
     const [, dispatch] = useContext(Context);
 
     useFocusEffect(
-        React.useCallback(() => {
+        useCallback(() => {
             dispatch({type: 'SET_ACTIVE_PAGE', payload: 'Home'});
         }, [dispatch])
     );

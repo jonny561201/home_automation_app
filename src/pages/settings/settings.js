@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useCallback } from "react";
 import { Text } from 'react-native';
 import Header from '../../header/Header';
 import { Context } from "../../state/Store";
@@ -9,7 +9,7 @@ export default function Settings(props) {
     const [, dispatch] = useContext(Context);
 
     useFocusEffect(
-        React.useCallback(() => {
+        useCallback(() => {
             dispatch({type: 'SET_ACTIVE_PAGE', payload: 'Settings'});
         }, [dispatch])
     );
