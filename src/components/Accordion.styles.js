@@ -8,10 +8,9 @@ export default StyleSheet.create({
         marginLeft: 4,
         marginBottom: 2,
         marginTop: 2,
-        shadowColor: 'black',
-        elevation: 5,
-        borderRadius: 8,
-
+        shadowColor: '#383838',
+        elevation: 3,
+        borderRadius: 2,
         shadowOffset: { width: -2, height: 4 },
         shadowOpacity: 0.3,
         shadowRadius: 8,
