@@ -1,6 +1,6 @@
 import {Divider} from '@react-native-material/core';
 import React, {useRef, useState} from 'react';
-import {Animated, Button, LayoutAnimation, Platform, TouchableOpacity, UIManager, View} from 'react-native';
+import {Animated, LayoutAnimation, Platform, TouchableOpacity, UIManager, View} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import styles from './Accordion.styles';
 
