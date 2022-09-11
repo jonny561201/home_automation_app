@@ -32,4 +32,14 @@ export default StyleSheet.create({
         flexDirection: 'row',
         marginLeft: 20,
     },
+
+    pickerContainer: {
+        borderRadius: 4,
+        borderColor: 'grey',
+        borderWidth: 1,
+    },
+
+    picker: {
+        width: '60%',
+    },
 });

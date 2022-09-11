@@ -4,6 +4,7 @@ import { RadioButton, TextInput } from "react-native-paper";
 import { updateUserPreferences } from '../../utilities/RestApi';
 import { Context } from '../../state/Store';
 import { GreenButton, RedButton } from "../../components/controls/Buttons";
+import { Picker } from "@react-native-picker/picker";
 import styles from './settings-edit-panel.styles'
 
 
@@ -49,9 +50,9 @@ export default function SettingsEditPanel(props) {
     }
 
     const updateGarageDoor = (input) => {
-        const door = state.garageDoors.find(x => x.doorName === input.target.value);
+        const door = state.garageDoors.find(x => x.doorName === input);
         setEdited(true);
-        setGarage(input.target.value);
+        setGarage(input);
         setGarageId(door ? door.doorId : null);
     }
 
@@ -59,15 +60,16 @@ export default function SettingsEditPanel(props) {
         <>
             <View>
                 <Text style={styles.settingsHeader}>Garage</Text>
-                <View style={styles.settingsRow}>
-                    {/*<TextField style={styles.garageSettingRow} variant="outlined" select value={garage} onChange={updateGarageDoor} label="Garage Door">*/}
-                    {/*    <MenuItem value="">None</MenuItem>*/}
-                    {/*    {state.garageDoors.map(x => (*/}
-                    {/*        <MenuItem key={x.doorName} value={x.doorName}>*/}
-                    {/*            {x.doorName}*/}
-                    {/*        </MenuItem>*/}
-                    {/*    ))}*/}
-                    {/*</TextField>*/}
+                <View style={[styles.settingsRow, styles.pickerContainer]}>
+
+                    <Picker style={styles.picker} selectedValue={garage} onValueChange={updateGarageDoor}>
+                        <Picker.Item lable='None' value='None'/>
+                        {
+                            state.garageDoors.map(x => {
+                                return <Picker.Item key={x.doorName} label={x.doorName} value={x.doorName}/>
+                            })
+                        }
+                    </Picker>
                 </View>
                 <Text style={styles.settingsHeader}>Temperature</Text>
                 <View  style={styles.settingsRow}>
