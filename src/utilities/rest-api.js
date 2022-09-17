@@ -156,7 +156,8 @@ export const addUserDeviceNode = async (userId, bearer, deviceId, nodeName, pref
 export const getRolesByUserId = async (userId, bearer) => {
     const options = { method: 'GET', headers: { 'Authorization': `Bearer ${bearer}` } };
     const response = await fetch(`${accountBaseUrl}/userId/${userId}/roles`, options);
-    return response.json();
+
+    return response.ok ? await response.json() : [];
 }
 
 export const addUserChildAccount = async (userId, bearer, email, roles) => {
@@ -167,13 +168,15 @@ export const addUserChildAccount = async (userId, bearer, email, roles) => {
         body: JSON.stringify(request)
     };
     const response = await fetch(`${accountBaseUrl}/userId/${userId}/createChildAccount`, options);
-    return response.json();
+
+    return response.ok ? await response.json() : [];
 }
 
 export const getUserChildAccounts = async (userId, bearer) => {
     const options = { method: 'GET', headers: { 'Authorization': `Bearer ${bearer}` } };
     const response = await fetch(`${accountBaseUrl}/userId/${userId}/childAccounts`, options);
-    return response.json();
+
+    return response.ok ? await response.json() : [];
 }
 
 export const deleteUserChildAccount = async (userId, bearer, childAccountId) => {
@@ -189,6 +192,7 @@ export const deleteScheduledTask = async (userId, bearer, taskId) => {
 export const getScheduledTasks = async (userId, bearer) => {
     const options = { method: 'GET', headers: { 'Authorization': `Bearer ${bearer}` } };
     const response = await fetch(`${baseUrl}/userId/${userId}/tasks`, options);
+
     return response.ok ? await response.json() : [];
 }
 
