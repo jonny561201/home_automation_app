@@ -61,7 +61,6 @@ export default function SettingsEditPanel(props) {
             <View>
                 <Text style={styles.settingsHeader}>Garage</Text>
                 <View style={[styles.settingsRow, styles.pickerContainer]}>
-
                     <Picker style={styles.picker} selectedValue={garage} onValueChange={updateGarageDoor}>
                         <Picker.Item lable='None' value='None'/>
                         {

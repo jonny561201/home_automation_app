@@ -18,11 +18,6 @@ export default StyleSheet.create({
         marginTop: 1,
     },
 
-    garageSettingRow: {
-        marginTop: 1,
-        minWidth: 194,
-    },
-
     settingsLabelText: {
         paddingTop: 6,
         fontSize: 16,
@@ -37,9 +32,10 @@ export default StyleSheet.create({
         borderRadius: 4,
         borderColor: 'grey',
         borderWidth: 1,
+        width: '85%',
     },
 
     picker: {
-        width: '60%',
+        width: '100%'
     },
 });
