@@ -18,5 +18,10 @@ export default StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
     },
-    
+
+    statusTextBold: {
+        fontWeight: 'bold',
+        fontSize: 18,
+        marginLeft: 16,
+    },
 });

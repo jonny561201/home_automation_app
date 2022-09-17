@@ -22,7 +22,7 @@ export default function LightingPanel() {
         <Accordion style={styles.lightingPanel} onPress={() => { setOpen(!open) }}>
             <View style={styles.titleGroup}>
                 <Image style={styles.iconImage} source={LightingIcon} />
-                <Text style={[styles.panelText, styles.panelHeaderText]}>Lighting</Text>
+                <Text style={styles.statusTextBold}>Lighting</Text>
             </View>
             <View style={styles.center}>
                 <View style={styles.lightPanelGroup}>
