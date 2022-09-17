@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Image, Text, View } from 'react-native';
-import Accordian from '../../../components/Accordion';
+import Accordion from '../../../components/Accordion';
 import BasementIcon from '../../../resources/panelIcons/BasementIcon.png';
 import SumpPumpHighIcon from '../../../resources/panelIcons/SumpPumpHighIcon.png';
 import SumpPumpLowIcon from '../../../resources/panelIcons/SumpPumpLowIcon.png';
@@ -27,7 +27,7 @@ export default function BasementPanel() {
     }
 
     return (
-        <Accordian style={styles.basementPanel} onPress={() => { setOpen(!open) }}>
+        <Accordion style={styles.basementPanel} onPress={() => { setOpen(!open) }}>
             <View style={styles.titleGroup}>
                 <Image style={styles.iconImage} source={BasementIcon} />
                 <View style={styles.basementHeader}>
@@ -53,6 +53,6 @@ export default function BasementPanel() {
                     </View>
                 </View>
             </View>
-        </Accordian >
+        </Accordion >
     );
 }

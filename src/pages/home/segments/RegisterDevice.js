@@ -4,7 +4,7 @@ import { TextInput } from 'react-native-paper';
 import { isValidIpAddress } from '../../../utilities/Services';
 import { addUserDevice } from '../../../utilities/RestApi';
 import { MaterialIcons } from '@expo/vector-icons';
-import AddGarage from './AddGarage';
+import AddGarage from '../garage/AddGarage';
 import styles from './RegisterDevice.styles'
 import { Context } from '../../../state/Store';
 import { GreenButton } from '../../../components/controls/Buttons';

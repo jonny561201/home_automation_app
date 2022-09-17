@@ -2,8 +2,8 @@ import React, { useContext, useCallback } from "react";
 import { View } from 'react-native';
 import Header from '../../header/Header';
 import styles from './Home.styles';
-import BasementPanel from './panels/BasementPanel';
-import GaragePanel from './panels/GaragePanel';
+import BasementPanel from './basement/BasementPanel';
+import GaragePanel from './garage/GaragePanel';
 import { Context } from "../../state/Store";
 import { useFocusEffect } from "@react-navigation/native";
 
