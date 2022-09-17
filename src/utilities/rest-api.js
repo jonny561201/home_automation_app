@@ -29,7 +29,8 @@ export const getRefreshedBearerToken = async (refreshToken) => {
 export const getGarageStatus = async (userId, bearer, garageId) => {
     const options = { method: 'GET', headers: { 'Authorization': `Bearer ${bearer}` } };
     const response = await fetch(`${garageBaseUrl}/${garageId}/user/${userId}/status`, options);
-    return await response.json();
+
+    return response.ok ? await response.json() : {};
 }
 
 export const updateGarageState = async (userId, bearer, shouldOpen, garageId) => {
@@ -40,7 +41,8 @@ export const updateGarageState = async (userId, bearer, shouldOpen, garageId) =>
         body: JSON.stringify(request)
     };
     const response = await fetch(`${garageBaseUrl}/${garageId}/user/${userId}/state`, options);
-    return await response.json();
+
+    return response.ok ? await response.json() : {};
 }
 
 export const toggleGarageDoor = async (userId, bearer, garageId) => {
