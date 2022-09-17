@@ -1,12 +1,11 @@
-
 import { useContext, useEffect } from 'react';
 import jwt_decode from 'jwt-decode';
-import { Context } from '../state/Store';
-import { useInterval } from './UseInterval';
+import { Context } from '../state/store';
+import { useInterval } from './use-interval';
 import {
     getGarageStatus, getSumpLevels, getCurrentTemperature, getUserPreferences,
     getScheduledTasks, getRefreshedBearerToken, getLightGroups, getUserForecast
-} from './RestApi';
+} from './rest-api';
 
 
 

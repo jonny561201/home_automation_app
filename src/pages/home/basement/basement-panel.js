@@ -1,13 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { Image, Text, View } from 'react-native';
-import Accordion from '../../../components/Accordion';
+import Accordion from '../../../components/accordion';
 import BasementIcon from '../../../resources/panelIcons/BasementIcon.png';
 import SumpPumpHighIcon from '../../../resources/panelIcons/SumpPumpHighIcon.png';
 import SumpPumpLowIcon from '../../../resources/panelIcons/SumpPumpLowIcon.png';
 import SumpPumpMediumHighIcon from '../../../resources/panelIcons/SumpPumpMediumHighIcon.png';
 import SumpPumpMediumLowIcon from '../../../resources/panelIcons/SumpPumpMediumLowIcon.png';
-import { Context } from '../../../state/Store';
-import styles from './BasementPanel.styles';
+import { Context } from '../../../state/store';
+import styles from './basement-panel.styles';
 
 
 export default function BasementPanel() {

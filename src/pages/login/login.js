@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from 'react';
-import LogoHeader from '../../header/LogoHeader';
+import LogoHeader from '../../header/logo-header';
 import { View, Text } from 'react-native';
-import UserPass from './UserPass';
+import UserPass from './user-pass';
 import styles from './login.styles';
-import { Context } from "../../state/Store";
+import { Context } from "../../state/store";
 
 
 export default function Login() {

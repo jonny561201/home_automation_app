@@ -1,5 +1,5 @@
 import {DrawerContentScrollView, DrawerItem, DrawerItemList} from "@react-navigation/drawer";
-import {Context} from "../state/Store";
+import {Context} from "../state/store";
 import {useContext} from "react";
 
 

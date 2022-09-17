@@ -1,6 +1,6 @@
 // import { useColorScheme } from "react-native";
 import "react-native-gesture-handler";
-import Store from './src/state/Store';
+import Store from './src/state/store';
 import Routes from "./src/routes/routes";
 
 

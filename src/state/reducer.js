@@ -1,4 +1,4 @@
-import { parseDate } from '../utilities/Services';
+import { parseDate } from '../utilities/services';
 
 const Reducer = (state, action) => {
     switch (action.type) {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { TouchableOpacity, Text, Switch, UIManager, Animated } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
-import styles from './Buttons.styles';
+import styles from './buttons.styles';
 
 
 export function GreenButton(props) {

@@ -1,13 +1,13 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { View, Text, Image } from 'react-native';
-import styles from './GarageDoor.styles';
-import { BlueButton, GreenButton, RedButton } from '../../../components/controls/Buttons';
+import styles from './garage-door.styles';
+import { BlueButton, GreenButton, RedButton } from '../../../components/controls/buttons';
 import moment from 'moment';
 
-import { Context } from '../../../state/Store';
-import { useInterval } from '../../../utilities/UseInterval';
+import { Context } from '../../../state/store';
+import { useInterval } from '../../../utilities/use-interval';
 import UpDownIcon from '../../../resources/panelIcons/UpDown.png';
-import { toggleGarageDoor, updateGarageState } from '../../../utilities/RestApi';
+import { toggleGarageDoor, updateGarageState } from '../../../utilities/rest-api';
 
 
 export default function GarageDoor(props) {

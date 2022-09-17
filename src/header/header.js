@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
-import LogoHeader from './LogoHeader';
-import AccountIcon from './AccountIcon';
-import { Context } from '../state/Store';
+import LogoHeader from './logo-header';
+import AccountIcon from './account-icon';
+import { Context } from '../state/store';
 // import UserLocation from '../../pages/Home/segments/UserLocation';
 import { View, Text } from 'react-native';
-import StateUtil from '../utilities/StateUtil';
-import styles from './Header.styles';
+import StateUtil from '../utilities/state-util';
+import styles from './header.styles';
 
 
 export default function Header(props) {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, View } from 'react-native';
 import Logo from '../resources/CompanyLogo.png'
-import styles from './LogoHeader.style';
+import styles from './logo-header.style';
 
 
 export default function LogoHeader() {

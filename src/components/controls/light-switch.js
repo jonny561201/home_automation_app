@@ -3,12 +3,12 @@ import { TouchableOpacity } from 'react-native';
 
 import React, { useState, useContext } from 'react';
 import { View, Text } from 'react-native';
-import { Context } from '../../state/Store';
-import { ExpandButton } from './Buttons';
+import { Context } from '../../state/store';
+import { ExpandButton } from './buttons';
 import { MaterialIcons } from '@expo/vector-icons';
-import { debounchApi } from '../../utilities/Services';
-import { setLightGroupState } from '../../utilities/RestApi';
-import styles from './LightSwitch.styles'
+import { debounchApi } from '../../utilities/services';
+import { setLightGroupState } from '../../utilities/rest-api';
+import styles from './light-switch.styles'
 import Slider from '@react-native-community/slider';
 
 export default function LightSwitch(props) {

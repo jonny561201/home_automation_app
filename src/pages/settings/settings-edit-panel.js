@@ -1,9 +1,9 @@
 import React, { useState, useContext } from 'react';
 import { View, Text } from 'react-native';
 import { RadioButton, TextInput } from "react-native-paper";
-import { updateUserPreferences } from '../../utilities/RestApi';
-import { Context } from '../../state/Store';
-import { GreenButton, RedButton } from "../../components/controls/Buttons";
+import { updateUserPreferences } from '../../utilities/rest-api';
+import { Context } from '../../state/store';
+import { GreenButton, RedButton } from "../../components/controls/buttons";
 import { Picker } from "@react-native-picker/picker";
 import styles from './settings-edit-panel.styles'
 

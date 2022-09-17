@@ -1,13 +1,13 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { View, Text } from 'react-native';
 import { TextInput } from 'react-native-paper';
-import { isValidIpAddress } from '../../../utilities/Services';
-import { addUserDevice } from '../../../utilities/RestApi';
+import { isValidIpAddress } from '../../../utilities/services';
+import { addUserDevice } from '../../../utilities/rest-api';
 import { MaterialIcons } from '@expo/vector-icons';
-import AddGarage from '../garage/AddGarage';
-import styles from './RegisterDevice.styles'
-import { Context } from '../../../state/Store';
-import { GreenButton } from '../../../components/controls/Buttons';
+import AddGarage from '../garage/add-garage';
+import styles from './register-device.styles'
+import { Context } from '../../../state/store';
+import { GreenButton } from '../../../components/controls/buttons';
 
 
 export default function RegisterDevice(props) {

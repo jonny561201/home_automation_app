@@ -1,11 +1,11 @@
 import React, { useState, useContext } from 'react';
 import { View, Text } from 'react-native';
 import jwt_decode from 'jwt-decode';
-import { Context } from '../../state/Store';
-import { getBearerToken } from '../../utilities/RestApi';
+import { Context } from '../../state/store';
+import { getBearerToken } from '../../utilities/rest-api';
 import { TextInput } from "react-native-paper";
-import { GreenButton } from '../../components/controls/Buttons';
-import styles from './UserPass.styles';
+import { GreenButton } from '../../components/controls/buttons';
+import styles from './user-pass.styles';
 
 
 export default function UserPass() {

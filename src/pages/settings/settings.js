@@ -1,7 +1,7 @@
 import React, {useState, useContext, useCallback} from 'react';
 import {Text, View} from 'react-native';
-import {Context} from '../../state/Store';
-import Header from '../../header/Header';
+import {Context} from '../../state/store';
+import Header from '../../header/header';
 import SettingsPanel from './settings-panel';
 import SettingsEditPanel from './settings-edit-panel';
 import styles from './settings.styles'

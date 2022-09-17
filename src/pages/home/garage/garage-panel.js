@@ -1,13 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { Divider } from '@react-native-material/core';
-import Accordion from '../../../components/Accordion';
+import Accordion from '../../../components/accordion';
 import { View, Text, Image, Modal } from 'react-native';
-import { Context } from '../../../state/Store';
-import GarageDoor from './GarageDoor';
+import { Context } from '../../../state/store';
+import GarageDoor from './garage-door';
 import GarageIcon from '../../../resources/panelIcons/GarageDoorIcon.png'
-import { GreenButton } from '../../../components/controls/Buttons';
-import styles from './GaragePanel.styles';
-import RegisterDevice from '../segments/RegisterDevice';
+import { GreenButton } from '../../../components/controls/buttons';
+import styles from './garage-panel.styles';
+import RegisterDevice from '../segments/register-device';
 
 
 export default function GaragePanel() {
@@ -23,6 +23,7 @@ export default function GaragePanel() {
         return <Text>No Garge devices have been registered</Text>
     }
 
+    //TODO: dont think this is working correctly
     const closeModal = () => {
         setDisplayRegister(false);
         if (state.addedGarageNode)

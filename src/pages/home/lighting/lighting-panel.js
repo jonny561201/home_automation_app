@@ -1,11 +1,11 @@
-import LightSwitch from '../../../components/controls/LightSwitch';
+import LightSwitch from '../../../components/controls/light-switch';
 import LightingIcon from '../../../resources/panelIcons/LightingIcon.png';
 
 import React, { useContext, useState } from 'react';
-import { Context } from '../../../state/Store';
+import { Context } from '../../../state/store';
 import { View, Text, Image } from 'react-native';
-import styles from './LightingPanel.styles';
-import Accordian from '../../../components/Accordion';
+import styles from './lighting-panel.styles';
+import Accordian from '../../../components/accordion';
 
 export default function LightingPanel() {
     const [state,] = useContext(Context);

@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { View, Text } from 'react-native';
-import { Context } from '../../state/Store';
+import { Context } from '../../state/store';
 import styles from './settings-panel.styles';
-import { GreenButton } from "../../components/controls/Buttons";
+import { GreenButton } from "../../components/controls/buttons";
 
 
 export default function SettingsPanel(props) {

@@ -1,9 +1,9 @@
 import React, { useState, useContext } from 'react';
-import { addUserDeviceNode } from '../../../utilities/RestApi.js';
+import { addUserDeviceNode } from '../../../utilities/rest-api.js';
 import { View, Text } from 'react-native';
-import styles from './AddGarage.styles.js';
-import { Context } from '../../../state/Store';
-import { GreenButton, GreenSwitch, RedButton } from '../../../components/controls/Buttons.js';
+import styles from './add-garage.styles.js';
+import { Context } from '../../../state/store';
+import { GreenButton, GreenSwitch, RedButton } from '../../../components/controls/buttons.js';
 import { MaterialIcons } from '@expo/vector-icons';
 import { TextInput } from 'react-native-paper';
 

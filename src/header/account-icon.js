@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { View, Text } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { Context } from '../state/Store';
-import styles from './AccountIcon.styles.js';
+import { Context } from '../state/store';
+import styles from './account-icon.styles.js';
 
 
 export default function Account(props) {
