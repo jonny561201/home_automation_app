@@ -204,7 +204,8 @@ export const insertLightTask = async (userId, bearer, enabled, taskType, alarmLi
         body: JSON.stringify(request)
     };
     const response = await fetch(`${baseUrl}/userId/${userId}/tasks`, options);
-    return response.json()
+
+    return response.ok ? await response.json() : [];
 }
 
 export const insertHvacTask = async (userId, bearer, enabled, taskType, hvacMode, hvacStart, hvacStop, hvacStartTemp, hvacStopTemp, alarmDays) => {
@@ -215,7 +216,8 @@ export const insertHvacTask = async (userId, bearer, enabled, taskType, hvacMode
         body: JSON.stringify(request)
     };
     const response = await fetch(`${baseUrl}/userId/${userId}/tasks`, options);
-    return response.json()
+
+    return response.ok ? response.json() : [];
 }
 
 export const updateScheduledTasks = async (userId, bearer, request) => {
@@ -225,5 +227,6 @@ export const updateScheduledTasks = async (userId, bearer, request) => {
         body: JSON.stringify(request)
     }
     const response = await fetch(`${baseUrl}/userId/${userId}/tasks/update`, options);
-    return response.json();
+
+    return response.ok ? await response.json() : {};
 }
