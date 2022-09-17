@@ -91,9 +91,7 @@ export default function StateUtil() {
 
     const getLights = async () => {
         const groups = await getLightGroups(state.auth.bearer);
-        if (groups && groups.length) {
-            dispatch({ type: 'SET_LIGHTS', payload: groups });
-        }
+        dispatch({ type: 'SET_LIGHTS', payload: groups });
     }
 
     // const refreshBearerToken = async () => {
