@@ -15,10 +15,8 @@ export const getBearerToken = async (username, password) => {
     };
 
     const response = await fetch(`${baseUrl}/token`, options);
-    if (response.ok) {
-        return await response.json();
-    }
-    return null;
+
+    return response.ok ? await response.json() : null;
 }
 
 export const getRefreshedBearerToken = async (refreshToken) => {
@@ -99,7 +97,7 @@ export const getLightGroups = async (bearer) => {
     const options = { method: 'GET', headers: { 'Authorization': `Bearer ${bearer}` } };
     const response = await fetch(`${lightBaseUrl}/groups`, options);
 
-    return response.ok ? response.json() : [];
+    return response.ok ? await response.json() : [];
 }
 
 export const setLightGroupState = async (bearer, groupId, state, brightness = null) => {
@@ -191,7 +189,7 @@ export const deleteScheduledTask = async (userId, bearer, taskId) => {
 export const getScheduledTasks = async (userId, bearer) => {
     const options = { method: 'GET', headers: { 'Authorization': `Bearer ${bearer}` } };
     const response = await fetch(`${baseUrl}/userId/${userId}/tasks`, options);
-    return response.json()
+    return response.ok ? await response.json() : [];
 }
 
 export const insertLightTask = async (userId, bearer, enabled, taskType, alarmLightGroup, alarmGroupName, alarmDays, alarmTime) => {
