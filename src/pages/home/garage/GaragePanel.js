@@ -12,7 +12,7 @@ import RegisterDevice from '../segments/RegisterDevice';
 
 export default function GaragePanel() {
     const [open, setOpen] = useState(false);
-    const [state,] = useContext(Context);
+    const [state, dispatch] = useContext(Context);
     const [displayRegister, setDisplayRegister] = useState(false);
 
     const renderDoors = () => {
