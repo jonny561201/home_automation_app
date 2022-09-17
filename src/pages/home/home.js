@@ -9,7 +9,8 @@ import { useFocusEffect } from "@react-navigation/native";
 
 
 export default function Home(props) {
-    const [, dispatch] = useContext(Context);
+    const [state, dispatch] = useContext(Context);
+    const roles = state.user.roles;
 
     useFocusEffect(
         useCallback(() => {
@@ -20,11 +21,17 @@ export default function Home(props) {
     return (
         <>
             <View style={styles.pageContainer}>
-                <Header toggleMenu={props.navigation.toggleDrawer} />
+                <Header toggleMenu={props.navigation.toggleDrawer}/>
             </View>
             <View>
-                <GaragePanel/>
-                <BasementPanel/>
+                {
+                    roles.some(x => x.role_name === 'garage_door') &&
+                    <GaragePanel/>
+                }
+                {
+                    roles.some(x => x.role_name === 'sump_pump') &&
+                    <BasementPanel/>
+                }
             </View>
         </>
     )

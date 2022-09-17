@@ -1,11 +1,11 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import LogoutDrawer from "./logout-drawer";
-import {NavigationContainer} from "@react-navigation/native";
+import { NavigationContainer } from "@react-navigation/native";
 import Login from "../pages/login/login";
 import Home from "../pages/home/home";
 import Settings from "../pages/settings/settings";
-import {Context} from "../state/store";
-import {createDrawerNavigator} from "@react-navigation/drawer";
+import { Context } from "../state/store";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 
 
 export default function Routes() {
