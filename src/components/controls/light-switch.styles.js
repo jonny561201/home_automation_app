@@ -23,18 +23,6 @@ export default StyleSheet.create({
         padding: 16,
     },
 
-    // lightTextSmall: {
-    //     fontSize: 0.7,
-    //     width: 70,
-    //     // overflow: 'hidden',
-    //     // textOverflow: 'ellipsis',
-    //     // whiteSpace: 'nowrap',
-    //     marginTop: 0.5,
-    //     marginBottom: 0.5,
-    //     marginLeft: 0.2,
-    //     marginRight: 0.2,
-    // },
-
     brightnessIcon: {
         fontSize: 16,
         paddingTop: 8,

@@ -1,6 +1,4 @@
 import { TouchableOpacity } from 'react-native';
-// import SwitchSlider from '../../pages/Home/segments/SwitchSlider';
-
 import React, { useState, useContext } from 'react';
 import { View, Text } from 'react-native';
 import { Context } from '../../state/store';
@@ -10,16 +8,17 @@ import { debounchApi } from '../../utilities/services';
 import { setLightGroupState } from '../../utilities/rest-api';
 import styles from './light-switch.styles'
 import Slider from '@react-native-community/slider';
+import SwitchSlider from "../../pages/home/lighting/switch-slider";
 
 export default function LightSwitch(props) {
-    const initalBrightness = Math.round(props.data.brightness / 2.55);
+    const initialBrightness = Math.round(props.data.brightness / 2.55);
     const [state, dispatch] = useContext(Context);
     const [isOn, setIsOn] = useState(props.data.on);
     const [lights,] = useState(props.data.lights);
     const [groupId,] = useState(props.data.groupId);
     const [groupName,] = useState(props.data.groupName);
-    const [brightness, setBrightness] = useState(initalBrightness);
-    const [prevBrightness, setPrevBrightness] = useState(initalBrightness);
+    const [brightness, setBrightness] = useState(initialBrightness);
+    const [prevBrightness, setPrevBrightness] = useState(initialBrightness);
     const [areLightsOpen, setLightsOpen] = useState(false);
 
     const sliderToggleLightGroup = async (event, value) => {
@@ -50,10 +49,7 @@ export default function LightSwitch(props) {
 
     const getLightSwitches = () => {
         if (lights && lights.length > 0) {
-            return lights.map(x => (
-                <Text key={`switch-${x.lightId}`}>Test</Text>
-                // <SwitchSlider key={`switch-${x.lightId}`} data={x} />
-            ));
+            return lights.map(x => <SwitchSlider key={`switch-${x.lightId}`} data={x}/>);
         }
         return <Text style={styles.panelText}>No lights assigned to group</Text>
     };
