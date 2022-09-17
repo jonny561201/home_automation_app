@@ -1,4 +1,4 @@
-const baseUrl = 'http://192.168.0.18:5000';
+const baseUrl = 'http://192.168.1.151:5000';
 // const baseUrl = 'https://www.soaringleafsolutions.com';
 const accountBaseUrl = `${baseUrl}/account`;
 const deviceBaseUrl = `${baseUrl}/devices`;
