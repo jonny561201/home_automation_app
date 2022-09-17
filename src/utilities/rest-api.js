@@ -98,7 +98,8 @@ export const updateUserPreferences = async (userId, bearer, request) => {
 export const getLightGroups = async (bearer) => {
     const options = { method: 'GET', headers: { 'Authorization': `Bearer ${bearer}` } };
     const response = await fetch(`${lightBaseUrl}/groups`, options);
-    return response.json();
+
+    return response.ok ? response.json() : [];
 }
 
 export const setLightGroupState = async (bearer, groupId, state, brightness = null) => {
