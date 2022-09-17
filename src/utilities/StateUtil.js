@@ -26,7 +26,7 @@ export default function StateUtil() {
 
     useInterval(async () => {
         await getSumpData();
-    //     await getPreferences();
+        await getPreferences();
     //     await getActivities();
     }, 120000);
 
@@ -37,7 +37,7 @@ export default function StateUtil() {
             getSumpData();
             // getTempData();
             // getForecastData();
-            // getPreferences();
+            getPreferences();
             // getActivities();
             dispatch({ type: 'SET_LOADED_UTILS', payload: true });
         }
@@ -80,10 +80,10 @@ export default function StateUtil() {
     //     dispatch({ type: 'SET_FORECAST_DATA', payload: updatedForecast });
     // }
 
-    // const getPreferences = async () => {
-    //     const preferences = await getUserPreferences(state.user.userId, state.auth.bearer);
-    //     dispatch({ type: 'SET_USER_PREFERENCES', payload: preferences })
-    // }
+    const getPreferences = async () => {
+        const preferences = await getUserPreferences(state.user.userId, state.auth.bearer);
+        dispatch({ type: 'SET_USER_PREFERENCES', payload: preferences })
+    }
 
     // const getActivities = async () => {
     //     const activities = await getScheduledTasks(state.user.userId, state.auth.bearer);
