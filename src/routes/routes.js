@@ -6,6 +6,7 @@ import Home from "../pages/home/home";
 import Settings from "../pages/settings/settings";
 import { Context } from "../state/store";
 import { createDrawerNavigator } from "@react-navigation/drawer";
+import Account from "../pages/account/account";
 
 
 export default function Routes() {
@@ -19,6 +20,7 @@ export default function Routes() {
                     ? <>
                         <Drawer.Screen name="Home" component={Home}/>
                         <Drawer.Screen name="Settings" component={Settings}/>
+                        <Drawer.Screen name="Account" component={Account}/>
                       </>
                     : <Drawer.Screen name="Login" component={Login}/>
                 }
