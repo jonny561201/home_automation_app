@@ -26,7 +26,7 @@ export default function LightingPanel() {
             </View>
             <View style={styles.center}>
                 <View style={styles.lightPanelGroup}>
-                    {renderGroups()}
+                    { renderGroups() }
                 </View>
             </View>
         </Accordion>

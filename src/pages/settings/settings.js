@@ -1,12 +1,12 @@
-import React, {useState, useContext, useCallback} from 'react';
-import {Text, View} from 'react-native';
-import {Context} from '../../state/store';
+import React, { useState, useContext, useCallback } from 'react';
+import { Text, View } from 'react-native';
+import { Context } from '../../state/store';
 import Header from '../../header/header';
 import SettingsPanel from './settings-panel';
 import SettingsEditPanel from './settings-edit-panel';
 import styles from './settings.styles'
-import {useFocusEffect} from "@react-navigation/native";
-import {Switch} from "react-native-paper";
+import { useFocusEffect } from "@react-navigation/native";
+import { Switch } from "react-native-paper";
 
 
 export default function Settings(props) {
