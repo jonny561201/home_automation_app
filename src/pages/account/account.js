@@ -25,7 +25,7 @@ export default function Account(props) {
 
     useFocusEffect(
         useCallback(() => {
-            dispatch({type: 'SET_ACTIVE_PAGE', payload: 'Account'});
+            dispatch({ type: 'SET_ACTIVE_PAGE', payload: 'Account' });
         }, [dispatch])
     );
 
@@ -68,34 +68,28 @@ export default function Account(props) {
                 <Text style={styles.failureText}>Password Update Failed</Text>
             </View>
         } else {
-            return <View/>
+            return <View />
         }
     }
 
     return (
         <>
-             <View style={styles.pageContainer}>
-                 <Header toggleMenu={props.navigation.toggleDrawer}/>
-             </View>
-             <View style={styles.accountBody}>
-                 <View style={styles.accountWrapper}>
-                     <View style={[styles.accountGroup, styles.accountText]}>
-                         <Text style={styles.accountHeader}>Change Password</Text>
-                         <View style={styles.accountRow}>
-                             <TextInput style={styles.textInput} value={oldPassword} error={oldPasswordError} onChangeText={(input) => onOldPasswordChange(input)} mode='outlined' activeOutlineColor='#00c774' label="Old Password" secureTextEntry={true}/>
-                         </View>
-                         <View style={styles.accountRow}>
-                             <TextInput style={styles.textInput} value={firstNewPassword} error={arePasswordsMismatched} onChangeText={(input) => setFirstPassword(input)} mode='outlined' activeOutlineColor='#00c774' label="New Password" secureTextEntry={true}/>
-                         </View>
-                         <View style={styles.accountRow}>
-                             <TextInput style={styles.textInput} value={secondNewPassword} error={arePasswordsMismatched} onChangeText={(input) => setSecondPassword(input)} mode='outlined' activeOutlineColor='#00c774' label="Confirm New Password" secureTextEntry={true}/>
-                         </View>
-                         { passwordMessage() }
-                         <GreenButton onPress={submitAccountChange}>Submit</GreenButton>
-                     </View>
-        {/*<AccountChildUser />*/}
-                 </View>
-             </View>
+            <View style={styles.pageContainer}>
+                <Header toggleMenu={props.navigation.toggleDrawer} />
+            </View>
+            <View style={styles.accountBody}>
+                <View style={styles.accountWrapper}>
+                    <Text style={styles.accountHeader}>Change Password</Text>
+                    <View style={[styles.accountGroup, styles.accountText]}>
+                        <TextInput style={styles.textInput} value={oldPassword} error={oldPasswordError} onChangeText={(input) => onOldPasswordChange(input)} mode='outlined' activeOutlineColor='#00c774' label="Old Password" secureTextEntry={true} />
+                        <TextInput style={styles.textInput} value={firstNewPassword} error={arePasswordsMismatched} onChangeText={(input) => setFirstPassword(input)} mode='outlined' activeOutlineColor='#00c774' label="New Password" secureTextEntry={true} />
+                        <TextInput style={styles.textInput} value={secondNewPassword} error={arePasswordsMismatched} onChangeText={(input) => setSecondPassword(input)} mode='outlined' activeOutlineColor='#00c774' label="Confirm New Password" secureTextEntry={true} />
+                        {passwordMessage()}
+                    </View>
+                    <GreenButton style={styles.saveButton} onPress={submitAccountChange}>Save</GreenButton>
+                    {/*<AccountChildUser />*/}
+                </View>
+            </View>
         </>
     );
 }

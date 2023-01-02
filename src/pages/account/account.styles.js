@@ -26,25 +26,19 @@ export default StyleSheet.create({
     },
 
     accountGroup: {
-        // margin: 5,
-    },
-
-    accountDivider: {
-        marginTop: 5,
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignContent: 'center',
+        alignItems: 'center',
     },
 
     accountText: {
         paddingRight: 5,
-    },
-
-    accountRow: {
-        flexDirection: 'row',
-        marginLeft: 1,
-        marginTop: 5,
-    },
+    }, 
 
     textInput: {
-        width: 300,
+        width: 325,
+        marginTop: 8,
     },
 
     accountMessage: {
@@ -58,17 +52,21 @@ export default StyleSheet.create({
         marginRight: 5,
     },
 
+    saveButton: {
+        marginTop: 16,
+    },
+
     failureText: {
         color: '#a8120a',
         marginLeft: 5,
         marginRight: 5,
     },
 
-    cancel: {
-        backgroundColor: '#c73200',
-    },
+    // cancel: {
+    //     backgroundColor: '#c73200',
+    // },
 
-    emailAccountUser: {
-        marginRight: 20,
-    },
+    // emailAccountUser: {
+    //     marginRight: 20,
+    // },
 });
