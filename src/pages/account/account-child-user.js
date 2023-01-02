@@ -9,36 +9,36 @@ import { List, FAB } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 
-export default function AccountChildUser() {
+export default function AccountChildUser(props) {
     const [state, _] = useContext(Context);
     // const roles = state.user.roles;
     const [selectedRole, setSelectedRole] = useState([]);
-    const [open, setOpen] = useState(false);
+    // const [open, setOpen] = useState(false);
     const [email, setEmail] = useState("");
-    const [childAccounts, setChildAccounts] = useState([]);
+    // const [childAccounts, setChildAccounts] = useState([]);
     const [isEmailInvalid, setIsEmailInvalid] = useState(undefined);
     const [isRoleInvalid, setIsRoleInvalid] = useState(undefined);
 
-    useEffect(() => {
-        const getData = async () => {
-            const response = await getUserChildAccounts(state.user.userId, state.auth.bearer);
-            setChildAccounts(response);
-        };
-        getData();
-    }, []);
+    // useEffect(() => {
+    //     const getData = async () => {
+    //         const response = await getUserChildAccounts(state.user.userId, state.auth.bearer);
+    //         setChildAccounts(response);
+    //     };
+    //     getData();
+    // }, []);
 
 
-    const submitChildAccount = async () => {
-        if ((!isEmailInvalid && !isRoleInvalid) && (selectedRole.length !== 0 && email !== null && email !== "")) {
-            const response = await addUserChildAccount(state.user.userId, state.auth.bearer, email, selectedRole);
-            setChildAccounts(response);
-            setEmail("");
-            setSelectedRole([]);
-        } else {
-            setIsEmailInvalid(email === "" || email === null);
-            setIsRoleInvalid(selectedRole.length === 0);
-        }
-    }
+    // const submitChildAccount = async () => {
+    //     if ((!isEmailInvalid && !isRoleInvalid) && (selectedRole.length !== 0 && email !== null && email !== "")) {
+    //         const response = await addUserChildAccount(state.user.userId, state.auth.bearer, email, selectedRole);
+    //         setChildAccounts(response);
+    //         setEmail("");
+    //         setSelectedRole([]);
+    //     } else {
+    //         setIsEmailInvalid(email === "" || email === null);
+    //         setIsRoleInvalid(selectedRole.length === 0);
+    //     }
+    // }
 
     const deleteChildUser = async (childUserId) => {
         const response = await deleteUserChildAccount(state.user.userId, state.auth.bearer, childUserId);
@@ -98,13 +98,15 @@ export default function AccountChildUser() {
 
             <List.Section>
                 {
-                    childAccounts.map(x => (
+                    props.childAccounts.map(x => (
                         <List.Accordion
+                            key={`user-${x.user_name}`}
+                            theme={{ colors: { primary: '#00c774' }}}
                             title={x.user_name}
-                            left={props => <Icon {...props} name="person" size={30} />}>
+                            left={(props) => <Icon {...props} name="person" size={30} />}>
                             {
                                 x.roles.map(y =>
-                                    <List.Item title={y} />
+                                    <List.Item key={`role-${y.role_name}}`} title={y.role_name} />
                                 )
                             }
                         </List.Accordion>
@@ -112,24 +114,6 @@ export default function AccountChildUser() {
                 }
 
             </List.Section>
-
-            <FAB.Group
-                open={open}
-                color='#ffffff'
-                fabStyle={styles.fab}
-                icon='plus'
-                onStateChange={() => setOpen(!open)}
-                actions={[
-                    {
-                        // icon: 'star',
-                        icon: (props) => <Icon {...props} name="person-add" />,
-                        label: 'Add User',
-                        color: '#ffffff',
-                        style: styles.fab,
-                        onPress: () => console.log('touched me!')
-                    },
-                ]}
-            />
         </>
     );
 }

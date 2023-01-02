@@ -30,13 +30,4 @@ export default StyleSheet.create({
     inputError: {
         borderColor: '#e60000',
     },
-
-    fab: {
-        position: 'relative',
-        margin: 16,
-        right: 0,
-        bottom: 0,
-        backgroundColor: '#00c774',
-        borderRadius: 30,
-    },
 })
