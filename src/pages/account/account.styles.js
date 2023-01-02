@@ -2,21 +2,32 @@ import {StyleSheet} from 'react-native';
 
 
 export default StyleSheet.create({
+    pageContainer: {
+        paddingBottom: 30,
+    },
+
     accountBody: {
         // background-color: var(--primary-color),
         flexDirection: 'column',
+        marginLeft: 10,
     },
 
     accountHeader: {
-        fontSize: 24,
+        fontSize: 26,
+        color: 'black',
+        fontWeight: 'bold',
+        paddingTop: 10,
+        paddingBottom: 10,
     },
 
     accountWrapper: {
         margin: 1,
+        // display: 'flex',
+        flexDirection: 'column',
     },
 
     accountGroup: {
-        margin: 5,
+        // margin: 5,
     },
 
     accountDivider: {

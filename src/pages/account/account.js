@@ -74,14 +74,13 @@ export default function Account(props) {
 
     return (
         <>
-             <View>
+             <View style={styles.pageContainer}>
                  <Header toggleMenu={props.navigation.toggleDrawer}/>
              </View>
              <View style={styles.accountBody}>
-                 <View style={[styles.accountWrapper, styles.accountText]}>
+                 <View style={styles.accountWrapper}>
                      <View style={[styles.accountGroup, styles.accountText]}>
                          <Text style={styles.accountHeader}>Change Password</Text>
-                         <Divider />
                          <View style={styles.accountRow}>
                              <TextInput style={styles.textInput} value={oldPassword} error={oldPasswordError} onChangeText={(input) => onOldPasswordChange(input)} mode='outlined' activeOutlineColor='#00c774' label="Old Password" secureTextEntry={true}/>
                          </View>
