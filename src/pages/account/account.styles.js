@@ -22,7 +22,6 @@ export default StyleSheet.create({
 
     accountWrapper: {
         margin: 1,
-        // display: 'flex',
         flexDirection: 'column',
     },
 

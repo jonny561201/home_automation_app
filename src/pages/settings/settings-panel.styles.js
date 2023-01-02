@@ -17,7 +17,6 @@ export default StyleSheet.create({
 
     settingsWrapper: {
         margin: 1,
-        display: 'flex',
         flexDirection: 'column',
     },
 
