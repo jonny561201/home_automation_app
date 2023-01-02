@@ -3,27 +3,20 @@ import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
     tableContainer: {
-        // display: flex;
         flexDirection: 'column',
         // margin: 1rem 0 0 1rem;
     },
 
+    accountHeader: {
+        fontSize: 26,
+        color: 'black',
+        fontWeight: 'bold',
+        paddingTop: 10,
+        paddingBottom: 10,
+    },
+
     tableEndItem: {
         flexDirection: 'row-reverse',
-    },
-
-    table: {
-        // display: flex;
-        justifyContent: 'space-between',
-    },
-
-    td: {
-        maxWidth: 250,
-    },
-
-    tr: {
-        marginTop: 0.5,
-        alignItems: 'center',
     },
 
     tableHeader: {
@@ -36,5 +29,14 @@ export default StyleSheet.create({
 
     inputError: {
         borderColor: '#e60000',
-    }
+    },
+
+    fab: {
+        position: 'relative',
+        margin: 16,
+        right: 0,
+        bottom: 0,
+        backgroundColor: '#00c774',
+        borderRadius: 30,
+    },
 })
