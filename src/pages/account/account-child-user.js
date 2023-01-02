@@ -24,13 +24,18 @@ export default function AccountChildUser(props) {
                     props.childAccounts.map(x => (
                         <List.Accordion
                             key={`user-${x.user_name}`}
-                            theme={{ colors: { primary: '#00c774' }}}
+                            theme={{ colors: { primary: '#00c774' } }}
                             title={x.user_name}
                             left={(props) => <Icon {...props} name="person" size={30} />}>
                             {
-                                x.roles.map(y =>
-                                    <List.Item key={`role-${y.role_name}}`} title={y.role_name} />
-                                )
+                                x.roles.map(x => {
+                                    if (x.role_name === 'lights')
+                                        return <List.Item key={`role-${x.role_name}}`} title={x.role_name} left={(props) => <List.Icon {...props} icon='lightbulb-on-outline' />} />
+                                    else if (x.role_name === 'garage')
+                                        return <List.Item key={`role-${x.role_name}}`} title={x.role_name} left={(props) => <List.Icon {...props} icon='garage-variant' />} />
+                                    else if (x.role_name === 'thermostat')
+                                        return <List.Item key={`role-${x.role_name}}`} title={x.role_name} left={(props) => <List.Icon {...props} icon='thermostat' />} />
+                                })
                             }
                         </List.Accordion>
                     ))
