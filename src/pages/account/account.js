@@ -7,12 +7,16 @@ import ChangePassword from './change-password';
 import { FAB } from "react-native-paper";
 import { useFocusEffect } from "@react-navigation/native";
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { Dialog } from 'react-native-paper';
 import styles from './account.styles';
+// import { GreenButton } from '../../components/controls/buttons';
+import CreateChildAccount from './create-child-account';
 
 
 export default function Account(props) {
     const [state, dispatch] = useContext(Context);
-    const [childAccounts, setChildAccounts] = useState([{user_name: 'Jonny561201', roles: [{role_name: 'garage'}, {role_name: 'thermostat'}, {role_name: 'lights'}]}]);
+    const [display, setDisplay] = useState(false);
+    const [childAccounts, setChildAccounts] = useState([{ user_name: 'Jonny561201', roles: [{ role_name: 'garage_door' }, { role_name: 'thermostat' }, { role_name: 'lighting' }] }]);
 
     useFocusEffect(
         useCallback(() => {
@@ -28,17 +32,7 @@ export default function Account(props) {
         // getData();
     });
 
-    const submitChildAccount = async () => {
-        if ((!isEmailInvalid && !isRoleInvalid) && (selectedRole.length !== 0 && email !== null && email !== "")) {
-            const response = await addUserChildAccount(state.user.userId, state.auth.bearer, email, selectedRole);
-            setChildAccounts(response);
-            setEmail("");
-            setSelectedRole([]);
-        } else {
-            setIsEmailInvalid(email === "" || email === null);
-            setIsRoleInvalid(selectedRole.length === 0);
-        }
-    }
+    const closeDialog = () => setDisplay(false);
 
     return (
         <>
@@ -48,11 +42,15 @@ export default function Account(props) {
             <View style={styles.accountBody}>
                 <View style={styles.accountWrapper}>
                     <ChangePassword />
-                    <AccountChildUser childAccounts={childAccounts}/>
+                    <AccountChildUser childAccounts={childAccounts} />
                 </View>
             </View>
-            
-            <FAB style={styles.fab} onPress={() => console.log('Touch me!')} label='Add User'  icon={(props) => <Icon {...props} name='person-add' />}/>
+
+            <Dialog visible={display} onDismiss={closeDialog}>
+                <CreateChildAccount close={closeDialog} />
+            </Dialog>
+
+            <FAB style={styles.fab} onPress={() => setDisplay(!display)} label='Add User' icon={(props) => <Icon {...props} name='person-add' />} color='#ffffff' />
         </>
     );
 }
