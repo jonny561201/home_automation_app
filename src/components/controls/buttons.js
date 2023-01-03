@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { View } from 'react-native';
+import { TouchableRipple } from 'react-native-paper';
 import { TouchableOpacity, Text, Switch, UIManager, Animated } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import styles from './buttons.styles';
@@ -6,25 +8,31 @@ import styles from './buttons.styles';
 
 export function GreenButton(props) {
     return (
-        <TouchableOpacity style={styles.buttonContainer}>
-            <Text type="submit" style={[styles.green, styles.myButton, props.style]} disabled={props.disabled} onPress={props.onPress}>{props.children}</Text>
-        </TouchableOpacity>
+        <View style={[styles.buttonContainer]}>
+            <TouchableRipple style={[styles.green, styles.myButton, props.style]} onPress={props.onPress} rippleColor='#4ce0a3' borderless={true}>
+                <Text type="submit" style={styles.buttonText} disabled={props.disabled} >{props.children}</Text>
+            </TouchableRipple>
+        </View>
     )
 }
 
 export function BlueButton(props) {
     return (
-        <TouchableOpacity style={styles.buttonContainer}>
-            <Text type="submit" style={[styles.blue, styles.toggleButton, props.style]} disabled={props.disabled} onPress={props.onPress}>{props.children}</Text>
-        </TouchableOpacity>
+        <View style={[styles.buttonContainer]}>
+            <TouchableRipple style={[styles.blue, styles.myButton, props.style]} onPress={props.onPress} rippleColor='#5c9dff' borderless={true}>
+                <Text type="submit" style={styles.buttonText} disabled={props.disabled} >{props.children}</Text>
+            </TouchableRipple>
+        </View>
     )
 }
 
 export function RedButton(props) {
     return (
-        <TouchableOpacity style={styles.buttonContainer}>
-            <Text type="submit" style={[styles.red, styles.myButton, props.style]} disabled={props.disabled} onPress={props.onPress}>{props.children}</Text>
-        </TouchableOpacity>
+        <View style={[styles.buttonContainer]}>
+            <TouchableRipple style={[styles.red, styles.myButton, props.style]} onPress={props.onPress} rippleColor='#fa8484' borderless={true}>
+                <Text type="submit" style={styles.buttonText} disabled={props.disabled} >{props.children}</Text>
+            </TouchableRipple>
+        </View>
     )
 }
 

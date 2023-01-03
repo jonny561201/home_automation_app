@@ -20,16 +20,18 @@ export default StyleSheet.create({
     },
 
     myButton: {
-        textAlign: 'center',
         width: 80,
         height: 40,
         paddingBottom: 6,
         paddingTop: 8,
         borderRadius: 10,
+        elevation: 10,
+    },
+
+    buttonText: {
+        color: 'white',
+        textAlign: 'center',
         fontSize: 16,
-        borderColor: '#5c5c5c',
-        borderWidth: 2,
-        color: 'white'
     },
 
     toggleButton: {
