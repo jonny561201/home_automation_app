@@ -29,14 +29,16 @@ export default function AccountChildUser(props) {
                             left={(props) => <Icon {...props} name="person" size={30} />}>
                             {
                                 x.roles.map(x => {
-                                    if (x.role_name === 'lighting')
-                                        return <List.Item key={`role-${x.role_name}}`} title={x.role_name} left={(props) => <List.Icon {...props} icon='lightbulb-on-outline' />} />
-                                    else if (x.role_name === 'garage_door')
-                                        return <List.Item key={`role-${x.role_name}}`} title={x.role_name} left={(props) => <List.Icon {...props} icon='garage-variant' />} />
-                                    else if (x.role_name === 'thermostat')
-                                        return <List.Item key={`role-${x.role_name}}`} title={x.role_name} left={(props) => <List.Icon {...props} icon='thermostat' />} />
-                                    else if (x.role_name === 'security')
-                                        return <List.Item key={`role-${x.role_name}}`} title={x.role_name} left={(props) => <List.Icon {...props} icon='security' />} />
+                                    if (x === 'lighting')
+                                        return <List.Item key={`role-${x}}`} title={x} left={(props) => <List.Icon {...props} icon='lightbulb-on-outline' />} />
+                                    else if (x === 'garage_door')
+                                        return <List.Item key={`role-${x}}`} title={x} left={(props) => <List.Icon {...props} icon='garage-variant' />} />
+                                    else if (x === 'thermostat')
+                                        return <List.Item key={`role-${x}}`} title={x} left={(props) => <List.Icon {...props} icon='thermostat' />} />
+                                    else if (x === 'security')
+                                        return <List.Item key={`role-${x}}`} title={x} left={(props) => <List.Icon {...props} icon='security' />} />
+                                    else if (x === 'sump_pump')
+                                        return <List.Item key={`role-${x}}`} title={x} left={(props) => <List.Icon {...props} icon='water-damage' />} />
                                 })
                             }
                         </List.Accordion>
