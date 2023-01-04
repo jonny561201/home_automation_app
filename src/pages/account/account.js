@@ -4,19 +4,19 @@ import { View } from 'react-native';
 import Header from '../../header/header';
 import AccountChildUser from './account-child-user';
 import ChangePassword from './change-password';
-import { FAB } from "react-native-paper";
+import { FAB, Portal, Provider } from 'react-native-paper';
 import { useFocusEffect } from "@react-navigation/native";
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { getUserChildAccounts } from '../../utilities/rest-api';
 import { Dialog } from 'react-native-paper';
 import styles from './account.styles';
-// import { GreenButton } from '../../components/controls/buttons';
 import CreateChildAccount from './create-child-account';
 
 
 export default function Account(props) {
     const [state, dispatch] = useContext(Context);
     const [display, setDisplay] = useState(false);
-    const [childAccounts, setChildAccounts] = useState([{ user_name: 'Jonny561201', roles: [{ role_name: 'garage_door' }, { role_name: 'thermostat' }, { role_name: 'lighting' }] }]);
+    const [childAccounts, setChildAccounts] = useState([]);
 
     useFocusEffect(
         useCallback(() => {
@@ -25,17 +25,18 @@ export default function Account(props) {
     );
 
     useEffect(() => {
-        // const getData = async () => {
-        //     const response = await getUserChildAccounts(state.user.userId, state.auth.bearer);
-        //     setChildAccounts(response);
-        // };
-        // getData();
-    });
+        const getData = async () => {
+            const response = await getUserChildAccounts(state.user.userId, state.auth.bearer);
+            console.log(response)
+            setChildAccounts(response);
+        };
+        getData();
+    }, []);
 
     const closeDialog = () => setDisplay(false);
 
     return (
-        <>
+        <Provider>
             <View style={styles.pageContainer}>
                 <Header toggleMenu={props.navigation.toggleDrawer} />
             </View>
@@ -46,11 +47,13 @@ export default function Account(props) {
                 </View>
             </View>
 
-            <Dialog visible={display} onDismiss={closeDialog}>
-                <CreateChildAccount close={closeDialog} />
-            </Dialog>
+            <Portal>
+                <Dialog visible={display} onDismiss={closeDialog}>
+                    <CreateChildAccount close={closeDialog} addChild={setChildAccounts}/>
+                </Dialog>
+            </Portal>
 
             <FAB style={styles.fab} onPress={() => setDisplay(!display)} label='Add User' icon={(props) => <Icon {...props} name='person-add' />} color='#ffffff' />
-        </>
+        </Provider>
     );
 }
