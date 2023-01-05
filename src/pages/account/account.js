@@ -43,7 +43,7 @@ export default function Account(props) {
             <View style={styles.accountBody}>
                 <View style={styles.accountWrapper}>
                     <ChangePassword />
-                    <AccountChildUser childAccounts={childAccounts} />
+                    <AccountChildUser childAccounts={childAccounts} updateChild={setChildAccounts}/>
                 </View>
             </View>
 

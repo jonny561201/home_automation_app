@@ -1,34 +1,39 @@
 import React, { useContext } from 'react';
-// import { deleteUserChildAccount } from '../../utilities/rest-api';
+import { deleteUserChildAccount } from '../../utilities/rest-api';
 import { Context } from '../../state/store';
-import { Text } from 'react-native';
-import styles from './account-child-user.styles';
+import { Text, View, TouchableOpacity } from 'react-native';
 import { List } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { SwipeListView } from 'react-native-swipe-list-view';
+import styles from './account-child-user.styles';
 
 
 export default function AccountChildUser(props) {
     const [state, _] = useContext(Context);
 
-    // const deleteChildUser = async (childUserId) => {
-    //     const response = await deleteUserChildAccount(state.user.userId, state.auth.bearer, childUserId);
-    //     if (response.ok)
-    //         setChildAccounts(childAccounts.filter(x => x.user_id !== childUserId));
-    // }
+    const deleteChildUser = async (childUser) => {
+        const response = await deleteUserChildAccount(state.user.userId, state.auth.bearer, childUser.user_id);
+        if (response.ok)
+            props.updateChild(props.childAccounts.filter(x => x.user_id !== childUser.user_id));
+    }
 
     return (
         <>
             <Text style={styles.accountHeader}>Account Users</Text>
             <List.Section>
-                {
-                    props.childAccounts.map(x => (
+                <SwipeListView
+                    data={props.childAccounts}
+                    rightOpenValue={-75}
+                    disableRightSwipe
+                    previewRowKey={'0'}
+                    renderItem={(data, _) => (
                         <List.Accordion
-                            key={`user-${x.user_name}`}
+                            key={`user-${data.item.user_name}`}
                             theme={{ colors: { primary: '#00c774' } }}
-                            title={x.user_name}
+                            title={data.item.user_name}
                             left={(props) => <Icon {...props} name="person" size={30} />}>
                             {
-                                x.roles.map(x => {
+                                data.item.roles.map(x => {
                                     if (x === 'lighting')
                                         return <List.Item key={`role-${x}}`} title={x} left={(props) => <List.Icon {...props} icon='lightbulb-on-outline' />} />
                                     else if (x === 'garage_door')
@@ -42,9 +47,15 @@ export default function AccountChildUser(props) {
                                 })
                             }
                         </List.Accordion>
-                    ))
-                }
-
+                    )}
+                    renderHiddenItem={(data, _) => (
+                        <View style={styles.swipeContainer}>
+                            <TouchableOpacity style={styles.swipeDelete} onPress={() => deleteChildUser(data.item)}>
+                                <Text style={{ color: 'white', fontSize: 14 }}>Delete</Text>
+                            </TouchableOpacity>
+                        </View>
+                    )}
+                />
             </List.Section>
         </>
     );
