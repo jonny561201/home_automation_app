@@ -10,7 +10,7 @@ export function GreenButton(props) {
     return (
         <View style={[styles.buttonContainer]}>
             <TouchableRipple style={[styles.green, styles.myButton, props.style]} onPress={props.onPress} rippleColor='#4ce0a3' borderless={true}>
-                <Text type="submit" style={styles.buttonText} disabled={props.disabled} >{props.children}</Text>
+                <Text style={styles.buttonText} disabled={props.disabled} >{props.children}</Text>
             </TouchableRipple>
         </View>
     )
@@ -20,7 +20,7 @@ export function BlueButton(props) {
     return (
         <View style={[styles.buttonContainer]}>
             <TouchableRipple style={[styles.blue, styles.myButton, props.style]} onPress={props.onPress} rippleColor='#5c9dff' borderless={true}>
-                <Text type="submit" style={styles.buttonText} disabled={props.disabled} >{props.children}</Text>
+                <Text style={styles.buttonText} disabled={props.disabled} >{props.children}</Text>
             </TouchableRipple>
         </View>
     )
@@ -30,7 +30,7 @@ export function RedButton(props) {
     return (
         <View style={[styles.buttonContainer]}>
             <TouchableRipple style={[styles.red, styles.myButton, props.style]} onPress={props.onPress} rippleColor='#fa8484' borderless={true}>
-                <Text type="submit" style={styles.buttonText} disabled={props.disabled} >{props.children}</Text>
+                <Text style={styles.buttonText} disabled={props.disabled} >{props.children}</Text>
             </TouchableRipple>
         </View>
     )
