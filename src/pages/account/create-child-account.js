@@ -16,7 +16,7 @@ export default function CreateChildAccount(props) {
             const selectedRoles = roles.filter(x => x.checked).map(y => y.role_name);
             const response = await addUserChildAccount(state.user.userId, state.auth.bearer, email, selectedRoles);
             props.addChild(response);
-            setEmail("");
+            props.close();
         } else {
             setIsEmailInvalid(email === "" || email === null);
         }
