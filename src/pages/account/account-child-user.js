@@ -51,7 +51,7 @@ export default function AccountChildUser(props) {
                     renderHiddenItem={(data, _) => (
                         <View style={styles.swipeContainer}>
                             <TouchableOpacity style={styles.swipeDelete} onPress={() => deleteChildUser(data.item)}>
-                                <Text style={{ color: 'white', fontSize: 14 }}>Delete</Text>
+                                <Icon name='delete' size={30} style={styles.swipeText}/>
                             </TouchableOpacity>
                         </View>
                     )}

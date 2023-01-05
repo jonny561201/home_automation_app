@@ -46,4 +46,8 @@ export default StyleSheet.create({
         right: 0,
         backgroundColor: 'red'
     },
+    
+    swipeText: {
+        color: '#ffffff', 
+    },
 })
