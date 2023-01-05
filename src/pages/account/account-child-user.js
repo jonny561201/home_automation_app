@@ -38,7 +38,7 @@ export default function AccountChildUser(props) {
                                     else if (x === 'security')
                                         return <List.Item key={`role-${x}}`} title={x} left={(props) => <List.Icon {...props} icon='security' />} />
                                     else if (x === 'sump_pump')
-                                        return <List.Item key={`role-${x}}`} title={x} left={(props) => <List.Icon {...props} icon='water-damage' />} />
+                                        return <List.Item key={`role-${x}}`} title={x} left={(props) => <List.Icon {...props} icon='water-pump' />} />
                                 })
                             }
                         </List.Accordion>
