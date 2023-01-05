@@ -1,6 +1,10 @@
 import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
+    accountContainer: {
+        borderRadius: 30,
+    },
+
     accountBorder: {
         justifyContent: 'center',
         alignItems: 'center',
@@ -24,6 +28,5 @@ export default StyleSheet.create({
     accountText: {
         fontSize: 20,
         color: 'white',
-        // fontWeight: 'bold'
     },
 });

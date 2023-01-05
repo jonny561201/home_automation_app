@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { View, Text } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { TouchableRipple } from 'react-native-paper';
 import { Context } from '../state/store';
 import styles from './account-icon.styles.js';
 
@@ -11,12 +11,12 @@ export default function Account(props) {
     const lastInitial = state.user.lastName.trim().charAt(0);
 
     return (
-        <TouchableOpacity style={styles.accountContainer} onPress={props.toggleMenu}>
-            <View style={styles.accountBorder}>
+        <View style={styles.accountContainer}>
+            <TouchableRipple style={styles.accountBorder} rippleColor='#95b9fc' onPress={props.toggleMenu} borderless={true}>
                 <View style={styles.accountCenter}>
                     <Text style={styles.accountText}>{firstInitial + lastInitial}</Text>
                 </View>
-            </View>
-        </TouchableOpacity>
+            </TouchableRipple>
+        </View>
     );
 }
