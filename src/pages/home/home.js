@@ -21,10 +21,10 @@ export default function Home(props) {
 
     return (
         <>
-            <View style={styles.pageContainer}>
+            <View>
                 <Header toggleMenu={props.navigation.toggleDrawer}/>
             </View>
-            <ScrollView>
+            <ScrollView style={styles.pageContainer}>
                 {
                     roles.some(x => x.role_name === 'garage_door') &&
                     <GaragePanel/>

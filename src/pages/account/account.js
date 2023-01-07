@@ -36,11 +36,10 @@ export default function Account(props) {
 
     return (
         <Provider>
-            <View style={styles.pageContainer}>
+            <View>
                 <Header toggleMenu={props.navigation.toggleDrawer} />
             </View>
-            <SafeAreaView>
-                <ScrollView>
+                <ScrollView style={styles.pageContainer}>
                     <View style={styles.accountBody}>
                         <View style={styles.accountWrapper}>
                             <ChangePassword />
@@ -48,15 +47,12 @@ export default function Account(props) {
                         </View>
                     </View>
 
-                    <SafeAreaView>
                         <Portal>
                             <Dialog visible={display} onDismiss={closeDialog}>
                                 <CreateChildAccount close={closeDialog} addChild={setChildAccounts} />
                             </Dialog>
                         </Portal>
-                    </SafeAreaView>
                 </ScrollView>
-            </SafeAreaView>
 
             <FAB style={styles.fab} onPress={() => setDisplay(!display)} label='Add User' icon={(props) => <Icon {...props} name='person-add' />} color='#ffffff' />
         </Provider>
