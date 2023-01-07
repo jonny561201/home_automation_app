@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext, useCallback } from 'react';
 import { Context } from "../../state/store";
-import { View } from 'react-native';
+import { SafeAreaView, ScrollView, View } from 'react-native';
 import Header from '../../header/header';
 import AccountChildUser from './account-child-user';
 import ChangePassword from './change-password';
@@ -39,18 +39,24 @@ export default function Account(props) {
             <View style={styles.pageContainer}>
                 <Header toggleMenu={props.navigation.toggleDrawer} />
             </View>
-            <View style={styles.accountBody}>
-                <View style={styles.accountWrapper}>
-                    <ChangePassword />
-                    <AccountChildUser childAccounts={childAccounts} updateChild={setChildAccounts}/>
-                </View>
-            </View>
+            <SafeAreaView>
+                <ScrollView>
+                    <View style={styles.accountBody}>
+                        <View style={styles.accountWrapper}>
+                            <ChangePassword />
+                            <AccountChildUser childAccounts={childAccounts} updateChild={setChildAccounts} />
+                        </View>
+                    </View>
 
-            <Portal>
-                <Dialog visible={display} onDismiss={closeDialog}>
-                    <CreateChildAccount close={closeDialog} addChild={setChildAccounts}/>
-                </Dialog>
-            </Portal>
+                    <SafeAreaView>
+                        <Portal>
+                            <Dialog visible={display} onDismiss={closeDialog}>
+                                <CreateChildAccount close={closeDialog} addChild={setChildAccounts} />
+                            </Dialog>
+                        </Portal>
+                    </SafeAreaView>
+                </ScrollView>
+            </SafeAreaView>
 
             <FAB style={styles.fab} onPress={() => setDisplay(!display)} label='Add User' icon={(props) => <Icon {...props} name='person-add' />} color='#ffffff' />
         </Provider>
