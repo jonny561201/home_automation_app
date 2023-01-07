@@ -1,5 +1,5 @@
 import React, { useContext, useCallback } from "react";
-import { View } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import Header from '../../header/header';
 import styles from './home.styles';
 import BasementPanel from './basement/basement-panel';
@@ -24,7 +24,7 @@ export default function Home(props) {
             <View style={styles.pageContainer}>
                 <Header toggleMenu={props.navigation.toggleDrawer}/>
             </View>
-            <View>
+            <ScrollView>
                 {
                     roles.some(x => x.role_name === 'garage_door') &&
                     <GaragePanel/>
@@ -37,7 +37,7 @@ export default function Home(props) {
                     roles.some(x => x.role_name === 'lighting') &&
                     <LightingPanel/>
                 }
-            </View>
+            </ScrollView>
         </>
     )
 }
