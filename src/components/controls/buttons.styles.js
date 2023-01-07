@@ -32,6 +32,7 @@ export default StyleSheet.create({
         color: 'white',
         textAlign: 'center',
         fontSize: 16,
+        flex: 1,
     },
 
     toggleButton: {

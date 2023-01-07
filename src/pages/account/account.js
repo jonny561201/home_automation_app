@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext, useCallback } from 'react';
 import { Context } from "../../state/store";
-import { SafeAreaView, ScrollView, View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import Header from '../../header/header';
 import AccountChildUser from './account-child-user';
 import ChangePassword from './change-password';
