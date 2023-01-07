@@ -1,13 +1,15 @@
 import React, { useContext, useState } from 'react';
+import { Divider } from 'react-native-paper';
 import { addUserChildAccount } from '../../utilities/rest-api';
 import { Dialog, TextInput, Checkbox } from 'react-native-paper';
 import { GreenButton, RedButton } from '../../components/controls/buttons';
 import { Context } from "../../state/store";
+import styles from './create-child-account.styles';
 
 
 export default function CreateChildAccount(props) {
     const [state, _] = useContext(Context);
-    const [roles, setRoles] = useState(state.user.roles.map(x => ({...x, checked: false})));
+    const [roles, setRoles] = useState(state.user.roles.map(x => ({ ...x, checked: false })));
     const [email, setEmail] = useState('');
     const [isEmailInvalid, setIsEmailInvalid] = useState(undefined);
 
@@ -28,20 +30,21 @@ export default function CreateChildAccount(props) {
     }
 
     const updateRole = (role) => {
-        setRoles(roles.map(x => (x.role_name === role.role_name) ? {...role, checked: !role.checked} : x));
+        setRoles(roles.map(x => (x.role_name === role.role_name) ? { ...role, checked: !role.checked } : x));
     }
 
     return (
         <>
             <Dialog.Title>Add User</Dialog.Title>
+            <Divider style={styles.dividerHeader} />
             <Dialog.Content>
                 <TextInput value={email} error={isEmailInvalid} onChangeText={(input) => validateEmail(input)} mode='outlined' activeOutlineColor='#00c774' label="Email" />
                 {
-                    roles.map(x =>  <Checkbox.Item key={x.role_name} label={x.role_name} status={x.checked ? 'checked' : 'unchecked'} onPress={() => updateRole(x)}/> )
+                    roles.map(x => <Checkbox.Item key={x.role_name} label={x.role_name} status={x.checked ? 'checked' : 'unchecked'} onPress={() => updateRole(x)} />)
                 }
             </Dialog.Content>
 
-            <Dialog.Actions>
+            <Dialog.Actions style={styles.dialogButtonContainer}>
                 <RedButton onPress={props.close}>Cancel</RedButton>
                 <GreenButton onPress={submitChildAccount}>Add</GreenButton>
             </Dialog.Actions>
