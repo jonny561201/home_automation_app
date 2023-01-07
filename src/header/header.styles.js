@@ -3,6 +3,10 @@ import theme from '../../constants/Colors';
 
 
 export default StyleSheet.create({
+    headerContainer: {
+        zIndex: 1,
+    },
+    
     systemIconSpacer: {
         height: 34,
         backgroundColor: '#00c774',

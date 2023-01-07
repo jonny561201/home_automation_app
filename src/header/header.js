@@ -25,7 +25,7 @@ export default function Header(props) {
 
 
     return (
-        <View>
+        <View style={styles.headerContainer}>
             <View style={styles.systemIconSpacer}/>
             <View style={styles.homeHeader}>
                 <View style={styles.logoContainer}>
