@@ -1,5 +1,5 @@
 import React, { useState, useContext, useCallback } from 'react';
-import { Text, View } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
 import { Context } from '../../state/store';
 import Header from '../../header/header';
 import SettingsPanel from './settings-panel';
@@ -17,7 +17,7 @@ export default function Settings(props) {
 
     useFocusEffect(
         useCallback(() => {
-            dispatch({type: 'SET_ACTIVE_PAGE', payload: 'Settings'});
+            dispatch({ type: 'SET_ACTIVE_PAGE', payload: 'Settings' });
         }, [dispatch])
     );
 
@@ -44,26 +44,30 @@ export default function Settings(props) {
     return (
         <>
             <View style={styles.pageContainer}>
-                <Header toggleMenu={props.navigation.toggleDrawer}/>
+                <Header toggleMenu={props.navigation.toggleDrawer} />
             </View>
-            <View style={styles.settingsBody}>
-                <Text style={styles.settingsHeader}>Preferences</Text>
+            <ScrollView style={{flex: 1}}>
+                <View style={styles.settingsBody}>
+                    <Text style={styles.settingsHeader}>Preferences</Text>
 
-                <View style={styles.settingsRow}>
-                    <Switch value={darkMode && !isAutoMode} onValueChange={toggleTheme}/>
-                    <Text style={styles.settingsLabelText}>Dark Mode</Text>
+                    <View style={styles.settingsRow}>
+                        <Switch value={darkMode && !isAutoMode} onValueChange={toggleTheme} />
+                        <Text style={styles.settingsLabelText}>Dark Mode</Text>
+                    </View>
+
+                    <View style={styles.settingsRow}>
+                        <Switch value={isAutoMode} onValueChange={toggleAutoTheme} />
+                        <Text style={styles.settingsLabelText}>Auto Theme</Text>
+                    </View>
+
+                    {
+                        isEditMode
+                            ? <SettingsEditPanel isEditMode={isEditMode} setEditMode={setEditMode} />
+                            : <SettingsPanel toggleEdit={toggleEditMode} />
+                    }
+
                 </View>
-
-                <View style={styles.settingsRow}>
-                    <Switch value={isAutoMode} onValueChange={toggleAutoTheme}/>
-                    <Text style={styles.settingsLabelText}>Auto Theme</Text>
-                </View>
-
-                {isEditMode
-                    ? <SettingsEditPanel isEditMode={isEditMode} setEditMode={setEditMode}/>
-                    : <SettingsPanel toggleEdit={toggleEditMode}/>
-                }
-            </View>
+            </ScrollView>
         </>
     )
 }
