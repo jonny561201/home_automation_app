@@ -7,6 +7,7 @@ import GaragePanel from './garage/garage-panel';
 import { Context } from "../../state/store";
 import { useFocusEffect } from "@react-navigation/native";
 import LightingPanel from "./lighting/lighting-panel";
+import SecurityPanel from "./security/security-panel";
 
 
 export default function Home(props) {
@@ -36,6 +37,10 @@ export default function Home(props) {
                 {
                     roles.some(x => x.role_name === 'lighting') &&
                     <LightingPanel/>
+                }
+                {
+                    roles.some(x => x.role_name === 'security') &&
+                    <SecurityPanel/>
                 }
             </ScrollView>
         </>
