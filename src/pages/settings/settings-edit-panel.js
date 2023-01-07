@@ -100,7 +100,7 @@ export default function SettingsEditPanel(props) {
                     </RadioButton.Group>
                 </View>
             </View>
-            <View style={styles.settingsRow}>
+            <View style={[styles.settingsRow, styles.buttonRow]}>
                 <GreenButton disabled={!edited} onPress={savePreferences}>Save</GreenButton>
                 <RedButton onPress={cancelPreferences}>Cancel</RedButton>
             </View>

@@ -26,6 +26,12 @@ export default StyleSheet.create({
     settingsRow: {
         flexDirection: 'row',
         marginLeft: 20,
+        justifyContent: 'space-between',
+    },
+
+    buttonRow: {
+        marginBottom: 20,
+        marginRight: 30,
     },
 
     pickerContainer: {
