@@ -9,15 +9,7 @@ export default StyleSheet.create({
         paddingTop: 10,
         paddingBottom: 10,
     },
-
-    lightAlarmComponent: {
-        marginRight: 1,
-    },
-
-    settingsFirstItem: {
-        marginTop: 1,
-    },
-
+    
     settingsLabelText: {
         paddingTop: 6,
         fontSize: 16,
