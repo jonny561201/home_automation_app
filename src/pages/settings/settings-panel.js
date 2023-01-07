@@ -40,7 +40,7 @@ export default function SettingsPanel(props) {
                 <Text style={styles.measureUnit}>{state.preferences.measure_unit}</Text>
             </View>
 
-            <View style={styles.settingsRow}>
+            <View style={[styles.settingsRow, styles.buttonRow]}>
                 <GreenButton onPress={handleClick}>Edit</GreenButton>
             </View>
         </>

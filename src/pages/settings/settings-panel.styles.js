@@ -2,24 +2,6 @@ import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
 
-    settingsBody: {
-        // background-color: var(--primary-color),
-        color: 'black',
-        flexDirection: 'column',
-        // borderRadius: 0 0 20px 20px,
-    },
-
-// @media (min-width: 480px) {
-//     .settings-body {
-//         min-width: 670px,
-//     }
-// },
-
-    settingsWrapper: {
-        margin: 1,
-        flexDirection: 'column',
-    },
-
     settingsHeader: {
         fontSize: 26,
         color: 'black',
@@ -40,10 +22,6 @@ export default StyleSheet.create({
         fontSize: 16,
     },
 
-    setting: {
-        paddingRight: 1,
-    },
-
     settingsRow: {
         paddingTop: 12,
         paddingBottom: 12,
@@ -51,7 +29,7 @@ export default StyleSheet.create({
         marginLeft: 20,
     },
 
-    cancel: {
-        backgroundColor: '#c73200',
+    buttonRow: {
+        marginBottom: 20,
     },
 });
