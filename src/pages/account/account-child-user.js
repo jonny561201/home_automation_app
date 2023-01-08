@@ -20,7 +20,7 @@ export default function AccountChildUser(props) {
     const getStyle = (data, index) => {
         const rowStyles = [];
         const lastChild = props.childAccounts?.length - 1 === data.index;
-        const lastRow = index === data.item.roles?.length -1;
+        const lastRow = index === data.item.roles?.length - 1;
 
         if (lastRow)
             rowStyles.push(styles.last)
@@ -36,7 +36,7 @@ export default function AccountChildUser(props) {
             <List.Section>
                 <SwipeListView
                     data={props.childAccounts}
-                    rightOpenValue={-75}
+                    rightOpenValue={-150}
                     disableRightSwipe
                     previewRowKey={'0'}
                     renderItem={(data) => (
@@ -61,10 +61,13 @@ export default function AccountChildUser(props) {
                             }
                         </List.Accordion>
                     )}
-                    renderHiddenItem={(data, _) => (
+                    renderHiddenItem={(data) => (
                         <View style={styles.swipeContainer}>
+                            <TouchableOpacity style={styles.swipeEdit} onPress={() => {console.log('test')}}>
+                                <Icon name='edit' size={30} style={styles.swipeText} />
+                            </TouchableOpacity>
                             <TouchableOpacity style={styles.swipeDelete} onPress={() => deleteChildUser(data.item)}>
-                                <Icon name='delete' size={30} style={styles.swipeText}/>
+                                <Icon name='delete' size={30} style={styles.swipeText} />
                             </TouchableOpacity>
                         </View>
                     )}

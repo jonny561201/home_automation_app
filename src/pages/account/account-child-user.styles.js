@@ -43,6 +43,18 @@ export default StyleSheet.create({
         flex: 1
     },
 
+    swipeEdit: {
+        alignItems: 'center',
+        bottom: 0,
+        justifyContent: 'center',
+        flex: 1,
+        position: 'absolute',
+        top: 0,
+        width: 75,
+        right: 75,
+        backgroundColor: 'blue'
+    },
+
     swipeDelete: {
         alignItems: 'center',
         bottom: 0,
