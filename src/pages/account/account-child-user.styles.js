@@ -26,6 +26,14 @@ export default StyleSheet.create({
         borderColor: '#e60000',
     },
 
+    last: {
+        paddingBottom: 20,
+    },
+
+    lastChild: {
+        marginBottom: 80,
+    },
+
     swipeContainer: {
         alignItems: 'center', 
         backgroundColor: '#dddddd', 
