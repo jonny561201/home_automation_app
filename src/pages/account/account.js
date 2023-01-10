@@ -27,7 +27,7 @@ export default function Account(props) {
     useEffect(() => {
         const getData = async () => {
             const response = await getUserChildAccounts(state.user.userId, state.auth.bearer);
-            setChildAccounts(response);
+            setChildAccounts(response.map((x, i) => ({...x, key: `${i}`})));
         };
         getData();
     }, []);
