@@ -21,7 +21,7 @@ export default function LightSwitch(props) {
     const [prevBrightness, setPrevBrightness] = useState(initialBrightness);
     const [areLightsOpen, setLightsOpen] = useState(false);
 
-    const sliderToggleLightGroup = async (event, value) => {
+    const sliderToggleLightGroup = async (value) => {
         const newBrightness = Math.round(value * 2.55);
         debounchApi(() => setLightGroupState(state.auth.bearer, groupId, true, newBrightness));
         if (newBrightness > 0)

@@ -23,7 +23,7 @@ export default function SwitchSlider(props) {
         }
     });
 
-    const updateSlider = (event, value) => {
+    const updateSlider = (value) => {
         const newLight = { ...light, brightness: value * 2.55, on: value > 0 };
         setLight(newLight);
         debounchApi(() => setLightState(state.auth.bearer, lightId, true, value * 2.55));
