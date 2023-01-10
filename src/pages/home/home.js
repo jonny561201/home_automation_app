@@ -1,5 +1,5 @@
 import React, { useContext, useCallback } from "react";
-import { View, ScrollView } from 'react-native';
+import { ScrollView } from 'react-native';
 import Header from '../../header/header';
 import styles from './home.styles';
 import BasementPanel from './basement/basement-panel';
@@ -16,31 +16,29 @@ export default function Home(props) {
 
     useFocusEffect(
         useCallback(() => {
-            dispatch({type: 'SET_ACTIVE_PAGE', payload: 'Home'});
+            dispatch({ type: 'SET_ACTIVE_PAGE', payload: 'Home' });
         }, [dispatch])
     );
 
     return (
         <>
-            <View>
-                <Header toggleMenu={props.navigation.toggleDrawer}/>
-            </View>
+            <Header toggleMenu={props.navigation.toggleDrawer} />
             <ScrollView style={styles.pageContainer}>
                 {
                     roles.some(x => x.role_name === 'garage_door') &&
-                    <GaragePanel/>
+                    <GaragePanel />
                 }
                 {
                     roles.some(x => x.role_name === 'sump_pump') &&
-                    <BasementPanel/>
+                    <BasementPanel />
                 }
                 {
                     roles.some(x => x.role_name === 'lighting') &&
-                    <LightingPanel/>
+                    <LightingPanel />
                 }
                 {
                     roles.some(x => x.role_name === 'security') &&
-                    <SecurityPanel/>
+                    <SecurityPanel />
                 }
             </ScrollView>
         </>

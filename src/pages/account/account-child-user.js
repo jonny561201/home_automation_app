@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { deleteUserChildAccount } from '../../utilities/rest-api';
 import { Context } from '../../state/store';
-import { Text, View, TouchableOpacity, TouchableHighlight } from 'react-native';
+import { Text, View, TouchableOpacity } from 'react-native';
 import { List } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { SwipeListView } from 'react-native-swipe-list-view';

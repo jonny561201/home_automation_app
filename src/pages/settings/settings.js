@@ -43,9 +43,7 @@ export default function Settings(props) {
 
     return (
         <>
-            <View>
-                <Header toggleMenu={props.navigation.toggleDrawer} />
-            </View>
+            <Header toggleMenu={props.navigation.toggleDrawer} />
             <ScrollView style={styles.pageContainer}>
                 <View style={styles.settingsBody}>
                     <Text style={styles.settingsHeader}>Preferences</Text>
