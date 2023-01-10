@@ -9,7 +9,7 @@ import styles from './create-child-account.styles';
 
 export default function CreateChildAccount(props) {
     const [state, _] = useContext(Context);
-    const [roles, setRoles] = useState(state.user.roles.map(x => ({ ...x, checked: false })));
+    const [roles, setRoles] = useState(props.roles?.length === 0 ? state.user.roles.map(x => ({ ...x, checked: false })) : state.user.roles.map(x => props.roles?.includes(x.role_name) ? ({...x, checked: true}) : ({...x, checked: false})));
     const [email, setEmail] = useState('');
     const [isEmailInvalid, setIsEmailInvalid] = useState(undefined);
 
@@ -35,7 +35,7 @@ export default function CreateChildAccount(props) {
 
     return (
         <>
-            <Dialog.Title>Add User</Dialog.Title>
+            <Dialog.Title>{props.roles?.length === 0 ? 'Add User' : 'Edit User'}</Dialog.Title>
             <Divider style={styles.dividerHeader} />
             <Dialog.Content>
                 <TextInput value={email} error={isEmailInvalid} onChangeText={(input) => validateEmail(input)} mode='outlined' activeOutlineColor='#00c774' label="Email" />
