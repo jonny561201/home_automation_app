@@ -1,14 +1,13 @@
 import React, { useState, useEffect, useContext, useCallback } from 'react';
 import { Context } from "../../state/store";
-import { ScrollView, View } from 'react-native';
+import { View } from 'react-native';
 import Header from '../../header/header';
 import AccountChildUser from './account-child-user';
 import ChangePassword from './change-password';
-import { FAB, Portal, Provider } from 'react-native-paper';
+import { FAB, Portal, Provider, Dialog } from 'react-native-paper';
 import { useFocusEffect } from "@react-navigation/native";
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { getUserChildAccounts } from '../../utilities/rest-api';
-import { Dialog } from 'react-native-paper';
 import styles from './account.styles';
 import CreateChildAccount from './create-child-account';
 
@@ -36,10 +35,8 @@ export default function Account(props) {
 
     return (
         <Provider>
-            <View>
                 <Header toggleMenu={props.navigation.toggleDrawer} />
-            </View>
-                <ScrollView style={styles.pageContainer}>
+                <View style={styles.pageContainer}>
                     <View style={styles.accountBody}>
                         <View style={styles.accountWrapper}>
                             <ChangePassword />
@@ -47,12 +44,13 @@ export default function Account(props) {
                         </View>
                     </View>
 
+
                         <Portal>
                             <Dialog visible={display} onDismiss={closeDialog}>
-                                <CreateChildAccount close={closeDialog} addChild={setChildAccounts} />
+                                <CreateChildAccount close={closeDialog} addChild={setChildAccounts} roles={[]} />
                             </Dialog>
                         </Portal>
-                </ScrollView>
+                </View>
 
             <FAB style={styles.fab} onPress={() => setDisplay(!display)} label='Add User' icon={(props) => <Icon {...props} name='person-add' />} color='#ffffff' />
         </Provider>

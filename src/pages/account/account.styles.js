@@ -3,16 +3,19 @@ import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
     pageContainer: {
+        flex: 1,
         paddingTop: 30,
     },
 
     accountBody: {
+        flex: 1,
         // background-color: var(--primary-color),
         flexDirection: 'column',
         marginLeft: 10,
     },
 
     accountWrapper: {
+        flex: 1,
         margin: 1,
         flexDirection: 'column',
     },
