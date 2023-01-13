@@ -10,7 +10,7 @@ import styles from './light-switch.styles'
 import Slider from '@react-native-community/slider';
 import SwitchSlider from "../../pages/home/lighting/switch-slider";
 
-export default function LightSwitch(props) {
+export default function LightGroupSwitch(props) {
     const initialBrightness = Math.round(props.data.brightness / 2.55);
     const [state, dispatch] = useContext(Context);
     const [isOn, setIsOn] = useState(props.data.on);
