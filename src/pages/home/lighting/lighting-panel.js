@@ -13,7 +13,7 @@ export default function LightingPanel() {
 
     const renderGroups = () => {
         if (state.lights.length) {
-            return state.lights.map(group => <LightGroupSwitch key={`switch-${group.groupId}`} data={group} />)
+            return state.lights.map((group) => <LightGroupSwitch key={`switch-${group.groupId}`} data={group} />)
         }
         return <Text>No Light Groups found</Text>
     };
