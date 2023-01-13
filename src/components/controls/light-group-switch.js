@@ -22,12 +22,10 @@ export default function LightGroupSwitch(props) {
 
     const slideLightGroup = async (value) => {
         const newBrightness = Math.round(value * 2.55);
-        setLightGroupState(state.auth.bearer, groupId, true, newBrightness)
-        const newList = state.lights.map(x => (x.groupId === groupId) ? { ...x, brightness: newBrightness, lights: x.lights.map(y => ({ ...y, brightness: newBrightness })) } : x);
-        dispatch({ type: 'SET_LIGHTS', payload: newList });
+        setLightGroupState(state.auth.bearer, groupId, true, newBrightness);
+        updateGroup(value);
         if (newBrightness > 0)
             setIsOn(true);
-        setBrightness(value);
     };
 
     const toggleLightGroup = async () => {
@@ -35,13 +33,9 @@ export default function LightGroupSwitch(props) {
         setIsOn(newState);
         if (!newState) {
             setPrevBrightness(brightness);
-            setBrightness(0);
-            const newList = state.lights.map(x => (x.groupId === groupId) ? { ...x, brightness: 0, lights: x.lights.map(y => ({ ...y, brightness: 0 })) } : x);
-            dispatch({ type: 'SET_LIGHTS', payload: newList });
+            updateGroup(0);
         } else {
-            setBrightness(prevBrightness);
-            const newList = state.lights.map(x => (x.groupId === groupId) ? { ...x, brightness: prevBrightness * 2.55, lights: x.lights.map(y => ({ ...y, brightness: Math.round(prevBrightness * 2.55) })) } : x);
-            dispatch({ type: 'SET_LIGHTS', payload: newList });
+            updateGroup(prevBrightness);
         }
         await setLightGroupState(state.auth.bearer, groupId, newState);
     }
@@ -52,6 +46,12 @@ export default function LightGroupSwitch(props) {
         }
         return <Text style={styles.panelText}>No lights assigned to group</Text>
     };
+
+    const updateGroup = (brightness) => {
+        setBrightness(brightness);
+        const newList = state.lights.map(x => (x.groupId === groupId) ? { ...x, brightness: brightness * 2.55, lights: x.lights.map(y => ({ ...y, brightness: Math.round(brightness * 2.55) })) } : x);
+        dispatch({ type: 'SET_LIGHTS', payload: newList });
+    }
 
     return (
         <>
