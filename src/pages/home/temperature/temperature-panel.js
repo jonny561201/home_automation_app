@@ -35,7 +35,7 @@ export default function TemperaturePanel() {
                     <Text style={styles.statusTextBold}>Temperature</Text>
                     {
                         !open &&
-                        <View style={{ alignItems: 'flex-start', alignContent: 'flex-start' }}>
+                        <>
                             <View style={styles.smallTextGroup}>
                                 <Text style={styles.smallText}>Outside:</Text>
                                 <Text style={styles.smallText}>{state.forecastData.temp}&deg;</Text>
@@ -44,7 +44,7 @@ export default function TemperaturePanel() {
                                 <Text style={styles.smallText}>Inside:</Text>
                                 <Text style={styles.smallText}>{state.tempData.currentTemp}&deg;</Text>
                             </View>
-                        </View>
+                        </>
                     }
                 </View>
             </View>
@@ -68,8 +68,14 @@ export default function TemperaturePanel() {
                             } */}
 
                             <View>
-                                <Switch value={state.tempData.mode === 'heating'} onValueChange={() => toggleHvac("heating")}  color="#db5127"/>
-                                <Switch value={state.tempData.mode === 'cooling'} onValueChange={() => toggleHvac("cooling")} color="#27aedb"/>
+                                <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
+                                    <Switch value={state.tempData.mode === 'heating'} onValueChange={() => toggleHvac("heating")} color="#db5127" />
+                                    <Text>Heat</Text>
+                                </View>
+                                <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
+                                    <Switch value={state.tempData.mode === 'cooling'} onValueChange={() => toggleHvac("cooling")} color="#27aedb" />
+                                    <Text>Cool</Text>
+                                </View>
                             </View>
                         </View>
                     </View>
