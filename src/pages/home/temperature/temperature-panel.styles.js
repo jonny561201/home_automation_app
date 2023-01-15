@@ -42,7 +42,7 @@ export default StyleSheet.create({
     },
 
     smallTextGroup: {
-        marginLeft: 24,
+        marginLeft: 42,
         width: 120,
         flexDirection: 'row',
         justifyContent: 'space-between'

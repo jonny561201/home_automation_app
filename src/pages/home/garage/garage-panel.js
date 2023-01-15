@@ -36,7 +36,8 @@ export default function GaragePanel() {
                 <Image style={styles.iconImage} source={GarageIcon} />
                 <View style={styles.garageHeader}>
                     <Text style={styles.statusTextBold}>Garage</Text>
-                    {!open &&
+                    {
+                        !open &&
                         state.garageDoors.map(x => {
                             return <View style={styles.smallTextGroup} key={`door-notify-${x.doorName}`}>
                                 <Text style={styles.smallText}>{x.doorName}:</Text>
