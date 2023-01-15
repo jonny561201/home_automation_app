@@ -8,6 +8,7 @@ import { Context } from "../../state/store";
 import { useFocusEffect } from "@react-navigation/native";
 import LightingPanel from "./lighting/lighting-panel";
 import SecurityPanel from "./security/security-panel";
+import TemperaturePanel from "./temperature/temperature-panel";
 
 
 export default function Home(props) {
@@ -31,6 +32,10 @@ export default function Home(props) {
                 {
                     roles.some(x => x.role_name === 'sump_pump') &&
                     <BasementPanel />
+                }
+                                {
+                    roles.some(x => x.role_name === 'thermostat') &&
+                    <TemperaturePanel />
                 }
                 {
                     roles.some(x => x.role_name === 'lighting') &&
