@@ -43,7 +43,6 @@ export default StyleSheet.create({
 
     lightText: {
         padding: 6,
-        // flex: 1,
         width: 70,
         fontSize: 14,
         // marginTop: 0.5,

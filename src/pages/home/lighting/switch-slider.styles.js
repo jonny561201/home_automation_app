@@ -20,10 +20,17 @@ export default StyleSheet.create({
     },
 
     lightTextSmall: {
-        width: 70,
-        marginTop: 0.5,
-        marginBottom: 0.5,
-        marginLeft: 0.2,
-        marginRight: 0.2,
+        width: 60,
+        textAlign: 'center',
+    },
+
+    lightButton: {
+        borderColor: 'lightgrey',
+        borderWidth: 1,
+        borderRadius: 8,
+        alignItems: 'center',
+        alignSelf: 'center',
+        alignContent: 'center',
+        justifyContent: 'center'
     },
 });
