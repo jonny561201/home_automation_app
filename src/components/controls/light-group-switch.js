@@ -5,51 +5,47 @@ import { ExpandButton } from './buttons';
 import { MaterialIcons } from '@expo/vector-icons';
 import { setLightGroupState } from '../../utilities/rest-api';
 import { TouchableRipple } from 'react-native-paper';
-import styles from './light-switch.styles'
 import Slider from '@react-native-community/slider';
 import SwitchSlider from "../../pages/home/lighting/switch-slider";
+import styles from './light-group-switch.styles'
+
 
 export default function LightGroupSwitch(props) {
-    const initialBrightness = Math.round(props.data.brightness / 2.55);
     const [state, dispatch] = useContext(Context);
     const [isOn, setIsOn] = useState(props.data.on);
     const [lights,] = useState(props.data.lights);
     const [groupId,] = useState(props.data.groupId);
     const [groupName,] = useState(props.data.groupName);
-    const [brightness, setBrightness] = useState(initialBrightness);
-    const [prevBrightness, setPrevBrightness] = useState(initialBrightness);
+    const [brightness, setBrightness] = useState(props.data.brightness);
+    const [prevBrightness, setPrevBrightness] = useState(props.data.brightness);
     const [areLightsOpen, setLightsOpen] = useState(false);
 
     const slideLightGroup = async (value) => {
-        const newBrightness = Math.round(value * 2.55);
-        setLightGroupState(state.auth.bearer, groupId, true, newBrightness);
+        setLightGroupState(state.auth.bearer, groupId, true, value);
         updateGroup(value);
-        if (newBrightness > 0)
-            setIsOn(true);
+        setIsOn(value > 0);
     };
 
     const toggleLightGroup = async () => {
         const newState = !isOn;
         setIsOn(newState);
-        if (!newState) {
-            setPrevBrightness(brightness);
-            updateGroup(0);
-        } else {
-            updateGroup(prevBrightness);
-        }
+        const newBrightness = !newState ? 0 : prevBrightness;
+        setPrevBrightness(brightness);
+        updateGroup(newBrightness);
+
         await setLightGroupState(state.auth.bearer, groupId, newState);
     }
 
     const getLightSwitches = () => {
         if (lights && lights.length > 0) {
-            return lights.map(x => <SwitchSlider key={`switch-${x.lightId}`} data={x} />);
+            return lights.map(x => <SwitchSlider key={`switch-${x.lightId}`} lightId={x.lightId} groupId={x.groupId} />);
         }
         return <Text style={styles.panelText}>No lights assigned to group</Text>
     };
 
     const updateGroup = (brightness) => {
         setBrightness(brightness);
-        const newList = state.lights.map(x => (x.groupId === groupId) ? { ...x, brightness: brightness * 2.55, lights: x.lights.map(y => ({ ...y, brightness: Math.round(brightness * 2.55) })) } : x);
+        const newList = state.lights.map(x => (x.groupId === groupId) ? { ...x, brightness: brightness, lights: x.lights.map(y => ({ ...y, brightness: brightness })) } : x);
         dispatch({ type: 'SET_LIGHTS', payload: newList });
     }
 
