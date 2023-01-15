@@ -28,6 +28,15 @@ export default StyleSheet.create({
         paddingLeft: 15,
     },
 
+    formContainer: {
+        flexDirection: 'column',
+    },
+
+    formColumn: {
+        marginLeft: 'auto',
+        marginRight: 'auto',
+    },
+
     statusTextBold: {
         fontWeight: 'bold',
         fontSize: 18,
