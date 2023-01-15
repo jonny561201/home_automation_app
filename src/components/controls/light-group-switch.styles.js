@@ -38,16 +38,12 @@ export default StyleSheet.create({
         alignItems: 'center',
         alignSelf: 'center',
         alignContent: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
 
     lightText: {
         padding: 6,
         width: 70,
         fontSize: 14,
-        // marginTop: 0.5,
-        // marginBottom: 0.5,
-        // marginLeft: 0.2,
-        // marginRight: 0.2,
     },
 });
