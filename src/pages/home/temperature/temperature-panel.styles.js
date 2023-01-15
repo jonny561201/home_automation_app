@@ -28,6 +28,12 @@ export default StyleSheet.create({
         paddingLeft: 15,
     },
 
+    tempToggleGroup: {
+        flexDirection: 'row', 
+        alignItems: 'center', 
+        justifyContent: 'center',
+    },
+
     formContainer: {
         flexDirection: 'column',
     },

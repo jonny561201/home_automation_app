@@ -68,11 +68,11 @@ export default function TemperaturePanel() {
                             } */}
 
                             <View>
-                                <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
+                                <View style={styles.tempToggleGroup}>
                                     <Switch value={state.tempData.mode === 'heating'} onValueChange={() => toggleHvac("heating")} color="#db5127" />
                                     <Text>Heat</Text>
                                 </View>
-                                <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
+                                <View style={styles.tempToggleGroup}>
                                     <Switch value={state.tempData.mode === 'cooling'} onValueChange={() => toggleHvac("cooling")} color="#27aedb" />
                                     <Text>Cool</Text>
                                 </View>
