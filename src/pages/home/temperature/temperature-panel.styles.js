@@ -35,12 +35,11 @@ export default StyleSheet.create({
     },
 
     formContainer: {
-        flexDirection: 'column',
+        // flexDirection: 'column',
     },
 
     formColumn: {
-        marginLeft: 'auto',
-        marginRight: 'auto',
+        marginLeft: -140,
     },
 
     statusTextBold: {

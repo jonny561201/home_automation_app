@@ -5,6 +5,7 @@ import { setUserTemperature } from '../../../utilities/rest-api'
 import Accordion from '../../../components/accordion';
 import TempIcon from '../../../resources/panelIcons/TemperatureIcon.png';
 import { Context } from '../../../state/store';
+import TemperatureImage from "./temperature-image";
 import styles from './temperature-panel.styles';
 
 
@@ -52,7 +53,7 @@ export default function TemperaturePanel() {
                 <View style={styles.smallTextGroup}>
                 <View style={styles.formContainer}>
                         <View style={styles.formColumn}>
-                            {/* <TemperatureImage /> */}
+                             <TemperatureImage />
                         </View>
                         <View style={styles.formColumn}>
                             {/* <Knob value={state.tempData.currentDesiredTemp} lineCap={"round"} inputColor={state.tempData.gaugeColor} fgColor={state.tempData.gaugeColor} title="Desired Temp"
