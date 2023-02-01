@@ -18,14 +18,16 @@ import ThunderstormIcon from '../../../resources/weatherIcons/thunderstorm.png';
 import HomeIcon from '../../../resources/weatherIcons/home.png';
 import ClearNightIcon from '../../../resources/weatherIcons/clear_night.png';
 import MistIcon from '../../../resources/weatherIcons/misty.png';
+import { LinearGradient } from 'expo-linear-gradient';
 import styles from './temperature-image.styles';
+import MaskedView from '@react-native-community/masked-view';
 
 
 export default function TemperatureImage() {
     const [state,] = useContext(Context);
     const [isNight, setIsNight] = useState(false);
     const [weatherIcon, setWeatherIcon] = useState();
-    const [weatherDesc, setWeatherDesc] = useState("");
+    // const [weatherDesc, setWeatherDesc] = useState("");
 
     useEffect(() => {
         setIsNight(!isDayLight(state.garageCoords, state.userCoords));
@@ -46,33 +48,47 @@ export default function TemperatureImage() {
         "broken clouds night": MostlyCloudyNightIcon,
     };
 
-    const getWeatherLabel = (weather) => {
-        return weather.replace(/_/g, " ").replace(".png", "");
-    }
+    // const getWeatherLabel = (weather) => {
+    //     console.log(`weather label: ${weather}`)
+    //     return weather.replace(/_/g, " ").replace(".png", "");
+    // }
 
     const getWeatherImage = () => {
-        const weatherDesc = state.forecastData.description.toLowerCase();
+        const weatherDesc = state.forecastData?.description?.toLowerCase();
+        // console.log(`weather desc: ${weatherDesc}`)
         const weatherType = isNight ? `${weatherDesc} night` : weatherDesc;
+        // console.log(`weather type: ${weatherType}`)
         if (weatherDesc.includes("thunderstorm")) {
             setWeatherIcon(ThunderstormIcon);
-            setWeatherDesc("thunderstorms");
+            // setWeatherDesc("thunderstorms");
         } else if (weatherType in weatherTypes) {
             setWeatherIcon(weatherTypes[weatherType]);
-            setWeatherDesc(getWeatherLabel(weatherTypes[weatherType]));
+            // setWeatherDesc(getWeatherLabel(weatherTypes[weatherType]));
         } else {
             setWeatherIcon(CloudyIcon);
-            setWeatherDesc("cloudy");
+            // setWeatherDesc("cloudy");
         }
     }
 
     return (
-        <View style={{flexDirection: 'row', alignContent: 'center', justifyContent: 'center', margin: 0}}>
+        <View style={{ flexDirection: 'row', alignContent: 'center', justifyContent: 'center', margin: 0 }}>
             <View style={styles.tempExternalContainer}>
                 <Image style={styles.weatherIcon} alt="description" source={ClearIcon} />
                 <View style={styles.externalTemp}>
-                    <Text style={styles.minMax}>51</Text>
+                    {/* <MaskedView
+                        style={{ height: 24 }}
+                        maskElement={<Text>51</Text>}
+                    >
+                        <LinearGradient
+                            colors={['red', 'blue']}
+                            start={{ x: 1, y: 1 }}
+                            end={{ x: 0, y: 0.33 }}
+                            style={{ flex: 1 }}
+                        />
+                    </MaskedView> */}
+                    <Text>51</Text>
                     <Text style={styles.external}>45&deg;</Text>
-                    <Text style={styles.minMax}>37</Text>
+                    <Text>37</Text>
                     {/*<Text style={styles.minMax}>{state.forecastData.maxTemp}</Text>*/}
                     {/*<Text style={styles.external}>{state.forecastData.temp}&deg;</Text>*/}
                     {/*<Text style={styles.minMax}>{state.forecastData.minTemp}</Text>*/}

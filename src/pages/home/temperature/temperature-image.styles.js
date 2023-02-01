@@ -12,8 +12,10 @@ export default StyleSheet.create({
     },
 
     internalTemp: {
-        fontSize: 35,
-        fontWeight: 'bolder',
+        fontSize: 38,
+        marginTop: 90,
+        marginLeft: -124,
+        fontWeight: '800',
     },
 
     externalTemp: {
@@ -24,23 +26,10 @@ export default StyleSheet.create({
         paddingTop: 30,
     },
 
-// topFade: {
-//     background: -webkit-linear-gradient(#27aedb, var(--primary-color)),
-//     -webkit-background-clip: text,
-//     -webkit-text-fill-color: transparent,
-// },
-
     external: {
-        // margin: 0,
-        fontWeight: '800',
+        fontWeight: '600',
         fontSize: 30,
     },
-
-// .bottom-fade {
-//     background: -webkit-linear-gradient(var(--primary-color), #db5127),
-//     -webkit-background-clip: text,
-//     -webkit-text-fill-color: transparent,
-// },
 
     weatherIcon: {
         height: 180,
