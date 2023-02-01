@@ -15,7 +15,7 @@ export default StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
     },
-    
+
     temperatureHeader: {
         marginLeft: 16,
     },
@@ -29,17 +29,18 @@ export default StyleSheet.create({
     },
 
     tempToggleGroup: {
-        flexDirection: 'row', 
-        alignItems: 'center', 
+        flexDirection: 'row',
+        alignItems: 'center',
         justifyContent: 'center',
+        marginLeft: -50
     },
 
     formContainer: {
-        // flexDirection: 'column',
+        flexDirection: 'column',
     },
 
-    formColumn: {
-        marginLeft: -140,
+    tempImages: {
+        marginLeft: -170,
     },
 
     statusTextBold: {

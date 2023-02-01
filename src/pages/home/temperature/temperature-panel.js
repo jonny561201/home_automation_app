@@ -1,22 +1,23 @@
 import React, { useState, useContext } from 'react';
 import { Image, Text, View } from 'react-native';
-import { Switch } from 'react-native-paper';
 import { setUserTemperature } from '../../../utilities/rest-api'
 import Accordion from '../../../components/accordion';
 import TempIcon from '../../../resources/panelIcons/TemperatureIcon.png';
 import { Context } from '../../../state/store';
-import TemperatureImage from "./temperature-image";
+import TemperatureImage from './temperature-image';
+import TempSlider from '../../../components/controls/temp-slider';
 import styles from './temperature-panel.styles';
 
 
 export default function TemperaturePanel() {
     const [state, dispatch] = useContext(Context);
     const [open, setOpen] = useState(false);
+    const hasHvacTask = state.tasks.some(x => x.task_type === 'hvac');
 
     const knobChange = (newValue) => {
         if (state.tempData.mode === 'heating' || state.tempData.mode === 'cooling') {
             dispatch({ type: 'SET_TEMP_DATA', payload: { ...state.tempData, desiredTemp: newValue } });
-            debounchApi(() => setUserTemperature(state.user.userId, state.auth.bearer, newValue, state.tempData.mode, state.tempData.isFahrenheit));
+            setUserTemperature(state.user.userId, state.auth.bearer, newValue, state.tempData.mode, state.tempData.isFahrenheit);
         }
     }
 
@@ -26,6 +27,17 @@ export default function TemperaturePanel() {
             await dispatch({ type: 'SET_TEMP_DATA', payload: { ...state.tempData, mode: modeState } });
             setUserTemperature(state.user.userId, state.auth.bearer, state.tempData.desiredTemp, modeState, state.tempData.isFahrenheit);
         }
+    }
+
+    const modeToggle = async (newModeValue) => {
+        if (newModeValue === 1)
+            await dispatch({ type: 'SET_TEMP_DATA', payload: { ...state.tempData, mode: 'heating', modeValue: newModeValue } });
+        else if (newModeValue === 2)
+            await dispatch({ type: 'SET_TEMP_DATA', payload: { ...state.tempData, mode: 'cooling', modeValue: newModeValue } });
+        else if (newModeValue === 3)
+            await dispatch({ type: 'SET_TEMP_DATA', payload: { ...state.tempData, mode: 'auto', modeValue: newModeValue } });
+        else
+            await dispatch({ type: 'SET_TEMP_DATA', payload: { ...state.tempData, mode: 'off', modeValue: 0 } });
     }
 
     return (
@@ -49,35 +61,17 @@ export default function TemperaturePanel() {
                     }
                 </View>
             </View>
-            <View style={styles.securityGroup}>
+            <View>
                 <View style={styles.smallTextGroup}>
-                <View style={styles.formContainer}>
-                        <View style={styles.formColumn}>
-                             <TemperatureImage />
+                    <View style={styles.formContainer}>
+                        <View style={styles.tempImages}>
+                            <TemperatureImage value={0} />
                         </View>
-                        <View style={styles.formColumn}>
+                        <TempSlider hasHvac={hasHvacTask} value={state.tempData.modeValue} slideComplete={modeToggle}/>
+
+                        <View>
                             {/* <Knob value={state.tempData.currentDesiredTemp} lineCap={"round"} inputColor={state.tempData.gaugeColor} fgColor={state.tempData.gaugeColor} title="Desired Temp"
                                 onChange={knobChange} angleArc={240} angleOffset={240} min={state.tempData.minThermostatTemp} max={state.tempData.maxThermostatTemp} /> */}
-                            {/* {
-                                state.tasks.some(x => x.task_type === 'hvac') ?
-                                    <FormControl>
-                                        <FormGroup>
-                                            <FormControlLabel label="Auto" control={<AutoSwitch checked={state.tempData.mode === 'auto' && state.tasks.some(x => x.task_type === 'hvac')} onChange={() => toggleHvac("auto")} />} />
-                                        </FormGroup>
-                                    </FormControl>
-                                    : null
-                            } */}
-
-                            <View>
-                                <View style={styles.tempToggleGroup}>
-                                    <Switch value={state.tempData.mode === 'heating'} onValueChange={() => toggleHvac("heating")} color="#db5127" />
-                                    <Text>Heat</Text>
-                                </View>
-                                <View style={styles.tempToggleGroup}>
-                                    <Switch value={state.tempData.mode === 'cooling'} onValueChange={() => toggleHvac("cooling")} color="#27aedb" />
-                                    <Text>Cool</Text>
-                                </View>
-                            </View>
                         </View>
                     </View>
                 </View>
