@@ -6,7 +6,7 @@ export default StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
     },
-    
+
     textContainerThree: {
         flexDirection: 'row',
         justifyContent: 'space-evenly',
@@ -14,5 +14,12 @@ export default StyleSheet.create({
 
     sliderText: {
         fontSize: 10,
+    },
+
+    trackMark: {
+        backgroundColor: '#5e5d5d', 
+        width: 1, 
+        height: 14, 
+        marginLeft: 27.5
     },
 })

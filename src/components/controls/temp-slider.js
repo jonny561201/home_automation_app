@@ -9,12 +9,12 @@ export default function TempSlider(props) {
 
     const onSlideComplete = (item) => {
         setValue(item[0]);
-        props.slideComplete();
+        props.slideComplete(item[0]);
     }
 
     const trackMark = () => {
         return (
-            <View style={{ backgroundColor: '#5e5d5d', width: 1, height: 20, marginLeft: 27.5 }}>
+            <View style={styles.trackMark}>
                 <View></View>
             </View>
         )
