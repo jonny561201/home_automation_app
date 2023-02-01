@@ -48,8 +48,8 @@ export default function TempSlider(props) {
                     : <View>
                         <View style={styles.textContainerThree}>
                             <Text style={[styles.sliderText]}>Off</Text>
-                            <Text style={[styles.sliderText, {paddingLeft: 10}]}>Heat</Text>
-                            <Text style={[styles.sliderText, {paddingLeft: 10}]}>Cool</Text>
+                            <Text style={[styles.sliderText, { paddingLeft: 10 }]}>Heat</Text>
+                            <Text style={[styles.sliderText, { paddingLeft: 10 }]}>Cool</Text>
                         </View>
                         <Slider
                             animateTransitions={true}
