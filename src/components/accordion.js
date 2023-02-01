@@ -21,12 +21,12 @@ export default function Accordion(props) {
 
     const toggleExpand = () => {
         props.onPress();
-        LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+        // LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
         const shouldExpand = !expanded;
         setExpanded(shouldExpand);
-        shouldExpand
-            ? expand()
-            : collapse()
+        // shouldExpand
+        //     ? expand()
+        //     : collapse()
         // doStuff();
     }
 
@@ -40,18 +40,18 @@ export default function Accordion(props) {
 
     const expand = () => {
         Animated.timing(slide, {toValue: 0, duration: 250, useNativeDriver: true}).start(() => slide.setValue(0));
-        // Animated.timing(rotateAnimation, {toValue: 1, duration: 200, useNativeDriver: true})
-        //     .start(() => {
-        //         rotateAnimation.setValue(1)
-        //     });
+        Animated.timing(rotateAnimation, {toValue: 1, duration: 200, useNativeDriver: true})
+            .start(() => {
+                rotateAnimation.setValue(1)
+            });
     };
 
     const collapse = () => {
         Animated.timing(slide, {toValue: -100, duration: 250, useNativeDriver: true}).start(() => slide.setValue(-100));
-        // Animated.timing(rotateAnimation, {toValue: 0, duration: 200, useNativeDriver: true})
-        //     .start(() => {
-        //         rotateAnimation.setValue(0);
-        //     });
+        Animated.timing(rotateAnimation, {toValue: 0, duration: 200, useNativeDriver: true})
+            .start(() => {
+                rotateAnimation.setValue(0);
+            });
     };
 
     return (
