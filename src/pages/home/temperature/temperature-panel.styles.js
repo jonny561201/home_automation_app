@@ -32,22 +32,24 @@ export default StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        marginLeft: -50
+        // marginLeft: -100
+        // marginLeft: -50
     },
 
     formContainer: {
-        flexDirection: 'column',
+        // flexDirection: 'column',
     },
 
     tempImages: {
-        marginLeft: -170,
+        // marginLeft: -250,
+        marginLeft: -94,
     },
 
     statusTextBold: {
         fontWeight: 'bold',
         fontSize: 18,
-        marginLeft: 0.5,
-        marginRight: 0.5,
+        marginLeft: 18,
+        // marginRight: 0.5,
     },
 
     iconImage: {
@@ -57,8 +59,8 @@ export default StyleSheet.create({
     },
 
     smallTextGroup: {
-        marginLeft: 42,
-        width: 120,
+        marginLeft: 40,
+        // width: 120,
         flexDirection: 'row',
         justifyContent: 'space-between'
     },
