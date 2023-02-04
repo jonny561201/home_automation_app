@@ -18,9 +18,9 @@ export default function StateUtil() {
     }, 20000);
 
     useInterval(async () => {
-    //     getTempData();
-    //     getForecastData();
-        getLights();
+        getTempData();
+        getForecastData();
+        // getLights();
     }, 60000);
 
     useInterval(async () => {
@@ -31,11 +31,11 @@ export default function StateUtil() {
 
     useEffect(() => {
         if (!state.loadedUtils) {
-            getLights();
+            // getLights();
             getGarageData();
             getSumpData();
-            // getTempData();
-            // getForecastData();
+            getTempData();
+            getForecastData();
             getPreferences();
             // getActivities();
             dispatch({ type: 'SET_LOADED_UTILS', payload: true });
@@ -58,26 +58,26 @@ export default function StateUtil() {
         dispatch({ type: 'SET_SUMP_DATA', payload: { ...sump, currentDepth: sump.currentDepth.toFixed(1), averageDepth: sump.averageDepth.toFixed(1) } });
     }
 
-    // const getTempData = async () => {
-    //     const temp = await getCurrentTemperature(state.user.userId, state.auth.bearer);
-    //     const updatedTemp = {
-    //         ...temp,
-    //         desiredTemp: Math.round(temp.desiredTemp),
-    //         currentTemp: Math.round(temp.currentTemp),
-    //     };
-    //     dispatch({ type: 'SET_TEMP_DATA', payload: updatedTemp });
-    // }
+    const getTempData = async () => {
+        const temp = await getCurrentTemperature(state.user.userId, state.auth.bearer);
+        const updatedTemp = {
+            ...temp,
+            desiredTemp: Math.round(temp.desiredTemp),
+            currentTemp: Math.round(temp.currentTemp),
+        };
+        dispatch({ type: 'SET_TEMP_DATA', payload: updatedTemp });
+    }
 
-    // const getForecastData = async () => {
-    //     const forecast = await getUserForecast(state.user.userId, state.auth.bearer);
-    //     const updatedForecast = {
-    //         ...forecast,
-    //         temp: Math.round(forecast.temp),
-    //         minTemp: Math.round(forecast.minTemp),
-    //         maxTemp: Math.round(forecast.maxTemp)
-    //     };
-    //     dispatch({ type: 'SET_FORECAST_DATA', payload: updatedForecast });
-    // }
+    const getForecastData = async () => {
+        const forecast = await getUserForecast(state.user.userId, state.auth.bearer);
+        const updatedForecast = {
+            ...forecast,
+            temp: Math.round(forecast.temp),
+            minTemp: Math.round(forecast.minTemp),
+            maxTemp: Math.round(forecast.maxTemp)
+        };
+        dispatch({ type: 'SET_FORECAST_DATA', payload: updatedForecast });
+    }
 
     const getPreferences = async () => {
         const preferences = await getUserPreferences(state.user.userId, state.auth.bearer);
