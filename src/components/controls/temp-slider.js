@@ -6,10 +6,22 @@ import styles from './temp-slider.sytles';
 
 export default function TempSlider(props) {
     const [value, setValue] = useState(props.value);
+    const [color, setColor] = useState('#00c774');
 
     const onSlideComplete = (item) => {
-        setValue(item[0]);
-        props.slideComplete(item[0]);
+        const position = item[0];
+        setValue(position);
+        props.slideComplete(position);
+    }
+
+    const updateColor = (item) => {
+        const position = item[0];
+        if (position === 1)
+            setColor('#db5127')
+        else if (position === 2)
+            setColor('#27AEDB')
+        else if (position === 3)
+            setColor('#00c774')
     }
 
     const trackMark = () => {
@@ -24,7 +36,7 @@ export default function TempSlider(props) {
         <>
             {
                 props.hasHvac
-                    ? <View>
+                    ? <View style={{width: 140}}>
                         <View style={styles.textContainerFour}>
                             <Text style={[styles.sliderText, { paddingLeft: 20 }]}>Off</Text>
                             <Text style={[styles.sliderText, { paddingLeft: 6 }]}>Heat</Text>
@@ -32,10 +44,9 @@ export default function TempSlider(props) {
                             <Text style={[styles.sliderText, { paddingRight: 20 }]}>Auto</Text>
                         </View>
                         <Slider
-                            animateTransitions={true}
                             minimumValue={0}
                             maximumValue={3}
-                            minimumTrackTintColor={'#00c774'}
+                            minimumTrackTintColor={color}
                             step={1}
                             thumbStyle={{ height: 40, width: 60, backgroundColor: 'white', elevation: 5 }}
                             trackStyle={{ height: 40, borderRadius: 10 }}
@@ -43,19 +54,19 @@ export default function TempSlider(props) {
                             value={value}
                             onSlidingComplete={onSlideComplete}
                             renderTrackMarkComponent={trackMark}
+                            onValueChange={updateColor}
                         />
                     </View>
-                    : <View>
+                    : <View style={{width: 140}}>
                         <View style={styles.textContainerThree}>
                             <Text style={[styles.sliderText]}>Off</Text>
                             <Text style={[styles.sliderText, { paddingLeft: 10 }]}>Heat</Text>
                             <Text style={[styles.sliderText, { paddingLeft: 10 }]}>Cool</Text>
                         </View>
                         <Slider
-                            animateTransitions={true}
                             minimumValue={0}
                             maximumValue={2}
-                            minimumTrackTintColor={'#00c774'}
+                            minimumTrackTintColor={color}
                             step={1}
                             thumbStyle={{ height: 40, width: 60, backgroundColor: 'white', elevation: 5 }}
                             trackStyle={{ height: 40, borderRadius: 10 }}
@@ -63,6 +74,7 @@ export default function TempSlider(props) {
                             value={value}
                             onSlidingComplete={onSlideComplete}
                             renderTrackMarkComponent={trackMark}
+                            onValueChange={updateColor}
                         />
                     </View>
             }
@@ -70,4 +82,4 @@ export default function TempSlider(props) {
         </>
 
     )
-}
+} 
