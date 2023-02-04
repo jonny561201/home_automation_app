@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text, View } from 'react-native';
 import { Slider } from '@miblanchard/react-native-slider';
 import styles from './temp-slider.sytles';
@@ -8,6 +8,10 @@ export default function TempSlider(props) {
     const [value, setValue] = useState(props.value);
     const [color, setColor] = useState('#00c774');
 
+    useEffect(() => {
+        calculateColor(props.value);
+    });
+
     const onSlideComplete = (item) => {
         const position = item[0];
         setValue(position);
@@ -16,6 +20,10 @@ export default function TempSlider(props) {
 
     const updateColor = (item) => {
         const position = item[0];
+        calculateColor(position)
+    }
+
+    const calculateColor = (position) => {
         if (position === 1)
             setColor('#db5127')
         else if (position === 2)
@@ -36,7 +44,7 @@ export default function TempSlider(props) {
         <>
             {
                 props.hasHvac
-                    ? <View style={{width: 140}}>
+                    ? <View style={{ width: 140 }}>
                         <View style={styles.textContainerFour}>
                             <Text style={[styles.sliderText, { paddingLeft: 20 }]}>Off</Text>
                             <Text style={[styles.sliderText, { paddingLeft: 6 }]}>Heat</Text>
@@ -57,7 +65,7 @@ export default function TempSlider(props) {
                             onValueChange={updateColor}
                         />
                     </View>
-                    : <View style={{width: 140}}>
+                    : <View style={{ width: 140 }}>
                         <View style={styles.textContainerThree}>
                             <Text style={[styles.sliderText]}>Off</Text>
                             <Text style={[styles.sliderText, { paddingLeft: 10 }]}>Heat</Text>
