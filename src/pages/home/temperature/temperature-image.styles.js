@@ -37,11 +37,6 @@ export default StyleSheet.create({
         resizeMode: 'contain',
     },
 
-    minMax: {
-        fontSize: 16,
-        margin: 0,
-    },
-
     homeIcon: {
         paddingTop: 60,
         height: 200,

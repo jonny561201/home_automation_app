@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { View, Text, Image } from 'react-native';
 import { isDayLight } from '../../../utilities/services';
-// import { useInterval } from '../../../utilities/UseInterval';
+import { useInterval } from '../../../utilities/use-interval';
 import { Context } from '../../../state/store';
 import ClearIcon from '../../../resources/weatherIcons/sunny.png';
 import DrizzleIcon from '../../../resources/weatherIcons/drizzle.png';
@@ -27,17 +27,16 @@ export default function TemperatureImage() {
     const [state,] = useContext(Context);
     const [isNight, setIsNight] = useState(false);
     const [weatherIcon, setWeatherIcon] = useState();
-    // const [weatherDesc, setWeatherDesc] = useState("");
 
     useEffect(() => {
         setIsNight(!isDayLight(state.garageCoords, state.userCoords));
         getWeatherImage();
     });
 
-    // useInterval(() => {
-    //     setIsNight(!isDayLight(state.garageCoords, state.userCoords));
-    //     getWeatherImage();
-    // }, 20000);
+    useInterval(() => {
+        setIsNight(!isDayLight(state.garageCoords, state.userCoords));
+        getWeatherImage();
+    }, 20000);
 
     const weatherTypes = {
         "light intensity drizzle": DrizzleIcon, "drizzle": DrizzleIcon, "drizzle rain": DrizzleIcon, "heavy intensity drizzle": DrizzleIcon, "mist": MistIcon,
@@ -48,32 +47,22 @@ export default function TemperatureImage() {
         "broken clouds night": MostlyCloudyNightIcon,
     };
 
-    // const getWeatherLabel = (weather) => {
-    //     console.log(`weather label: ${weather}`)
-    //     return weather.replace(/_/g, " ").replace(".png", "");
-    // }
-
     const getWeatherImage = () => {
         const weatherDesc = state.forecastData?.description?.toLowerCase();
-        // console.log(`weather desc: ${weatherDesc}`)
         const weatherType = isNight ? `${weatherDesc} night` : weatherDesc;
-        // console.log(`weather type: ${weatherType}`)
         if (weatherDesc.includes("thunderstorm")) {
             setWeatherIcon(ThunderstormIcon);
-            // setWeatherDesc("thunderstorms");
         } else if (weatherType in weatherTypes) {
             setWeatherIcon(weatherTypes[weatherType]);
-            // setWeatherDesc(getWeatherLabel(weatherTypes[weatherType]));
         } else {
             setWeatherIcon(CloudyIcon);
-            // setWeatherDesc("cloudy");
         }
     }
 
     return (
         <View style={{ flexDirection: 'row', alignContent: 'center', justifyContent: 'center', margin: 0 }}>
             <View style={styles.tempExternalContainer}>
-                <Image style={styles.weatherIcon} alt="description" source={ClearIcon} />
+                <Image style={styles.weatherIcon} alt="description" source={weatherIcon} />
                 <View style={styles.externalTemp}>
                     {/* <MaskedView
                         style={{ height: 24 }}
@@ -86,12 +75,9 @@ export default function TemperatureImage() {
                             style={{ flex: 1 }}
                         />
                     </MaskedView> */}
-                    <Text>51</Text>
-                    <Text style={styles.external}>45&deg;</Text>
-                    <Text>37</Text>
-                    {/*<Text style={styles.minMax}>{state.forecastData.maxTemp}</Text>*/}
-                    {/*<Text style={styles.external}>{state.forecastData.temp}&deg;</Text>*/}
-                    {/*<Text style={styles.minMax}>{state.forecastData.minTemp}</Text>*/}
+                    <Text>{state.forecastData.maxTemp}</Text>
+                    <Text style={styles.external}>{state.forecastData.temp}&deg;</Text>
+                    <Text>{state.forecastData.minTemp}</Text>
                 </View>
             </View>
             <View style={styles.tempHomeContainer}>
