@@ -36,7 +36,7 @@ const initialState = {
         averageDepth: 0.0,
         depthUnit: 'in',
     },
-    tempData: { gaugeColor: '#A0A0A0', currentDesiredTemp: 70.0, modeValue: 0, mode: 'off' },
+    tempData: { currentDesiredTemp: 70.0, modeValue: 0, mode: 'off' },
     forecastData: { description: '' },
     preferences: {},
     tasks: [],

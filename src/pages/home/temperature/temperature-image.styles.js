@@ -1,7 +1,13 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 
 
 export default StyleSheet.create({
+    tempContainer: {
+        flexDirection: 'row',
+        alignContent: 'center',
+        justifyContent: 'center',
+        margin: 0,
+    },
 
     tempExternalContainer: {
         flexDirection: 'row',
@@ -40,7 +46,7 @@ export default StyleSheet.create({
     homeIcon: {
         paddingTop: 60,
         height: 200,
-        width:200,
+        width: 200,
         resizeMode: 'contain',
     },
 });

@@ -60,7 +60,7 @@ export default function TemperatureImage() {
     }
 
     return (
-        <View style={{ flexDirection: 'row', alignContent: 'center', justifyContent: 'center', margin: 0 }}>
+        <View style={styles.tempContainer}>
             <View style={styles.tempExternalContainer}>
                 <Image style={styles.weatherIcon} alt="description" source={weatherIcon} />
                 <View style={styles.externalTemp}>
