@@ -32,16 +32,8 @@ export default StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        // marginLeft: -100
-        // marginLeft: -50
     },
-
-    formContainer: {
-        // flexDirection: 'column',
-    },
-
     tempImages: {
-        // marginLeft: -250,
         marginLeft: -94,
     },
 
@@ -49,7 +41,6 @@ export default StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 18,
         marginLeft: 18,
-        // marginRight: 0.5,
     },
 
     iconImage: {
@@ -60,7 +51,6 @@ export default StyleSheet.create({
 
     smallTextGroup: {
         marginLeft: 40,
-        // width: 120,
         flexDirection: 'row',
         justifyContent: 'space-between'
     },

@@ -57,7 +57,7 @@ export default function TemperaturePanel() {
             </View>
             <View>
                 <View>
-                    <View style={styles.formContainer}>
+                    <View>
                         <View style={styles.tempImages}>
                             <TemperatureImage value={0} />
                         </View>
