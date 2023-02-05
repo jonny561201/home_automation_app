@@ -5,9 +5,9 @@ import Accordion from '../../../components/accordion';
 import TempIcon from '../../../resources/panelIcons/TemperatureIcon.png';
 import { Context } from '../../../state/store';
 import TemperatureImage from './temperature-image';
-import TempSlider from '../../../components/controls/temp-slider';
+import ThermostatToggle from '../../../components/controls/thermostat-toggle';
 import styles from './temperature-panel.styles';
-import TempDial from '../../../components/controls/temp-dial';
+import ThermostatDial from '../../../components/controls/thermostat-dial';
 
 
 export default function TemperaturePanel() {
@@ -62,8 +62,8 @@ export default function TemperaturePanel() {
                             <TemperatureImage value={0} />
                         </View>
                         <View style={{ alignItems: 'center' }}>
-                            <TempDial onChange={setDesiredTemp} desiredTemp={desiredTemp} disabled={disabled}/>
-                            <TempSlider hasHvac={hasHvacTask} value={state.tempData.modeValue} slideComplete={modeToggle} />
+                            <ThermostatDial onChange={setDesiredTemp} desiredTemp={desiredTemp} disabled={disabled}/>
+                            <ThermostatToggle hasHvac={hasHvacTask} value={state.tempData.modeValue} slideComplete={modeToggle} />
                         </View>
                     </View>
                 </View>

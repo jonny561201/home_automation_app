@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { RadialSlider } from 'react-native-radial-slider';
 
 
-export default function TempDial(props) {
+export default function ThermostatDial(props) {
     const [color, setColor] = useState('#db5127');
     const [desiredTemp, setDesiredTemp] = useState(props.desiredTemp);
 
@@ -50,7 +50,7 @@ export default function TempDial(props) {
             value={desiredTemp}
             min={50}
             max={90}
-            disabled={props.disabled}
+            // disabled={props.disabled}
             onChange={updateChange}
             // onComplete={knobChange}
             unit="&deg;"

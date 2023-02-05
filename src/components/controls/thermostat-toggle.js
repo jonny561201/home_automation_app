@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View } from 'react-native';
 import { Slider } from '@miblanchard/react-native-slider';
-import styles from './temp-slider.sytles';
+import styles from './thermostat-toggle.sytles';
 
 
-export default function TempSlider(props) {
+export default function ThermostatToggle(props) {
     const [value, setValue] = useState(props.value);
     const [color, setColor] = useState('#00c774');
 
