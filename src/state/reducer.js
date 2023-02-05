@@ -76,11 +76,10 @@ const Reducer = (state, action) => {
                 sumpData: action.payload
             }
         case 'SET_TEMP_DATA':
-            const color = toggleColor(action.payload.mode, state);
             const current = determineDesired(state, action.payload);
             return {
                 ...state,
-                tempData: { ...action.payload, gaugeColor: color, currentDesiredTemp: current }
+                tempData: { ...action.payload, currentDesiredTemp: current }
             }
         case 'SET_FORECAST_DATA':
             return {
@@ -101,17 +100,6 @@ const Reducer = (state, action) => {
             return state;
     }
 };
-
-const toggleColor = (mode, state) => {
-    if (mode === "cooling")
-        return "#27aedb";
-    else if (mode === "heating")
-        return "#db5127";
-    else if (mode === "auto" && state.tasks.some(x => x.task_type === 'hvac'))
-        return "#00c774";
-    else
-        return "#A0A0A0";
-}
 
 
 //TODO: doesnt handle multiple hvac events well..what if more than one are active?
