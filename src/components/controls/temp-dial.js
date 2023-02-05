@@ -7,7 +7,7 @@ export default function TempDial(props) {
     const [desiredTemp, setDesiredTemp] = useState(props.desiredTemp);
 
     useEffect(() => {
-        calculateColor(props.desiredTemp)
+        calculateColor(props.desiredTemp);
     }, []);
 
     const calculateColor = (value) => {
@@ -50,7 +50,7 @@ export default function TempDial(props) {
             value={desiredTemp}
             min={50}
             max={90}
-            disabled={true}
+            disabled={props.disabled}
             onChange={updateChange}
             // onComplete={knobChange}
             unit="&deg;"
@@ -60,7 +60,6 @@ export default function TempDial(props) {
             markerLineSize={20}
             isHideSubtitle={true}
             isHideButtons={true}
-            // isHideLines={true}
             valueStyle={{ fontSize: 70, paddingLeft: 20 }}
             unitStyle={{ fontSize: 40 }}
             linearGradient={[{ offset: '0%', color: '#27aedb' }, { offset: '100%', color: color }]}
