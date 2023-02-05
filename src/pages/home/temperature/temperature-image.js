@@ -18,9 +18,7 @@ import ThunderstormIcon from '../../../resources/weatherIcons/thunderstorm.png';
 import HomeIcon from '../../../resources/weatherIcons/home.png';
 import ClearNightIcon from '../../../resources/weatherIcons/clear_night.png';
 import MistIcon from '../../../resources/weatherIcons/misty.png';
-import { LinearGradient } from 'expo-linear-gradient';
 import styles from './temperature-image.styles';
-import MaskedView from '@react-native-community/masked-view';
 
 
 export default function TemperatureImage() {
@@ -64,17 +62,6 @@ export default function TemperatureImage() {
             <View style={styles.tempExternalContainer}>
                 <Image style={styles.weatherIcon} alt="description" source={weatherIcon} />
                 <View style={styles.externalTemp}>
-                    {/* <MaskedView
-                        style={{ height: 24 }}
-                        maskElement={<Text>51</Text>}
-                    >
-                        <LinearGradient
-                            colors={['red', 'blue']}
-                            start={{ x: 1, y: 1 }}
-                            end={{ x: 0, y: 0.33 }}
-                            style={{ flex: 1 }}
-                        />
-                    </MaskedView> */}
                     <Text>{state.forecastData.maxTemp}</Text>
                     <Text style={styles.external}>{state.forecastData.temp}&deg;</Text>
                     <Text>{state.forecastData.minTemp}</Text>
