@@ -74,7 +74,7 @@ export default function StateUtil() {
             ...forecast,
             temp: Math.round(forecast.temp),
             minTemp: Math.round(forecast.minTemp),
-            maxTemp: Math.round(forecast.maxTemp)
+            maxTemp: Math.round(forecast.maxTemp),
         };
         dispatch({ type: 'SET_FORECAST_DATA', payload: updatedForecast });
     }
