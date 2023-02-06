@@ -25,4 +25,41 @@ export default StyleSheet.create({
         bottom: 0,
         backgroundColor: '#00c774',
     },
+    
+    swipeContainer: {
+        alignItems: 'center', 
+        backgroundColor: '#dddddd', 
+        justifyContent: 'space-between',
+        paddingLeft: 15, 
+        flexDirection: 'row', 
+        flex: 1
+    },
+
+    swipeEdit: {
+        alignItems: 'center',
+        bottom: 0,
+        justifyContent: 'center',
+        flex: 1,
+        position: 'absolute',
+        top: 0,
+        width: 75,
+        right: 75,
+        backgroundColor: 'blue'
+    },
+
+    swipeDelete: {
+        alignItems: 'center',
+        bottom: 0,
+        justifyContent: 'center',
+        flex: 1,
+        position: 'absolute',
+        top: 0,
+        width: 75,
+        right: 0,
+        backgroundColor: 'red'
+    },
+    
+    swipeText: {
+        color: '#ffffff', 
+    },
 });
