@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useState } from 'react';
+import React, { useCallback, useContext, useState, useEffect } from 'react';
 import { useFocusEffect } from "@react-navigation/native";
 import { View, Text, TouchableOpacity } from 'react-native';
 import { SwipeListView } from 'react-native-swipe-list-view';
@@ -15,6 +15,11 @@ import CreateEvent from './create-event';
 export default function Events(props) {
     const [state, dispatch] = useContext(Context);
     const [visible, setVisible] = useState(false);
+    const [events, setEvents] = useState([]);
+
+    useEffect(() => {
+        setEvents(state.tasks.map((x, i) => ({...x, key: `${i}`})));
+    }, []);
 
     useFocusEffect(
         useCallback(() => {
@@ -39,9 +44,9 @@ export default function Events(props) {
             <Header toggleMenu={props.navigation.toggleDrawer} />
             <View style={styles.pageContainer}>
                 <View style={styles.eventsBody}>
-                    <Text style={styles.eventsHeader}>Events</Text>
+                    <Text style={styles.eventsHeader}>Schedule Events</Text>
                     <SwipeListView
-                        data={state.tasks}
+                        data={events}
                         rightOpenValue={-150}
                         disableRightSwipe
                         previewRowKey={'0'}
