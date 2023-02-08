@@ -40,8 +40,8 @@ const initialState = {
     forecastData: { description: '' },
     preferences: {},
     tasks: [
-        { task_type: 'light', alarm_days: 'TueWedThu', alarm_time: '08:00:00', enabled: true },
-        { task_type: 'hvac', alarm_days: 'FriSatSunMon', enabled: false, hvac_stop: '22:00:00', hvac_start: '07:30:00', hvac_start_temp: 72, hvac_stop_temp: 68 },
+        { task_id: '123', task_type: 'light', alarm_days: 'TueWedThu', alarm_time: '08:00:00', enabled: true },
+        { task_id: '234', task_type: 'hvac', alarm_days: 'FriSatSunMon', enabled: false, hvac_stop: '22:00:00', hvac_start: '07:30:00', hvac_start_temp: 72, hvac_stop_temp: 68 },
     ],
     loadedUtils: false,
     taskTypes: ['sunrise alarm', 'turn on', 'turn off', 'hvac']

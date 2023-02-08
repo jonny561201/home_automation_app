@@ -4,6 +4,7 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import { SwipeListView } from 'react-native-swipe-list-view';
 import { Context } from "../../state/store";
 import { FAB } from 'react-native-paper';
+import { deleteScheduledTask } from '../../utilities/rest-api';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Header from '../../header/header';
 import styles from './events.styles';
@@ -19,27 +20,14 @@ export default function Events(props) {
         }, [dispatch])
     );
 
-    //Light Activity
-    // props.task.task_type
-    // props.task.alarm_days
-    // props.task.alarm_time
-    // props.task.enabled
-
-    //hvac Activity
-    // props.task.task_type
-    // props.task.alarm_days
-    // props.task.enabled
-    // props.task.hvac_stop
-    // props.task.hvac_start
-    // props.task.hvac_start_temp
-    // props.task.hvac_stop_temp
-
     const editEvent = (item) => {
         console.log(item)
     }
 
-    const deleteEvent = (item) => {
-        console.log(item)
+    const deleteEvent = async (item) => {
+        const response = await deleteScheduledTask(state.user.userId, state.auth.bearer, item.task_id);
+        if (response.ok)
+            dispatch({ type: 'DELETE_SCHEDULED_TASK', payload: item.task_id });
     }
 
     return (
