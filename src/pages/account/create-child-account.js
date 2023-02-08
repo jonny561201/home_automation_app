@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
-import { Divider } from 'react-native-paper';
 import { addUserChildAccount } from '../../utilities/rest-api';
-import { Dialog, TextInput, Checkbox } from 'react-native-paper';
+import { Dialog, TextInput, Checkbox, Divider } from 'react-native-paper';
 import { GreenButton, RedButton } from '../../components/controls/buttons';
 import { Context } from "../../state/store";
 import styles from './create-child-account.styles';
