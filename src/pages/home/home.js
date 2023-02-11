@@ -1,5 +1,6 @@
 import React, { useContext, useCallback } from "react";
 import { ScrollView } from 'react-native';
+import { useTheme } from "react-native-paper";
 import Header from '../../header/header';
 import styles from './home.styles';
 import BasementPanel from './basement/basement-panel';
@@ -14,6 +15,7 @@ import TemperaturePanel from "./temperature/temperature-panel";
 export default function Home(props) {
     const [state, dispatch] = useContext(Context);
     const roles = state.user.roles;
+    const theme = useTheme();
 
     useFocusEffect(
         useCallback(() => {
@@ -24,7 +26,7 @@ export default function Home(props) {
     return (
         <>
             <Header toggleMenu={props.navigation.toggleDrawer} />
-            <ScrollView style={styles.pageContainer}>
+            <ScrollView style={[styles.pageContainer, {backgroundColor: theme.colors.background}]}>
                 {
                     roles.some(x => x.role_name === 'garage_door') &&
                     <GaragePanel />

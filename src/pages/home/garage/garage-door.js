@@ -1,16 +1,17 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { View, Text, Image } from 'react-native';
-import styles from './garage-door.styles';
-import { BlueButton, GreenButton, RedButton } from '../../../components/controls/buttons';
 import moment from 'moment';
-
+import { useTheme } from 'react-native-paper';
 import { Context } from '../../../state/store';
 import { useInterval } from '../../../utilities/use-interval';
 import UpDownIcon from '../../../resources/panelIcons/UpDown.png';
 import { toggleGarageDoor, updateGarageState } from '../../../utilities/rest-api';
+import { BlueButton, GreenButton, RedButton } from '../../../components/controls/buttons';
+import styles from './garage-door.styles';
 
 
 export default function GarageDoor(props) {
+    const theme = useTheme();
     const [state, dispatch] = useContext(Context);
     const [statusDays, setStatusDays] = useState();
     const [statusMins, setStatusMins] = useState();
@@ -43,13 +44,13 @@ export default function GarageDoor(props) {
     return (
         <View style={styles.garageDoorContainer}>
             <View style={styles.statusTextGroup}>
-                <Text style={styles.garageTextBold}>{props.device.doorName}</Text>
+                <Text style={[styles.garageTextBold, {color: theme.colors.font}]}>{props.device.doorName}</Text>
                 {props.device.isOpen
-                    ? <Text style={styles.garageBigText}>Opened</Text>
-                    : <Text style={styles.garageBigText}>Closed</Text>}
+                    ? <Text style={[styles.garageBigText, {color: theme.colors.font}]}>Opened</Text>
+                    : <Text style={[styles.garageBigText, {color: theme.colors.font}]}>Closed</Text>}
                 {statusDays === 0
-                    ? <Text style={styles.timeText}>{statusHours}Hrs {statusMins}Min</Text>
-                    : <Text style={styles.timeText}>{statusDays}Days {statusHours}Hrs</Text>}
+                    ? <Text style={[styles.timeText, {color: theme.colors.font}]}>{statusHours}Hrs {statusMins}Min</Text>
+                    : <Text style={[styles.timeText, {color: theme.colors.font}]}>{statusDays}Days {statusHours}Hrs</Text>}
             </View >
             <View style={styles.statusButtonGroup}>
                 {props.device.isOpen
