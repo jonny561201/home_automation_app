@@ -45,6 +45,6 @@ export const darkTheme = {
     },
     surfaceDisabled: "rgba(226, 227, 220, 0.12)",
     onSurfaceDisabled: "rgba(226, 227, 220, 0.38)",
-    backdrop: "rgba(44, 50, 41, 0.4)"
+    backdrop: "rgba(44, 50, 41, 0.4)" //color when fade out like dialog open
   }
 }

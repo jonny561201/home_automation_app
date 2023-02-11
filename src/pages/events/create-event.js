@@ -1,11 +1,12 @@
 import React from 'react';
 import { Text } from 'react-native';
-import { Dialog, Divider } from 'react-native-paper';
+import { Dialog, Divider, useTheme } from 'react-native-paper';
 import { RedButton, GreenButton } from '../../components/controls/buttons';
 import styles from './create-event.styles';
 
 
 export default function CreateEvent(props) {
+    const theme = useTheme();
 
     const submitEvent = () => {
         props.close();
@@ -13,10 +14,10 @@ export default function CreateEvent(props) {
 
     return (
         <>
-            <Dialog.Title>Create Event</Dialog.Title>
-            <Divider style={styles.dividerHeader} />
+            <Dialog.Title style={{color: theme.colors.font}}>Create Event</Dialog.Title>
+            <Divider style={[styles.dividerHeader, {backgroundColor: theme.colors.font}]} />
             <Dialog.Content>
-                <Text>This is a Test</Text>
+                <Text style={{color: theme.colors.font}}>This is a Test</Text>
             </Dialog.Content>
 
             <Dialog.Actions style={styles.dialogButtonContainer}>

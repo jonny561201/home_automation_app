@@ -66,7 +66,7 @@ export default function Events(props) {
                             </View>
                         )}
                     />
-                        <Portal>
+                        <Portal style={{backgroundColor: theme.colors.background}}>
                             <Dialog visible={visible} onDismiss={closeDialog}>
                                 <CreateEvent close={closeDialog}/>
                             </Dialog>
