@@ -8,7 +8,6 @@ export default StyleSheet.create({
 
     settingsHeader: {
         fontSize: 26,
-        // color: 'black',
         fontWeight: 'bold',
     },
 

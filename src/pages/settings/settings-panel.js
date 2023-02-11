@@ -1,12 +1,14 @@
 import React, { useContext } from 'react';
 import { View, Text } from 'react-native';
+import { useTheme } from 'react-native-paper';
 import { Context } from '../../state/store';
 import styles from './settings-panel.styles';
 import { GreenButton } from "../../components/controls/buttons";
 
 
 export default function SettingsPanel(props) {
-    const [state,] = useContext(Context)
+    const [state,] = useContext(Context);
+    const theme = useTheme();
 
     const handleClick = () => {
         props.toggleEdit();
@@ -15,29 +17,29 @@ export default function SettingsPanel(props) {
     return (
         <>
             <View>
-                <Text style={styles.settingsHeader}>Garage</Text>
+                <Text style={[styles.settingsHeader, {color: theme.colors.font}]}>Garage</Text>
             </View>
             <View style={styles.settingsRow}>
-                <Text style={styles.measureUnit}>Open Door: </Text>
-                <Text style={styles.tempUnit}>{state.preferences.garage_door ? state.preferences.garage_door : "None"}</Text>
+                <Text style={[styles.measureUnit, {color: theme.colors.font}]}>Open Door: </Text>
+                <Text style={[styles.tempUnit, {color: theme.colors.font}]}>{state.preferences.garage_door ? state.preferences.garage_door : "None"}</Text>
             </View>
             <View>
-                <Text style={styles.settingsHeader}>Temperature</Text>
+                <Text style={[styles.settingsHeader, {color: theme.colors.font}]}>Temperature</Text>
             </View>
             <View style={styles.settingsRow}>
-                <Text style={styles.tempUnit}>Unit: </Text>
-                <Text style={styles.tempUnit}>{state.preferences.temp_unit}</Text>
+                <Text style={[styles.tempUnit, {color: theme.colors.font}]}>Unit: </Text>
+                <Text style={[styles.tempUnit, {color: theme.colors.font}]}>{state.preferences.temp_unit}</Text>
             </View>
             <View style={styles.settingsRow}>
-                <Text style={styles.tempCity}>City: </Text>
-                <Text style={styles.tempCity}>{state.preferences.city}</Text>
+                <Text style={[styles.tempCity, {color: theme.colors.font}]}>City: </Text>
+                <Text style={[styles.tempCity, {color: theme.colors.font}]}>{state.preferences.city}</Text>
             </View>
             <View>
-                <Text style={styles.settingsHeader}>Measurement</Text>
+                <Text style={[styles.settingsHeader, {color: theme.colors.font}]}>Measurement</Text>
             </View>
             <View style={styles.settingsRow}>
-                <Text style={styles.measureUnit}>Unit: </Text>
-                <Text style={styles.measureUnit}>{state.preferences.measure_unit}</Text>
+                <Text style={[styles.measureUnit, {color: theme.colors.font}]}>Unit: </Text>
+                <Text style={[styles.measureUnit, {color: theme.colors.font}]}>{state.preferences.measure_unit}</Text>
             </View>
 
             <View style={[styles.settingsRow, styles.buttonRow]}>
