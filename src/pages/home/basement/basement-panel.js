@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Image, Text, View } from 'react-native';
+import { useTheme } from 'react-native-paper';
 import Accordion from '../../../components/accordion';
 import BasementIcon from '../../../resources/panelIcons/BasementIcon.png';
 import SumpPumpHighIcon from '../../../resources/panelIcons/SumpPumpHighIcon.png';
@@ -11,6 +12,7 @@ import styles from './basement-panel.styles';
 
 
 export default function BasementPanel() {
+    const theme = useTheme();
     const [open, setOpen] = useState(false);
     const [state,] = useContext(Context);
 
@@ -31,11 +33,11 @@ export default function BasementPanel() {
             <View style={styles.titleGroup}>
                 <Image style={styles.iconImage} source={BasementIcon} />
                 <View style={styles.basementHeader}>
-                    <Text style={styles.statusTextBold}>Basement</Text>
+                    <Text style={[styles.statusTextBold, {color: theme.colors.font}]}>Basement</Text>
                     {!open &&
                         <View style={styles.smallTextGroup}>
-                            <Text style={styles.smallText}>Depth:</Text>
-                            <Text style={[styles.smallText, state.sumpData.warningLevel === 3 ? styles.alert : styles.healthy]}>{state.sumpData.currentDepth} {state.sumpData.depthUnit}</Text>
+                            <Text style={[styles.smallText, {color: theme.colors.font}]}>Depth:</Text>
+                            <Text style={[styles.smallText, {color: theme.colors.font}, state.sumpData.warningLevel === 3 ? styles.alert : styles.healthy]}>{state.sumpData.currentDepth} {state.sumpData.depthUnit}</Text>
                         </View>
                     }
                 </View>
@@ -44,12 +46,12 @@ export default function BasementPanel() {
                 {getSumpIcon()}
                 <View style={styles.sumpMeasureGroup}>
                     <View style={styles.smallTextGroup}>
-                        <Text>Current: </Text>
-                        <Text style={[state.sumpData.warningLevel === 3 ? styles.alert : styles.healthy]}>{state.sumpData.currentDepth} {state.sumpData.depthUnit}</Text>
+                        <Text style={{color: theme.colors.font}}>Current: </Text>
+                        <Text style={[{color: theme.colors.font}, state.sumpData.warningLevel === 3 ? styles.alert : styles.healthy]}>{state.sumpData.currentDepth} {state.sumpData.depthUnit}</Text>
                     </View>
                     <View style={styles.smallTextGroup}>
-                        <Text>Average: </Text>
-                        <Text>{state.sumpData.averageDepth} {state.sumpData.depthUnit}</Text>
+                        <Text style={{color: theme.colors.font}}>Average: </Text>
+                        <Text style={{color: theme.colors.font}}>{state.sumpData.averageDepth} {state.sumpData.depthUnit}</Text>
                     </View>
                 </View>
             </View>
