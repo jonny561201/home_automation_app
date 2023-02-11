@@ -6,7 +6,7 @@ import SettingsPanel from './settings-panel';
 import SettingsEditPanel from './settings-edit-panel';
 import styles from './settings.styles'
 import { useFocusEffect } from "@react-navigation/native";
-import { Switch } from "react-native-paper";
+import { Switch, useTheme } from "react-native-paper";
 
 
 export default function Settings(props) {
@@ -14,6 +14,7 @@ export default function Settings(props) {
     const [isAutoMode, setIsAutoMode] = useState(false);
     const [darkMode, setDarkMode] = useState(false);
     const [isEditMode, setEditMode] = useState();
+    const theme = useTheme();
 
     useFocusEffect(
         useCallback(() => {
@@ -45,13 +46,13 @@ export default function Settings(props) {
     return (
         <>
             <Header toggleMenu={props.navigation.toggleDrawer} />
-            <ScrollView style={styles.pageContainer}>
+            <ScrollView style={[styles.pageContainer, {backgroundColor: theme.colors.background}]}>
                 <View style={styles.settingsBody}>
-                    <Text style={styles.settingsHeader}>Preferences</Text>
+                    <Text style={[styles.settingsHeader, {color: theme.colors.font}]}>Preferences</Text>
 
                     <View style={styles.settingsRow}>
                         <Switch value={darkMode && !isAutoMode} onValueChange={toggleTheme} />
-                        <Text style={styles.settingsLabelText}>Dark Mode</Text>
+                        <Text style={[styles.settingsLabelText, {color: theme.colors.font}]}>Dark Mode</Text>
                     </View>
 
                     {/* <View style={styles.settingsRow}>

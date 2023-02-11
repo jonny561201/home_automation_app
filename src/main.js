@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { Context } from './state/store'
 import { Provider } from "react-native-paper";
-import { DarkTheme, DefaultTheme } from 'react-native-paper';
+import { DefaultTheme } from 'react-native-paper';
 import { darkTheme } from '../constants/Colors';
 import Routes from "./routes/routes";
 

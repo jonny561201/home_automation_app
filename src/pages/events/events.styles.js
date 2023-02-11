@@ -8,12 +8,10 @@ export default StyleSheet.create({
 
     eventsHeader: {
         fontSize: 26,
-        // color: 'black',
         fontWeight: 'bold',
     },
 
     eventsBody: {
-        color: 'black',
         flexDirection: 'column',
         marginLeft: 10,
     },
@@ -28,7 +26,7 @@ export default StyleSheet.create({
     
     swipeContainer: {
         alignItems: 'center', 
-        backgroundColor: '#dddddd', 
+        // backgroundColor: '#dddddd', 
         justifyContent: 'space-between',
         paddingLeft: 15, 
         flexDirection: 'row', 

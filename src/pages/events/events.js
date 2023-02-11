@@ -56,7 +56,7 @@ export default function Events(props) {
                             <Event task={data.item} key={`${data.item.task_type}-${data.item.alarm_days}-${data.item.enabled}`} />
                         )}
                         renderHiddenItem={(data) => (
-                            <View style={styles.swipeContainer}>
+                            <View style={[styles.swipeContainer, {backgroundColor: theme.colors.surface}]}>
                                 <TouchableOpacity style={styles.swipeEdit} onPress={() => editEvent(data.item)}>
                                     <Icon name='edit' size={30} style={styles.swipeText} />
                                 </TouchableOpacity>

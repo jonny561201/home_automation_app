@@ -8,12 +8,11 @@ export default StyleSheet.create({
 
     settingsHeader: {
         fontSize: 26,
-        color: 'black',
+        // color: 'black',
         fontWeight: 'bold',
     },
 
     settingsBody: {
-        color: 'black',
         flexDirection: 'column',
         marginLeft: 10,
     },
