@@ -26,20 +26,21 @@ export default function Settings(props) {
     }
 
     const toggleTheme = () => {
-        // toggleDarkMode()
         setDarkMode(!darkMode);
+        dispatch({ type: 'SET_DARK_MODE', payload: !state.isDarkMode });
+        console.log(state.isDarkMode)
     }
 
-    const toggleAutoTheme = () => {
-        // localStorage.setItem('auto-theme', !isAutoMode);
-        setIsAutoMode(!isAutoMode);
-        // isNightTime(state.garageCoords, state.userCoords)
-        //     ? setTheme('theme-dark')
-        //     : setTheme('theme-light')
-        if (!isAutoMode === false && !darkMode)
-            console.log('set theme')
-        // setTheme('theme-light');
-    }
+    // const toggleAutoTheme = () => {
+    //     // localStorage.setItem('auto-theme', !isAutoMode);
+    //     setIsAutoMode(!isAutoMode);
+    //     // isNightTime(state.garageCoords, state.userCoords)
+    //     //     ? setTheme('theme-dark')
+    //     //     : setTheme('theme-light')
+    //     if (!isAutoMode === false && !darkMode)
+    //         console.log('set theme')
+    //     // setTheme('theme-light');
+    // }
 
     return (
         <>
@@ -53,10 +54,10 @@ export default function Settings(props) {
                         <Text style={styles.settingsLabelText}>Dark Mode</Text>
                     </View>
 
-                    <View style={styles.settingsRow}>
+                    {/* <View style={styles.settingsRow}>
                         <Switch value={isAutoMode} onValueChange={toggleAutoTheme} />
                         <Text style={styles.settingsLabelText}>Auto Theme</Text>
-                    </View>
+                    </View> */}
 
                     {
                         isEditMode

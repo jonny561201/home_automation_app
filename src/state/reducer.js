@@ -7,6 +7,11 @@ const Reducer = (state, action) => {
                 ...state,
                 activePage: action.payload
             };
+        case 'SET_DARK_MODE':
+            return {
+                ...state,
+                isDarkMode: action.payload
+            };
         case 'SET_AUTH_DATA':
             return {
                 ...state,
