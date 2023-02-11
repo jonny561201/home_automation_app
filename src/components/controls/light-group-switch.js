@@ -4,7 +4,7 @@ import { Context } from '../../state/store';
 import { ExpandButton } from './buttons';
 import { MaterialIcons } from '@expo/vector-icons';
 import { setLightGroupState } from '../../utilities/rest-api';
-import { TouchableRipple } from 'react-native-paper';
+import { TouchableRipple, useTheme } from 'react-native-paper';
 import Slider from '@react-native-community/slider';
 import SwitchSlider from "../../pages/home/lighting/switch-slider";
 import styles from './light-group-switch.styles'
@@ -12,6 +12,7 @@ import styles from './light-group-switch.styles'
 
 export default function LightGroupSwitch(props) {
     const [state, dispatch] = useContext(Context);
+    const theme = useTheme();
     const [isOn, setIsOn] = useState(props.data.on);
     const [lights,] = useState(props.data.lights);
     const [groupId,] = useState(props.data.groupId);
@@ -52,11 +53,11 @@ export default function LightGroupSwitch(props) {
     return (
         <>
             <View style={styles.lightGroup}>
-                <ExpandButton onPress={() => setLightsOpen(!areLightsOpen)} rotate='90' direction='right' />
+                <ExpandButton onPress={() => setLightsOpen(!areLightsOpen)} rotate='90' direction='right' color={theme.colors.font} />
                 <TouchableRipple style={styles.lightButton} onPress={toggleLightGroup} borderless={true}>
-                    <Text numberOfLines={1} style={styles.lightText}>{groupName}</Text>
+                    <Text numberOfLines={1} style={[styles.lightText, {color: theme.colors.font}]}>{groupName}</Text>
                 </TouchableRipple>
-                <Slider value={brightness} onSlidingComplete={slideLightGroup} style={{ width: 200 }} minimumTrackTintColor='#00c774' thumbTintColor='white' maximumValue={100} />
+                <Slider value={brightness} onSlidingComplete={slideLightGroup} style={{ width: 200 }} minimumTrackTintColor={theme.colors.primary} maximumTrackTintColor={theme.colors.font} thumbTintColor='white' maximumValue={100} />
                 <MaterialIcons name='brightness-medium' style={styles.brightnessIcon} />
             </View>
             {

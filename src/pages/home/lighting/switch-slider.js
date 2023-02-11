@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { View, Text } from 'react-native';
-import { TouchableRipple } from 'react-native-paper';
+import { TouchableRipple, useTheme } from 'react-native-paper';
 import { Context } from '../../../state/store';
 import { setLightState } from '../../../utilities/rest-api';
 import Slider from "@react-native-community/slider";
@@ -9,6 +9,7 @@ import styles from './switch-slider.styles'
 
 export default function SwitchSlider(props) {
     const [state, dispatch] = useContext(Context);
+    const theme = useTheme();
     const [light, setLight] = useState({});
     const [lightId,] = useState(props.lightId);
     const [groupId,] = useState(props.groupId);
@@ -43,9 +44,9 @@ export default function SwitchSlider(props) {
         <View style={styles.lightGroup}>
             <View style={styles.lightSpacerOne}/>
             <TouchableRipple onPress={toggleLight} borderless={true} style={styles.lightButton}>
-                <Text style={styles.lightTextSmall}>{light.lightName}</Text>
+                <Text style={[styles.lightTextSmall, {color: theme.colors.font}]}>{light.lightName}</Text>
             </TouchableRipple>
-            <Slider value={light?.brightness} onSlidingComplete={updateSlider} style={{ width: 200 }} minimumTrackTintColor='#00c774' thumbTintColor='white' maximumValue={100}/>
+            <Slider value={light?.brightness} onSlidingComplete={updateSlider} style={{ width: 200 }} minimumTrackTintColor={theme.colors.primary} maximumTrackTintColor={theme.colors.font} thumbTintColor='white' maximumValue={100}/>
 
             <View style={styles.lightSpacerTwo}/>
         </View>
