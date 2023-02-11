@@ -1,18 +1,21 @@
 import React, { useState, useContext } from 'react';
 import { Image, Text, View } from 'react-native';
+import { useTheme } from 'react-native-paper';
 import { setUserTemperature } from '../../../utilities/rest-api'
 import Accordion from '../../../components/accordion';
 import TempIcon from '../../../resources/panelIcons/TemperatureIcon.png';
 import { Context } from '../../../state/store';
 import TemperatureImage from './temperature-image';
 import ThermostatToggle from '../../../components/controls/thermostat-toggle';
-import styles from './temperature-panel.styles';
 import ThermostatDial from '../../../components/controls/thermostat-dial';
+import styles from './temperature-panel.styles';
 
 
 export default function TemperaturePanel() {
+    const theme = useTheme();
     const [state, dispatch] = useContext(Context);
     const [open, setOpen] = useState(false);
+    const [color, setColor] = useState('#E5E5E5');
     const hasHvacTask = state.tasks.some(x => x.task_type === 'hvac');
     const [desiredTemp, setDesiredTemp] = useState(state.tempData.currentDesiredTemp);
     const [disabled, setDisabled] = useState(state.tempData.mode === 'auto' || state.tempData.mode === 'off');
@@ -24,14 +27,22 @@ export default function TemperaturePanel() {
 
     const modeToggle = async (newModeValue) => {
         setDisabled(newModeValue === 0 || newModeValue === 3)
-        if (newModeValue === 1)
+        if (newModeValue === 1) {
             await dispatch({ type: 'SET_TEMP_DATA', payload: { ...state.tempData, mode: 'heating', modeValue: newModeValue } });
-        else if (newModeValue === 2)
+            setColor('#db5127'); //hot
+        }
+        else if (newModeValue === 2) {
             await dispatch({ type: 'SET_TEMP_DATA', payload: { ...state.tempData, mode: 'cooling', modeValue: newModeValue } });
-        else if (newModeValue === 3)
+            setColor('#27AEDB'); //cool
+        }
+        else if (newModeValue === 3) {
             await dispatch({ type: 'SET_TEMP_DATA', payload: { ...state.tempData, mode: 'auto', modeValue: newModeValue } });
-        else
+            setColor('#00c774');  //green
+        }
+        else {
             await dispatch({ type: 'SET_TEMP_DATA', payload: { ...state.tempData, mode: 'off', modeValue: 0 } });
+            setColor('#E5E5E5');  //grey
+        }
     }
 
     return (
@@ -39,17 +50,17 @@ export default function TemperaturePanel() {
             <View style={styles.titleGroup}>
                 <Image style={styles.iconImage} source={TempIcon} />
                 <View style={styles.securityHeader}>
-                    <Text style={styles.statusTextBold}>Temperature</Text>
+                    <Text style={[styles.statusTextBold, {color: theme.colors.font}]}>Temperature</Text>
                     {
                         !open &&
                         <>
                             <View style={styles.smallTextGroup}>
-                                <Text style={styles.smallText}>Outside:</Text>
-                                <Text style={styles.smallText}>{state.forecastData.temp}&deg;</Text>
+                                <Text style={[styles.smallText, {color: theme.colors.font}]}>Outside:</Text>
+                                <Text style={[styles.smallText, {color: theme.colors.font}]}>{state.forecastData.temp}&deg;</Text>
                             </View>
                             <View style={styles.smallTextGroup}>
-                                <Text style={styles.smallText}>Inside:</Text>
-                                <Text style={styles.smallText}>{state.tempData.currentTemp}&deg;</Text>
+                                <Text style={[styles.smallText, {color: theme.colors.font}]}>Inside:</Text>
+                                <Text style={[styles.smallText, {color: theme.colors.font}]}>{state.tempData.currentTemp}&deg;</Text>
                             </View>
                         </>
                     }
@@ -62,7 +73,7 @@ export default function TemperaturePanel() {
                             <TemperatureImage value={0} />
                         </View>
                         <View style={{ alignItems: 'center' }}>
-                            <ThermostatDial onChange={setDesiredTemp} desiredTemp={desiredTemp} disabled={disabled}/>
+                            <ThermostatDial onChange={setDesiredTemp} desiredTemp={desiredTemp} disabled={disabled} color={color}/>
                             <ThermostatToggle hasHvac={hasHvacTask} value={state.tempData.modeValue} slideComplete={modeToggle} />
                         </View>
                     </View>

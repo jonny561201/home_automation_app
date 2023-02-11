@@ -60,7 +60,7 @@ export default function ThermostatDial(props) {
             markerLineSize={20}
             isHideSubtitle={true}
             isHideButtons={true}
-            valueStyle={{ fontSize: 70, paddingLeft: 20 }}
+            valueStyle={{ fontSize: 70, paddingLeft: 20, color: props.color }}
             unitStyle={{ fontSize: 40 }}
             linearGradient={[{ offset: '0%', color: '#27aedb' }, { offset: '100%', color: color }]}
         />
