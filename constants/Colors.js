@@ -1,36 +1,50 @@
-export default {
-  light: {
-    primaryMobileColor: '#ffffff',
-    primaryColor: '#ffffff',
-    secondaryColor: '#2f343d',
-    inputColor: '#ffffff',
-    switchColor: '#ffffff',
-    inputFont: '#000000',
-    fontColor: '#3e454f',
-    selectedRadioColor: '#3f51b5',
-    selectedBorderColor: '#3f51b5',
-    radioColor: '#ffffff',
-    radioRing: '#6e6e6e',
-    headerFontColor: '#ffffff',
-    panelFontColor: '#000000',
-    lightButton: '#c7c7c7',
-    borderColor: '#bdbdbd',
-  },
-  dark: {
-    primaryMobileColor: '#2f343d',
-    primaryColor: '#2f343d',
-    secondaryColor: '#181616',
-    inputColor:'#6e6e6e',
-    switchColor: '#aaaaaa',
-    inputFont: '#000000',
-    fontColor: '#aaaaaa',
-    selectedRadioColor: '#3f51b5',
-    selectedBorderColor:'#aaaaaa',
-    radioColor: '#aaaaaa',
-    radioRing: '#aaaaaa',
-    headerFontColor: '#ffffff',
-    panelFontColor: '#ffffff',
-    lightButton: '#aaaaaa',
-    borderColor: '#4f4f4f'
-  },
+export const darkTheme = {
+  colors: {
+    primary: "rgb(114, 222, 94)",
+    onPrimary: "rgb(0, 58, 0)",
+    primaryContainer: "rgb(0, 83, 0)",
+    onPrimaryContainer: "rgb(141, 251, 119)",
+    secondary: "rgb(187, 203, 178)",
+    onSecondary: "rgb(38, 52, 34)",
+    secondaryContainer: "rgb(60, 75, 55)",
+    onSecondaryContainer: "rgb(215, 232, 205)",
+    tertiary: "rgb(160, 207, 210)",
+    onTertiary: "rgb(0, 55, 57)",
+    tertiaryContainer: "rgb(30, 77, 80)",
+    onTertiaryContainer: "rgb(188, 235, 238)",
+    error: "rgb(255, 180, 171)",
+    onError: "rgb(105, 0, 5)",
+    errorContainer: "rgb(147, 0, 10)",
+    onErrorContainer: "rgb(255, 180, 171)",
+
+    
+    background: "#2f343d",
+    onBackground: "#181616",
+    surface: "#6e6e6e",
+    onSurface: "#6e6e6e",
+
+    font: '#aaaaaa',
+
+    
+    surfaceVariant: "rgb(67, 72, 63)",
+    onSurfaceVariant: "rgb(195, 200, 188)",
+    outline: "rgb(141, 147, 135)",
+    outlineVariant: "rgb(67, 72, 63)",
+    shadow: "rgb(0, 0, 0)",
+    scrim: "rgb(0, 0, 0)",
+    inverseSurface: "rgb(226, 227, 220)",
+    inverseOnSurface: "rgb(47, 49, 45)",
+    inversePrimary: "rgb(0, 110, 0)",
+    elevation: {
+      level0: "transparent",
+      level1: "rgb(30, 38, 28)",
+      level2: "rgb(33, 44, 30)",
+      level3: "rgb(36, 49, 32)",
+      level4: "rgb(37, 51, 32)",
+      level5: "rgb(38, 55, 34)"
+    },
+    surfaceDisabled: "rgba(226, 227, 220, 0.12)",
+    onSurfaceDisabled: "rgba(226, 227, 220, 0.38)",
+    backdrop: "rgba(44, 50, 41, 0.4)"
+  }
 }
