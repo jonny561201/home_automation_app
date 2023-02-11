@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native';
-import theme from '../../constants/Colors';
 
 
 export default StyleSheet.create({
@@ -25,7 +24,7 @@ export default StyleSheet.create({
         margin: 0,
         fontSize: 20,
         marginLeft: 5,
-        color: theme.dark.headerFontColor,
+        color: 'white',
     },
 
     logoContainer: {

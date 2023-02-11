@@ -9,7 +9,7 @@ export default StyleSheet.create({
         marginBottom: 2,
         marginTop: 2,
         shadowColor: '#383838',
-        elevation: 3,
+        elevation: 2,
         borderRadius: 2,
         shadowOffset: { width: -2, height: 4 },
         shadowOpacity: 0.3,

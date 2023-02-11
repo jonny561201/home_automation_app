@@ -34,7 +34,7 @@ export default function Account(props) {
     const closeDialog = () => setDisplay(false);
 
     return (
-        <Provider>
+        <>
                 <Header toggleMenu={props.navigation.toggleDrawer} />
                 <View style={styles.pageContainer}>
                     <View style={styles.accountBody}>
@@ -53,6 +53,6 @@ export default function Account(props) {
                 </View>
 
             <FAB style={styles.fab} onPress={() => setDisplay(!display)} label='Add User' icon={(props) => <Icon {...props} name='person-add' />} color='#ffffff' />
-        </Provider>
+        </>
     );
 }
