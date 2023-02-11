@@ -12,7 +12,7 @@ import { Switch, useTheme } from "react-native-paper";
 export default function Settings(props) {
     const [state, dispatch] = useContext(Context);
     const [isAutoMode, setIsAutoMode] = useState(false);
-    const [darkMode, setDarkMode] = useState(false);
+    const [darkMode, setDarkMode] = useState(state.isDarkMode);
     const [isEditMode, setEditMode] = useState();
     const theme = useTheme();
 
