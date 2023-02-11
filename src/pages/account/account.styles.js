@@ -9,7 +9,6 @@ export default StyleSheet.create({
 
     accountBody: {
         flex: 1,
-        // background-color: var(--primary-color),
         flexDirection: 'column',
         marginLeft: 10,
     },
