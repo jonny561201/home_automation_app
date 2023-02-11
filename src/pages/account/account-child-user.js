@@ -5,7 +5,7 @@ import { Text, View, TouchableOpacity } from 'react-native';
 import { List } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { SwipeListView } from 'react-native-swipe-list-view';
-import { Portal, Dialog } from 'react-native-paper';
+import { Portal, Dialog, useTheme } from 'react-native-paper';
 import CreateChildAccount from './create-child-account';
 import styles from './account-child-user.styles';
 
@@ -14,6 +14,7 @@ export default function AccountChildUser(props) {
     const [state, _] = useContext(Context);
     const [display, setDisplay] = useState(false);
     const [roles, setRoles] = useState([]);
+    const theme = useTheme();
 
     const deleteChildUser = async (childUser) => {
         const response = await deleteUserChildAccount(state.user.userId, state.auth.bearer, childUser.user_id);
@@ -45,7 +46,7 @@ export default function AccountChildUser(props) {
 
     return (
         <View style={{ flex: 1, paddingRight: 10 }}>
-            <Text style={styles.accountHeader}>Account Users</Text>
+            <Text style={[styles.accountHeader, {color: theme.colors.font}]}>Account Users</Text>
             <SwipeListView
                 data={props.childAccounts}
                 rightOpenValue={-150}

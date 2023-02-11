@@ -73,6 +73,7 @@ export default function Events(props) {
                         </Portal>
                 </View>
             </View>
+
             <FAB style={styles.fab} onPress={() => setVisible(!visible)} label='Create Event' icon={(props) => <Icon {...props} name='calendar-today' />} color='#ffffff' />
         </>
     )

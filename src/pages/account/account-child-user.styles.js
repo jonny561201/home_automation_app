@@ -4,7 +4,6 @@ import {StyleSheet} from 'react-native';
 export default StyleSheet.create({
     accountHeader: {
         fontSize: 26,
-        color: 'black',
         fontWeight: 'bold',
         paddingTop: 10,
         paddingBottom: 10,
