@@ -1,10 +1,12 @@
 import {Divider} from '@react-native-material/core';
 import React, {useRef, useState} from 'react';
+import { useTheme } from 'react-native-paper';
 import {Animated, LayoutAnimation, Platform, TouchableOpacity, UIManager, View} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import styles from './accordion.styles';
 
 export default function Accordion(props) {
+    const theme = useTheme();
     const [expanded, setExpanded] = useState(false);
     const [slideDown, setSlideDown] = useState(false);
     const slide = useRef(new Animated.Value(-100)).current;
@@ -55,17 +57,17 @@ export default function Accordion(props) {
     };
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, {shadowColor: theme.colors.shadow}]}>
             <TouchableOpacity style={styles.row} onPress={toggleExpand}>
                 <View>{props.children[0]}</View>
                 <Animated.View style={{transform: [{rotate: interpolateRotating}]}}>
-                    <Icon name='keyboard-arrow-down' size={30} />
+                    <Icon name='keyboard-arrow-down' size={30} style={{color: theme.colors.font}} />
                 </Animated.View>
             </TouchableOpacity>
             {
                 expanded &&
                 <View style={styles.expansion}>
-                    <Divider style={styles.divider} />
+                    <Divider style={[styles.divider, {backgroundColor: theme.colors.font}]} />
                     <View style={styles.child}>
                         <Animated.View style={{transform: [{translateY: slide}]}}>{props.children[1]}</Animated.View>
                         {/*<Button title='Test' onPress={doStuff}/>*/}

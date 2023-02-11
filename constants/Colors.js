@@ -24,7 +24,7 @@ export const darkTheme = {
     onSurface: "#6e6e6e",
 
     font: '#aaaaaa',
-
+    
     
     surfaceVariant: "rgb(67, 72, 63)",
     onSurfaceVariant: "rgb(195, 200, 188)",
