@@ -59,7 +59,6 @@ export default function AccountChildUser(props) {
                             key={`user-${data.item.user_name}`}
                             theme={{ colors: { primary: '#00c774' } }}
                             title={data.item.user_name}
-                            titleStyle={{color: theme.colors.font}}
                             left={(props) => <Icon {...props} name="person" size={30} />}>
                             {
                                 data.item.roles.map((x, i) => {

@@ -27,7 +27,6 @@ export default function Event(props) {
                     ? <List.Accordion
                         theme={{ colors: { primary: '#00c774' } }}
                         title='Temp Event'
-                        titleStyle={{color: theme.colors.font}}
                         left={(props) => <Icon {...props} name="hvac" size={30} />}>
                             <List.Item title={props.task.alarm_days} titleStyle={{color: theme.colors.font}} left={(props) => <List.Icon {...props} icon='calendar-week' />} />
                             <List.Item title={props.task.hvac_start} titleStyle={{color: theme.colors.font}} left={(props) => <List.Icon {...props} icon='play' />} />
@@ -39,7 +38,6 @@ export default function Event(props) {
                     : <List.Accordion
                         theme={{ colors: { primary: '#00c774' } }}
                         title='Light Event'
-                        titleStyle={{color: theme.colors.font}}
                         left={(props) => <Icon {...props} name="lightbulb-outline" size={30} />}>
                             <List.Item title={props.task.alarm_days} titleStyle={{color: theme.colors.font}} left={(props) => <List.Icon {...props} icon='calendar-week' />}/>
                             <List.Item title={props.task.alarm_time} titleStyle={{color: theme.colors.font}} left={(props) => <List.Icon {...props} icon='alarm' />}/>
