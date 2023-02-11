@@ -3,7 +3,7 @@ import { useFocusEffect } from "@react-navigation/native";
 import { View, Text, TouchableOpacity } from 'react-native';
 import { SwipeListView } from 'react-native-swipe-list-view';
 import { Context } from "../../state/store";
-import { FAB, Portal, Dialog, Provider } from 'react-native-paper';
+import { FAB, Portal, Dialog, useTheme } from 'react-native-paper';
 import { deleteScheduledTask } from '../../utilities/rest-api';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Header from '../../header/header';
@@ -16,6 +16,7 @@ export default function Events(props) {
     const [state, dispatch] = useContext(Context);
     const [visible, setVisible] = useState(false);
     const [events, setEvents] = useState([]);
+    const theme = useTheme();
 
     useEffect(() => {
         setEvents(state.tasks.map((x, i) => ({...x, key: `${i}`})));
@@ -40,11 +41,11 @@ export default function Events(props) {
     const closeDialog = () => setVisible(false);
 
     return (
-        <Provider>
+        <>
             <Header toggleMenu={props.navigation.toggleDrawer} />
-            <View style={styles.pageContainer}>
+            <View style={[styles.pageContainer, {backgroundColor: theme.colors.background}]}>
                 <View style={styles.eventsBody}>
-                    <Text style={styles.eventsHeader}>Schedule Events</Text>
+                    <Text style={[styles.eventsHeader, {color: theme.colors.font}]}>Schedule Events</Text>
                     <SwipeListView
                         data={events}
                         rightOpenValue={-150}
@@ -67,13 +68,12 @@ export default function Events(props) {
                     />
                         <Portal>
                             <Dialog visible={visible} onDismiss={closeDialog}>
-                                {/* <CreateChildAccount close={closeDialog} addChild={setChildAccounts} roles={[]} /> */}
                                 <CreateEvent close={closeDialog}/>
                             </Dialog>
                         </Portal>
                 </View>
             </View>
-            <FAB style={styles.fab} onPress={() => setVisible(!visible)} label='Create Event' icon={(props) => <Icon {...props} name='person-add' />} color='#ffffff' />
-        </Provider>
+            <FAB style={styles.fab} onPress={() => setVisible(!visible)} label='Create Event' icon={(props) => <Icon {...props} name='calendar-today' />} color='#ffffff' />
+        </>
     )
 }

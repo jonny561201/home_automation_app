@@ -8,7 +8,7 @@ export default StyleSheet.create({
 
     eventsHeader: {
         fontSize: 26,
-        color: 'black',
+        // color: 'black',
         fontWeight: 'bold',
     },
 
@@ -32,7 +32,7 @@ export default StyleSheet.create({
         justifyContent: 'space-between',
         paddingLeft: 15, 
         flexDirection: 'row', 
-        flex: 1
+        flex: 1,
     },
 
     swipeEdit: {
