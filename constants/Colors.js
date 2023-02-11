@@ -1,6 +1,6 @@
 export const darkTheme = {
   colors: {
-    primary: "rgb(114, 222, 94)",
+    primary: '#00c774',
     onPrimary: "rgb(0, 58, 0)",
     primaryContainer: "rgb(0, 83, 0)",
     onPrimaryContainer: "rgb(141, 251, 119)",

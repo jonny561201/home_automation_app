@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { View, Text } from 'react-native';
-import { RadioButton, TextInput } from "react-native-paper";
+import { RadioButton, TextInput, useTheme } from 'react-native-paper';
 import { updateUserPreferences } from '../../utilities/rest-api';
 import { Context } from '../../state/store';
 import { GreenButton, RedButton } from "../../components/controls/buttons";
@@ -16,6 +16,7 @@ export default function SettingsEditPanel(props) {
     const [newCity, setNewCity] = useState(state.preferences.city);
     const [newTempUnit, setNewTempUnit] = useState(state.preferences.temp_unit);
     const [newMeasureUnit, setNewMeasureUnit] = useState(state.preferences.measure_unit);
+    const theme = useTheme();
 
     const savePreferences = () => {
         const isFahrenheit = newTempUnit === "fahrenheit";
@@ -59,43 +60,43 @@ export default function SettingsEditPanel(props) {
     return (
         <>
             <View>
-                <Text style={styles.settingsHeader}>Garage</Text>
-                <View style={[styles.settingsRow, styles.pickerContainer]}>
-                    <Picker style={styles.picker} selectedValue={garage} onValueChange={updateGarageDoor}>
-                        <Picker.Item lable='None' value='None'/>
+                <Text style={[styles.settingsHeader, {color: theme.colors.font}]}>Garage</Text>
+                <View style={[styles.settingsRow, styles.pickerContainer, {borderColor: theme.colors.font}]}>
+                    <Picker style={[styles.picker, {backgroundColor: theme.colors.background, color: theme.colors.font}]} selectedValue={garage} onValueChange={updateGarageDoor}>
+                        <Picker.Item label='None' value='None' style={{backgroundColor: theme.colors.background, color: theme.colors.font}}/>
                         {
                             state.garageDoors.map(x => {
-                                return <Picker.Item key={x.doorName} label={x.doorName} value={x.doorName}/>
+                                return <Picker.Item key={x.doorName} label={x.doorName} value={x.doorName} style={{backgroundColor: theme.colors.background, color: theme.colors.font}}/>
                             })
                         }
                     </Picker>
                 </View>
-                <Text style={styles.settingsHeader}>Temperature</Text>
+                <Text style={[styles.settingsHeader, {color: theme.colors.font}]}>Temperature</Text>
                 <View  style={styles.settingsRow}>
                     <RadioButton.Group style={styles.settingsRow} onValueChange={updateTempRadioButton} value={newTempUnit}>
                         <View  style={{flexDirection: 'row'}}>
                             <RadioButton value="fahrenheit" />
-                            <Text style={styles.settingsLabelText}>Fahrenheit</Text>
+                            <Text style={[styles.settingsLabelText, {color: theme.colors.font}]}>Fahrenheit</Text>
                         </View>
                         <View  style={{flexDirection: 'row'}}>
                             <RadioButton value="celsius" />
-                            <Text style={styles.settingsLabelText}>Celsius</Text>
+                            <Text style={[styles.settingsLabelText, {color: theme.colors.font}]}>Celsius</Text>
                         </View>
                     </RadioButton.Group>
                 </View>
                 <View style={styles.settingsRow}>
                     <TextInput style={{width: '90%'}} value={newCity} onChangeText={updateCity} mode='outlined' activeOutlineColor='#00c774' label="City" />
                 </View>
-                <Text style={styles.settingsHeader}>Measurement</Text>
+                <Text style={[styles.settingsHeader, {color: theme.colors.font}]}>Measurement</Text>
                 <View style={styles.settingsRow} >
                     <RadioButton.Group onValueChange={updateMeasureRadioButton} value={newMeasureUnit}>
                         <View style={{flexDirection: 'row'}}>
                             <RadioButton value="imperial" />
-                            <Text style={styles.settingsLabelText}>Imperial</Text>
+                            <Text style={[styles.settingsLabelText, {color: theme.colors.font}]}>Imperial</Text>
                         </View>
                         <View style={{flexDirection: 'row'}}>
                             <RadioButton value="metric" />
-                            <Text style={styles.settingsLabelText}>Metric</Text>
+                            <Text style={[styles.settingsLabelText, {color: theme.colors.font}]}>Metric</Text>
                         </View>
                     </RadioButton.Group>
                 </View>

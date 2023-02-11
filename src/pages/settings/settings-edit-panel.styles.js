@@ -4,7 +4,6 @@ export default StyleSheet.create({
 
     settingsHeader: {
         fontSize: 26,
-        color: 'black',
         fontWeight: 'bold',
         paddingTop: 10,
         paddingBottom: 10,
@@ -28,7 +27,7 @@ export default StyleSheet.create({
 
     pickerContainer: {
         borderRadius: 4,
-        borderColor: 'grey',
+        // borderColor: 'grey',
         borderWidth: 1,
         width: '85%',
     },
