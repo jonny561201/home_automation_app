@@ -48,6 +48,7 @@ export function GreenSwitch(props) {
 export function ExpandButton(props) {
     const iconDirection = props.direction;
     const rotate = props.rotate;
+    const color = props.color;
     const [expanded, setExpandeded] = useState(false);
     const [rotateAnimation,] = useState(new Animated.Value(0));
 
@@ -110,7 +111,7 @@ export function ExpandButton(props) {
     return (
         <TouchableOpacity style={[styles.expandButton]} onPress={toggle}>
             <Animated.View style={rotateStyle}>
-                <MaterialIcons name={getIcon()} style={styles.expandChevron} />
+                <MaterialIcons color={color} name={getIcon()} style={styles.expandChevron} />
             </Animated.View>
         </TouchableOpacity>
     )
