@@ -19,11 +19,13 @@ export const darkTheme = {
 
     
     background: "#2f343d",
+    card: "#2f343d",
     onBackground: "#181616",
     surface: "#6e6e6e",
     onSurface: "#6e6e6e",
 
     font: '#aaaaaa',
+    text: '#aaaaaa',
     
     
     surfaceVariant: "rgb(67, 72, 63)",
