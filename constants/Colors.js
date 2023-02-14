@@ -18,14 +18,14 @@ export const darkTheme = {
     onErrorContainer: "rgb(255, 180, 171)",
 
     
-    background: "#2f343d",
-    card: "#2f343d",
+    background: "#323740",
+    card: "#323740",
     onBackground: "#181616",
     surface: "#6e6e6e",
     onSurface: "#6e6e6e",
 
-    font: '#aaaaaa',
-    text: '#aaaaaa',
+    font: '#bababa',
+    text: '#bababa',
     
     
     surfaceVariant: "rgb(67, 72, 63)",
