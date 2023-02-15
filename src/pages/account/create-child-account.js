@@ -7,11 +7,11 @@ import styles from './create-child-account.styles';
 
 
 export default function CreateChildAccount(props) {
+    const theme = useTheme();
     const [state, _] = useContext(Context);
-    const [roles, setRoles] = useState(props.roles?.length === 0 ? state.user.roles.map(x => ({ ...x, checked: false })) : state.user.roles.map(x => props.roles?.includes(x.role_name) ? ({...x, checked: true}) : ({...x, checked: false})));
+    const [roles, setRoles] = useState(props.roles?.length === 0 ? state.user.roles.map(x => ({ ...x, checked: false })) : state.user.roles.map(x => props.roles?.includes(x.role_name) ? ({ ...x, checked: true }) : ({ ...x, checked: false })));
     const [email, setEmail] = useState('');
     const [isEmailInvalid, setIsEmailInvalid] = useState(undefined);
-    const theme = useTheme();
 
     const submitChildAccount = async () => {
         if ((!isEmailInvalid) && (roles !== 0 && email !== null && email !== "")) {
@@ -35,12 +35,19 @@ export default function CreateChildAccount(props) {
 
     return (
         <>
-            <Dialog.Title style={{color: theme.colors.font}}>{props.roles?.length === 0 ? 'Add User' : 'Edit User'}</Dialog.Title>
-            <Divider style={[styles.dividerHeader, {backgroundColor: theme.colors.font}]} />
+            <Dialog.Title style={{ color: theme.colors.font }}>{props.roles?.length === 0 ? 'Add User' : 'Edit User'}</Dialog.Title>
+            <Divider style={[styles.dividerHeader, { backgroundColor: theme.colors.font }]} />
             <Dialog.Content>
-                <TextInput value={email} error={isEmailInvalid} onChangeText={(input) => validateEmail(input)} mode='outlined' activeOutlineColor='#00c774' label="Email" />
+                <TextInput
+                    value={email}
+                    error={isEmailInvalid}
+                    onChangeText={(input) => validateEmail(input)}
+                    mode='outlined'
+                    textColor={theme.colors.font}
+                    activeOutlineColor={theme.colors.primary}
+                    label="Email" />
                 {
-                    roles.map(x => <Checkbox.Item key={x.role_name} label={x.role_name} status={x.checked ? 'checked' : 'unchecked'} onPress={() => updateRole(x)} labelStyle={{color: theme.colors.font}}/>)
+                    roles.map(x => <Checkbox.Item key={x.role_name} label={x.role_name} status={x.checked ? 'checked' : 'unchecked'} onPress={() => updateRole(x)} labelStyle={{ color: theme.colors.font }} />)
                 }
             </Dialog.Content>
 

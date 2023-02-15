@@ -3,12 +3,13 @@ import { View, Text } from 'react-native';
 import jwt_decode from 'jwt-decode';
 import { Context } from '../../state/store';
 import { getBearerToken } from '../../utilities/rest-api';
-import { TextInput, ActivityIndicator } from "react-native-paper";
+import { TextInput, ActivityIndicator, useTheme } from "react-native-paper";
 import { GreenButton } from '../../components/controls/buttons';
 import styles from './user-pass.styles';
 
 
 export default function UserPass() {
+    const theme = useTheme();
     const [state, dispatch] = useContext(Context);
     const [loading, setLoading] = useState(false);
     const [username, setUsername] = useState('');
@@ -59,10 +60,27 @@ export default function UserPass() {
         <View>
             <View style={styles.userPassBody}>
                 <View style={styles.inputContainer}>
-                    <TextInput style={styles.userPassInput} value={username} error={isUsernameInvalid} onChangeText={(i) => setUsername(i)} mode='outlined' activeOutlineColor='#00c774' label="Username" />
+                    <TextInput
+                        style={styles.userPassInput}
+                        alue={username}
+                        error={isUsernameInvalid}
+                        onChangeText={(i) => setUsername(i)}
+                        mode='outlined'
+                        textColor={theme.colors.font}
+                        activeOutlineColor={theme.colors.primary}
+                        label="Username" />
                 </View>
                 <View style={styles.inputContainer}>
-                    <TextInput style={styles.userPassInput} value={password} error={isPasswordInvalid} onChangeText={(i) => setPassword(i)} mode='outlined' activeOutlineColor='#00c774' label="Password" secureTextEntry={true} />
+                    <TextInput
+                        style={styles.userPassInput}
+                        value={password}
+                        error={isPasswordInvalid}
+                        onChangeText={(i) => setPassword(i)}
+                        mode='outlined'
+                        textColor={theme.colors.font}
+                        activeOutlineColor={theme.colors.primary}
+                        label="Password"
+                        secureTextEntry={true} />
                 </View>
                 <View>
                     {!isValidLogin &&

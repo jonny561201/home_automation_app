@@ -8,8 +8,8 @@ import styles from './change-password.styles'
 
 
 export default function ChangePassword() {
+    const theme = useTheme();
     const [state, _] = useContext(Context);
-
     const [arePasswordsMismatched, setPasswordsMismatched] = useState(null);
     const [changed, setChanged] = useState(false);
     const [oldPasswordError, setPasswordError] = useState(null);
@@ -18,7 +18,6 @@ export default function ChangePassword() {
     const [secondNewPassword, setSecondPassword] = useState("");
     const [succeeded, setSucceeded] = useState(null);
     const [submitted, setSubmitted] = useState(false);
-    const theme = useTheme();
 
     useEffect(() => {
         if (firstNewPassword !== "" && secondNewPassword !== "") {
@@ -67,9 +66,36 @@ export default function ChangePassword() {
         <>
             <Text style={[styles.passwordHeader, {color: theme.colors.font}]}>Change Password</Text>
             <View style={[styles.passwordGroup, styles.passwordText]}>
-                <TextInput style={[styles.textInput, {color: theme.colors.font}]} value={oldPassword} error={oldPasswordError} onChangeText={(input) => onOldPasswordChange(input)} mode='outlined' activeOutlineColor='#00c774' label="Old Password" secureTextEntry={true} />
-                <TextInput style={[styles.textInput, {color: theme.colors.font}]} value={firstNewPassword} error={arePasswordsMismatched} onChangeText={(input) => setFirstPassword(input)} mode='outlined' activeOutlineColor='#00c774' label="New Password" secureTextEntry={true} />
-                <TextInput style={[styles.textInput, {color: theme.colors.font}]} value={secondNewPassword} error={arePasswordsMismatched} onChangeText={(input) => setSecondPassword(input)} mode='outlined' activeOutlineColor='#00c774' label="Confirm New Password" secureTextEntry={true} />
+                <TextInput
+                    style={[styles.textInput, { color: theme.colors.font }]}
+                    value={firstNewPassword}
+                    error={arePasswordsMismatched}
+                    onChangeText={(input) => setFirstPassword(input)}
+                    mode='outlined'
+                    textColor={theme.colors.font}
+                    activeOutlineColor={theme.colors.primary}
+                    label="New Password"
+                    secureTextEntry={true} />
+                <TextInput
+                    style={[styles.textInput, { color: theme.colors.font }]}
+                    value={oldPassword}
+                    error={oldPasswordError}
+                    onChangeText={(input) => onOldPasswordChange(input)}
+                    mode='outlined'
+                    textColor={theme.colors.primary}
+                    activeOutlineColor={theme.colors.primary}
+                    label="Old Password"
+                    secureTextEntry={true} />
+                <TextInput
+                    style={[styles.textInput, { color: theme.colors.font }]}
+                    value={secondNewPassword}
+                    error={arePasswordsMismatched}
+                    onChangeText={(input) => setSecondPassword(input)}
+                    mode='outlined'
+                    textColor={theme.colors.primary}
+                    activeOutlineColor={theme.colors.primary}
+                    label="Confirm New 
+                Password" secureTextEntry={true} />
                 {
                     passwordMessage()
                 }

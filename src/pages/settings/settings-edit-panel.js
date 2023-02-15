@@ -9,6 +9,7 @@ import styles from './settings-edit-panel.styles'
 
 
 export default function SettingsEditPanel(props) {
+    const theme = useTheme();
     const [state, dispatch] = useContext(Context);
     const [edited, setEdited] = useState(false);
     const [garage, setGarage] = useState(state.preferences.garage_door ? state.preferences.garage_door : '');
@@ -16,7 +17,6 @@ export default function SettingsEditPanel(props) {
     const [newCity, setNewCity] = useState(state.preferences.city);
     const [newTempUnit, setNewTempUnit] = useState(state.preferences.temp_unit);
     const [newMeasureUnit, setNewMeasureUnit] = useState(state.preferences.measure_unit);
-    const theme = useTheme();
 
     const savePreferences = () => {
         const isFahrenheit = newTempUnit === "fahrenheit";
@@ -85,7 +85,14 @@ export default function SettingsEditPanel(props) {
                     </RadioButton.Group>
                 </View>
                 <View style={styles.settingsRow}>
-                    <TextInput style={{width: '90%'}} value={newCity} onChangeText={updateCity} mode='outlined' activeOutlineColor='#00c774' label="City" />
+                    <TextInput
+                        style={{ width: '90%' }}
+                        value={newCity}
+                        onChangeText={updateCity}
+                        mode='outlined'
+                        textColor={theme.colors.font}
+                        activeOutlineColor={theme.colors.primary}
+                        label="City" />
                 </View>
                 <Text style={[styles.settingsHeader, {color: theme.colors.font}]}>Measurement</Text>
                 <View style={styles.settingsRow} >

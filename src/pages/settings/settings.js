@@ -29,7 +29,6 @@ export default function Settings(props) {
     const toggleTheme = () => {
         setDarkMode(!darkMode);
         dispatch({ type: 'SET_DARK_MODE', payload: !state.isDarkMode });
-        console.log(state.isDarkMode)
     }
 
     // const toggleAutoTheme = () => {
