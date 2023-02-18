@@ -67,7 +67,7 @@ export default function Accordion(props) {
             {
                 expanded &&
                 <View style={styles.expansion}>
-                    <Divider style={[styles.divider, {backgroundColor: theme.colors.font}]} />
+                    <Divider style={[styles.divider, {backgroundColor: theme.colors.divider}]} />
                     <View style={styles.child}>
                         <Animated.View style={{transform: [{translateY: slide}]}}>{props.children[1]}</Animated.View>
                         {/*<Button title='Test' onPress={doStuff}/>*/}
