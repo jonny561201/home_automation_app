@@ -3,8 +3,7 @@ import { View, Text } from 'react-native';
 import jwt_decode from 'jwt-decode';
 import { Context } from '../../state/store';
 import { getBearerToken } from '../../utilities/rest-api';
-import { TextInput, ActivityIndicator, useTheme } from "react-native-paper";
-import { GreenButton } from '../../components/controls/buttons';
+import { TextInput, useTheme, Button } from 'react-native-paper';
 import styles from './user-pass.styles';
 
 
@@ -30,8 +29,8 @@ export default function UserPass() {
 
     const getBearerTokenFromLogin = async (userInvalid, passInvalid) => {
         // if (!userInvalid && !passInvalid) {
-            const response = await getBearerToken(username, password);
-            setIsValidLogin(response);
+        const response = await getBearerToken(username, password);
+        setIsValidLogin(response);
         if (response) {
             const decodedToken = jwt_decode(response.bearerToken);
             await dispatch({ type: 'SET_USER_DATA', payload: { userId: decodedToken.user.user_id, firstName: decodedToken.user.first_name, lastName: decodedToken.user.last_name, roles: decodedToken.user.roles } });
@@ -41,7 +40,7 @@ export default function UserPass() {
             // await dispatch({ type: 'SET_STARTED_GARAGE_REGISTRATION', payload: garageRole && garageRole.device_id ? true : false });
             // await dispatch({ type: 'SET_DEVICE_ID', payload: garageRole && garageRole.device_id ? garageRole.device_id : null });
             await dispatch({ type: 'SET_AUTH_DATA', payload: { bearer: response.bearerToken, refresh: decodedToken.refresh_token, isAuthenticated: true, exp: decodedToken.exp } });
-            }
+        }
         // }
         setLoading(false);
     };
@@ -88,9 +87,13 @@ export default function UserPass() {
                     }
                 </View>
                 <View style={styles.inputContainer}>
-                    <GreenButton onPress={validateCredentials}>Login</GreenButton>
+                    <Button
+                        onPress={validateCredentials}
+                        mode='outlined'
+                        loading={loading}
+                        textColor={theme.colors.primaryFont}
+                        style={[styles.loginButton, { backgroundColor: theme.colors.primary }]}>Login</Button>
                 </View>
-                <ActivityIndicator animating={loading} color={"#00c774"} size={40}/>
             </View>
         </View>
     )

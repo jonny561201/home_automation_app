@@ -24,4 +24,8 @@ export default StyleSheet.create({
     inputContainer: {
         padding: 5,
     },
+
+    loginButton: {
+        borderRadius: 10,
+    },
 });
