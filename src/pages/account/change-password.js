@@ -64,20 +64,20 @@ export default function ChangePassword() {
 
     return (
         <>
-            <Text style={[styles.passwordHeader, {color: theme.colors.font}]}>Change Password</Text>
+            <Text style={[styles.passwordHeader, {color: theme.colors.primaryFont}]}>Change Password</Text>
             <View style={[styles.passwordGroup, styles.passwordText]}>
                 <TextInput
-                    style={[styles.textInput, { color: theme.colors.font }]}
+                    style={[styles.textInput, { color: theme.colors.secondaryFont }]}
                     value={firstNewPassword}
                     error={arePasswordsMismatched}
                     onChangeText={(input) => setFirstPassword(input)}
                     mode='outlined'
-                    textColor={theme.colors.font}
+                    textColor={theme.colors.secondaryFont}
                     activeOutlineColor={theme.colors.primary}
                     label="New Password"
                     secureTextEntry={true} />
                 <TextInput
-                    style={[styles.textInput, { color: theme.colors.font }]}
+                    style={[styles.textInput, { color: theme.colors.secondaryFont }]}
                     value={oldPassword}
                     error={oldPasswordError}
                     onChangeText={(input) => onOldPasswordChange(input)}
@@ -87,7 +87,7 @@ export default function ChangePassword() {
                     label="Old Password"
                     secureTextEntry={true} />
                 <TextInput
-                    style={[styles.textInput, { color: theme.colors.font }]}
+                    style={[styles.textInput, { color: theme.colors.secondaryFont }]}
                     value={secondNewPassword}
                     error={arePasswordsMismatched}
                     onChangeText={(input) => setSecondPassword(input)}

@@ -45,7 +45,7 @@ export default function Events(props) {
             <Header toggleMenu={props.navigation.toggleDrawer} />
             <View style={[styles.pageContainer, {backgroundColor: theme.colors.background}]}>
                 <View style={styles.eventsBody}>
-                    <Text style={[styles.eventsHeader, {color: theme.colors.font}]}>Schedule Events</Text>
+                    <Text style={[styles.eventsHeader, {color: theme.colors.primaryFont}]}>Schedule Events</Text>
                     <SwipeListView
                         data={events}
                         rightOpenValue={-150}

@@ -47,11 +47,11 @@ export default function Settings(props) {
             <Header toggleMenu={props.navigation.toggleDrawer} />
             <ScrollView style={[styles.pageContainer, {backgroundColor: theme.colors.background}]}>
                 <View style={styles.settingsBody}>
-                    <Text style={[styles.settingsHeader, {color: theme.colors.font}]}>Preferences</Text>
+                    <Text style={[styles.settingsHeader, {color: theme.colors.primaryFont}]}>Preferences</Text>
 
                     <View style={styles.settingsRow}>
                         <Switch value={darkMode && !isAutoMode} onValueChange={toggleTheme} />
-                        <Text style={[styles.settingsLabelText, {color: theme.colors.font}]}>Dark Mode</Text>
+                        <Text style={[styles.settingsLabelText, {color: theme.colors.secondaryFont}]}>Dark Mode</Text>
                     </View>
 
                     {/* <View style={styles.settingsRow}>

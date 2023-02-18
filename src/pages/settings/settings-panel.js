@@ -17,29 +17,29 @@ export default function SettingsPanel(props) {
     return (
         <>
             <View>
-                <Text style={[styles.settingsHeader, {color: theme.colors.font}]}>Garage</Text>
+                <Text style={[styles.settingsHeader, {color: theme.colors.primaryFont}]}>Garage</Text>
             </View>
             <View style={styles.settingsRow}>
-                <Text style={[styles.measureUnit, {color: theme.colors.font}]}>Open Door: </Text>
-                <Text style={[styles.tempUnit, {color: theme.colors.font}]}>{state.preferences.garage_door ? state.preferences.garage_door : "None"}</Text>
+                <Text style={[styles.measureUnit, {color: theme.colors.secondaryFont}]}>Open Door: </Text>
+                <Text style={[styles.tempUnit, {color: theme.colors.secondaryFont}]}>{state.preferences.garage_door ? state.preferences.garage_door : "None"}</Text>
             </View>
             <View>
-                <Text style={[styles.settingsHeader, {color: theme.colors.font}]}>Temperature</Text>
+                <Text style={[styles.settingsHeader, {color: theme.colors.primaryFont}]}>Temperature</Text>
             </View>
             <View style={styles.settingsRow}>
-                <Text style={[styles.tempUnit, {color: theme.colors.font}]}>Unit: </Text>
-                <Text style={[styles.tempUnit, {color: theme.colors.font}]}>{state.preferences.temp_unit}</Text>
+                <Text style={[styles.tempUnit, {color: theme.colors.secondaryFont}]}>Unit: </Text>
+                <Text style={[styles.tempUnit, {color: theme.colors.secondaryFont}]}>{state.preferences.temp_unit}</Text>
             </View>
             <View style={styles.settingsRow}>
-                <Text style={[styles.tempCity, {color: theme.colors.font}]}>City: </Text>
-                <Text style={[styles.tempCity, {color: theme.colors.font}]}>{state.preferences.city}</Text>
+                <Text style={[styles.tempCity, {color: theme.colors.secondaryFont}]}>City: </Text>
+                <Text style={[styles.tempCity, {color: theme.colors.secondaryFont}]}>{state.preferences.city}</Text>
             </View>
             <View>
-                <Text style={[styles.settingsHeader, {color: theme.colors.font}]}>Measurement</Text>
+                <Text style={[styles.settingsHeader, {color: theme.colors.primaryFont}]}>Measurement</Text>
             </View>
             <View style={styles.settingsRow}>
-                <Text style={[styles.measureUnit, {color: theme.colors.font}]}>Unit: </Text>
-                <Text style={[styles.measureUnit, {color: theme.colors.font}]}>{state.preferences.measure_unit}</Text>
+                <Text style={[styles.measureUnit, {color: theme.colors.secondaryFont}]}>Unit: </Text>
+                <Text style={[styles.measureUnit, {color: theme.colors.secondaryFont}]}>{state.preferences.measure_unit}</Text>
             </View>
 
             <View style={[styles.settingsRow, styles.buttonRow]}>

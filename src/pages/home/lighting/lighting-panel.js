@@ -17,14 +17,14 @@ export default function LightingPanel() {
         if (state.lights.length) {
             return state.lights.map((group) => <LightGroupSwitch key={`switch-${group.groupId}`} data={group} />)
         }
-        return <Text style={{color: theme.colors.font}}>No Light Groups found</Text>
+        return <Text style={{color: theme.colors.secondaryFont}}>No Light Groups found</Text>
     };
 
     return (
         <Accordion style={styles.lightingPanel} onPress={() => { setOpen(!open) }}>
             <View style={styles.titleGroup}>
                 <Image style={styles.iconImage} source={LightingIcon} />
-                <Text style={[styles.statusTextBold, {color: theme.colors.font}]}>Lighting</Text>
+                <Text style={[styles.statusTextBold, {color: theme.colors.primaryFont}]}>Lighting</Text>
             </View>
             <View style={styles.center}>
                 <View style={styles.lightPanelGroup}>

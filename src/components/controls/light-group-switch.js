@@ -3,6 +3,7 @@ import { View, Text } from 'react-native';
 import { Context } from '../../state/store';
 import { ExpandButton } from './buttons';
 import { MaterialIcons } from '@expo/vector-icons';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import { setLightGroupState } from '../../utilities/rest-api';
 import { TouchableRipple, useTheme } from 'react-native-paper';
 import Slider from '@react-native-community/slider';
@@ -53,12 +54,12 @@ export default function LightGroupSwitch(props) {
     return (
         <>
             <View style={styles.lightGroup}>
-                <ExpandButton onPress={() => setLightsOpen(!areLightsOpen)} rotate='90' direction='right' color={theme.colors.font} />
+                <ExpandButton onPress={() => setLightsOpen(!areLightsOpen)} rotate='90' direction='right' color={theme.colors.primaryFont} />
                 <TouchableRipple style={styles.lightButton} onPress={toggleLightGroup} borderless={true}>
-                    <Text numberOfLines={1} style={[styles.lightText, {color: theme.colors.font}]}>{groupName}</Text>
+                    <Text numberOfLines={1} style={[styles.lightText, {color: theme.colors.primaryFont}]}>{groupName}</Text>
                 </TouchableRipple>
-                <Slider value={brightness} onSlidingComplete={slideLightGroup} style={{ width: 200 }} minimumTrackTintColor={theme.colors.primary} maximumTrackTintColor={theme.colors.font} thumbTintColor='white' maximumValue={100} />
-                <MaterialIcons name='brightness-medium' style={styles.brightnessIcon} />
+                <Slider value={brightness} onSlidingComplete={slideLightGroup} style={{ width: 200 }} minimumTrackTintColor={theme.colors.primary} maximumTrackTintColor={theme.colors.secondaryFont} thumbTintColor='white' maximumValue={100} />
+                <Icon name='brightness-medium' style={styles.brightnessIcon} color={theme.colors.primaryFont}/>
             </View>
             {
                 areLightsOpen &&

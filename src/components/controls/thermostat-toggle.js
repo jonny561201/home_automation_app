@@ -44,52 +44,26 @@ export default function ThermostatToggle(props) {
 
     return (
         <>
-            {
-                props.hasHvac
-                    ? <View style={{ width: 140 }}>
-                        <View style={styles.textContainerFour}>
-                            <Text style={[styles.sliderText, { paddingLeft: 20, color: theme.colors.font }]}>Off</Text>
-                            <Text style={[styles.sliderText, { paddingLeft: 6, color: theme.colors.font }]}>Heat</Text>
-                            <Text style={[styles.sliderText, { color: theme.colors.font }]}>Cool</Text>
-                            <Text style={[styles.sliderText, { paddingRight: 20, color: theme.colors.font }]}>Auto</Text>
-                        </View>
-                        <Slider
-                            minimumValue={0}
-                            maximumValue={3}
-                            minimumTrackTintColor={color}
-                            step={1}
-                            thumbStyle={{ height: 40, width: 60, backgroundColor: 'white', elevation: 5 }}
-                            trackStyle={{ height: 40, borderRadius: 10 }}
-                            trackMarks={[0, 1, 2, 3]}
-                            value={value}
-                            onSlidingComplete={onSlideComplete}
-                            renderTrackMarkComponent={trackMark}
-                            onValueChange={updateColor}
-                        />
-                    </View>
-                    : <View style={{ width: 140 }}>
-                        <View style={styles.textContainerThree}>
-                            <Text style={[styles.sliderText, { color: theme.colors.font }]}>Off</Text>
-                            <Text style={[styles.sliderText, { paddingLeft: 10, color: theme.colors.font }]}>Heat</Text>
-                            <Text style={[styles.sliderText, { paddingLeft: 10, color: theme.colors.font }]}>Cool</Text>
-                        </View>
-                        <Slider
-                            minimumValue={0}
-                            maximumValue={2}
-                            minimumTrackTintColor={color}
-                            step={1}
-                            thumbStyle={{ height: 40, width: 60, backgroundColor: 'white', elevation: 5 }}
-                            trackStyle={{ height: 40, borderRadius: 10 }}
-                            trackMarks={[0, 1, 2]}
-                            value={value}
-                            onSlidingComplete={onSlideComplete}
-                            renderTrackMarkComponent={trackMark}
-                            onValueChange={updateColor}
-                        />
-                    </View>
-            }
-
+            <View style={{ width: 140 }}>
+                <View style={styles.textContainerThree}>
+                    <Text style={[styles.sliderText, { color: theme.colors.secondaryFont }]}>Off</Text>
+                    <Text style={[styles.sliderText, { paddingLeft: 10, color: theme.colors.secondaryFont }]}>Heat</Text>
+                    <Text style={[styles.sliderText, { paddingLeft: 10, color: theme.colors.secondaryFont }]}>Cool</Text>
+                </View>
+                <Slider
+                    minimumValue={0}
+                    maximumValue={2}
+                    minimumTrackTintColor={color}
+                    step={1}
+                    thumbStyle={{ height: 40, width: 60, backgroundColor: 'white', elevation: 5 }}
+                    trackStyle={{ height: 40, borderRadius: 10 }}
+                    trackMarks={[0, 1, 2]}
+                    value={value}
+                    onSlidingComplete={onSlideComplete}
+                    renderTrackMarkComponent={trackMark}
+                    onValueChange={updateColor}
+                />
+            </View>
         </>
-
     )
 } 

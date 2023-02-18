@@ -60,27 +60,27 @@ export default function SettingsEditPanel(props) {
     return (
         <>
             <View>
-                <Text style={[styles.settingsHeader, {color: theme.colors.font}]}>Garage</Text>
-                <View style={[styles.settingsRow, styles.pickerContainer, {borderColor: theme.colors.font}]}>
-                    <Picker style={[styles.picker, {backgroundColor: theme.colors.background, color: theme.colors.font}]} selectedValue={garage} onValueChange={updateGarageDoor}>
-                        <Picker.Item label='None' value='None' style={{backgroundColor: theme.colors.background, color: theme.colors.font}}/>
+                <Text style={[styles.settingsHeader, {color: theme.colors.primaryFont}]}>Garage</Text>
+                <View style={[styles.settingsRow, styles.pickerContainer, {borderColor: theme.colors.secondaryFont}]}>
+                    <Picker style={[styles.picker, {backgroundColor: theme.colors.background, color: theme.colors.secondaryFont}]} selectedValue={garage} onValueChange={updateGarageDoor}>
+                        <Picker.Item label='None' value='None' style={{backgroundColor: theme.colors.background, color: theme.colors.secondaryFont}}/>
                         {
                             state.garageDoors.map(x => {
-                                return <Picker.Item key={x.doorName} label={x.doorName} value={x.doorName} style={{backgroundColor: theme.colors.background, color: theme.colors.font}}/>
+                                return <Picker.Item key={x.doorName} label={x.doorName} value={x.doorName} style={{backgroundColor: theme.colors.background, color: theme.colors.secondaryFont}}/>
                             })
                         }
                     </Picker>
                 </View>
-                <Text style={[styles.settingsHeader, {color: theme.colors.font}]}>Temperature</Text>
+                <Text style={[styles.settingsHeader, {color: theme.colors.primaryFont}]}>Temperature</Text>
                 <View  style={styles.settingsRow}>
                     <RadioButton.Group style={styles.settingsRow} onValueChange={updateTempRadioButton} value={newTempUnit}>
                         <View  style={{flexDirection: 'row'}}>
                             <RadioButton value="fahrenheit" />
-                            <Text style={[styles.settingsLabelText, {color: theme.colors.font}]}>Fahrenheit</Text>
+                            <Text style={[styles.settingsLabelText, {color: theme.colors.secondaryFont}]}>Fahrenheit</Text>
                         </View>
                         <View  style={{flexDirection: 'row'}}>
                             <RadioButton value="celsius" />
-                            <Text style={[styles.settingsLabelText, {color: theme.colors.font}]}>Celsius</Text>
+                            <Text style={[styles.settingsLabelText, {color: theme.colors.secondaryFont}]}>Celsius</Text>
                         </View>
                     </RadioButton.Group>
                 </View>
@@ -90,20 +90,20 @@ export default function SettingsEditPanel(props) {
                         value={newCity}
                         onChangeText={updateCity}
                         mode='outlined'
-                        textColor={theme.colors.font}
+                        textColor={theme.colors.secondaryFont}
                         activeOutlineColor={theme.colors.primary}
                         label="City" />
                 </View>
-                <Text style={[styles.settingsHeader, {color: theme.colors.font}]}>Measurement</Text>
+                <Text style={[styles.settingsHeader, {color: theme.colors.primaryFont}]}>Measurement</Text>
                 <View style={styles.settingsRow} >
                     <RadioButton.Group onValueChange={updateMeasureRadioButton} value={newMeasureUnit}>
                         <View style={{flexDirection: 'row'}}>
                             <RadioButton value="imperial" />
-                            <Text style={[styles.settingsLabelText, {color: theme.colors.font}]}>Imperial</Text>
+                            <Text style={[styles.settingsLabelText, {color: theme.colors.secondaryFont}]}>Imperial</Text>
                         </View>
                         <View style={{flexDirection: 'row'}}>
                             <RadioButton value="metric" />
-                            <Text style={[styles.settingsLabelText, {color: theme.colors.font}]}>Metric</Text>
+                            <Text style={[styles.settingsLabelText, {color: theme.colors.secondaryFont}]}>Metric</Text>
                         </View>
                     </RadioButton.Group>
                 </View>

@@ -61,7 +61,7 @@ export default function Accordion(props) {
             <TouchableOpacity style={styles.row} onPress={toggleExpand}>
                 <View>{props.children[0]}</View>
                 <Animated.View style={{transform: [{rotate: interpolateRotating}]}}>
-                    <Icon name='keyboard-arrow-down' size={30} style={{color: theme.colors.font}} />
+                    <Icon name='keyboard-arrow-down' size={30} style={{color: theme.colors.primaryFont}} />
                 </Animated.View>
             </TouchableOpacity>
             {

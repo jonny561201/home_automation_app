@@ -33,11 +33,11 @@ export default function BasementPanel() {
             <View style={styles.titleGroup}>
                 <Image style={styles.iconImage} source={BasementIcon} />
                 <View style={styles.basementHeader}>
-                    <Text style={[styles.statusTextBold, {color: theme.colors.font}]}>Basement</Text>
+                    <Text style={[styles.statusTextBold, {color: theme.colors.primaryFont}]}>Basement</Text>
                     {!open &&
                         <View style={styles.smallTextGroup}>
-                            <Text style={[styles.smallText, {color: theme.colors.font}]}>Depth:</Text>
-                            <Text style={[styles.smallText, {color: theme.colors.font}, state.sumpData.warningLevel === 3 ? styles.alert : styles.healthy]}>{state.sumpData.currentDepth} {state.sumpData.depthUnit}</Text>
+                            <Text style={[styles.smallText, {color: theme.colors.secondaryFont}]}>Depth:</Text>
+                            <Text style={[styles.smallText, {color: theme.colors.secondaryFont}, state.sumpData.warningLevel === 3 ? styles.alert : styles.healthy]}>{state.sumpData.currentDepth} {state.sumpData.depthUnit}</Text>
                         </View>
                     }
                 </View>
@@ -46,12 +46,12 @@ export default function BasementPanel() {
                 {getSumpIcon()}
                 <View style={styles.sumpMeasureGroup}>
                     <View style={styles.smallTextGroup}>
-                        <Text style={{color: theme.colors.font}}>Current: </Text>
-                        <Text style={[{color: theme.colors.font}, state.sumpData.warningLevel === 3 ? styles.alert : styles.healthy]}>{state.sumpData.currentDepth} {state.sumpData.depthUnit}</Text>
+                        <Text style={{color: theme.colors.secondaryFont}}>Current: </Text>
+                        <Text style={[{color: theme.colors.secondaryFont}, state.sumpData.warningLevel === 3 ? styles.alert : styles.healthy]}>{state.sumpData.currentDepth} {state.sumpData.depthUnit}</Text>
                     </View>
                     <View style={styles.smallTextGroup}>
-                        <Text style={{color: theme.colors.font}}>Average: </Text>
-                        <Text style={{color: theme.colors.font}}>{state.sumpData.averageDepth} {state.sumpData.depthUnit}</Text>
+                        <Text style={{color: theme.colors.secondaryFont}}>Average: </Text>
+                        <Text style={{color: theme.colors.secondaryFont}}>{state.sumpData.averageDepth} {state.sumpData.depthUnit}</Text>
                     </View>
                 </View>
             </View>

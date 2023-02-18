@@ -28,19 +28,19 @@ export default function Event(props) {
                         theme={{ colors: { primary: '#00c774' } }}
                         title='Temp Event'
                         left={(props) => <Icon {...props} name="hvac" size={30} />}>
-                            <List.Item title={props.task.alarm_days} titleStyle={{color: theme.colors.font}} left={(props) => <List.Icon {...props} icon='calendar-week' />} />
-                            <List.Item title={props.task.hvac_start} titleStyle={{color: theme.colors.font}} left={(props) => <List.Icon {...props} icon='play' />} />
-                            <List.Item title={`Operating: ${props.task.hvac_start_temp}`} titleStyle={{color: theme.colors.font}} left={(props) => <List.Icon {...props} icon='thermostat' />} />
-                            <List.Item title={props.task.hvac_stop} titleStyle={{color: theme.colors.font}} left={(props) => <List.Icon {...props} icon='stop' />} />
-                            <List.Item title={`Hold: ${props.task.hvac_stop_temp}`} titleStyle={{color: theme.colors.font}} left={(props) => <List.Icon {...props} icon='thermostat' />} />
+                            <List.Item title={props.task.alarm_days} titleStyle={{color: theme.colors.secondaryFont}} left={(props) => <List.Icon {...props} icon='calendar-week' color={theme.colors.secondaryColor}/>} />
+                            <List.Item title={props.task.hvac_start} titleStyle={{color: theme.colors.secondaryFont}} left={(props) => <List.Icon {...props} icon='play'  color={theme.colors.secondaryColor}/>} />
+                            <List.Item title={`Operating: ${props.task.hvac_start_temp}`} titleStyle={{color: theme.colors.secondaryFont}} left={(props) => <List.Icon {...props} icon='thermostat'  color={theme.colors.secondaryColor}/>} />
+                            <List.Item title={props.task.hvac_stop} titleStyle={{color: theme.colors.secondaryFont}} left={(props) => <List.Icon {...props} icon='stop'  color={theme.colors.secondaryColor}/>} />
+                            <List.Item title={`Hold: ${props.task.hvac_stop_temp}`} titleStyle={{color: theme.colors.secondaryFont}} left={(props) => <List.Icon {...props} icon='thermostat'  color={theme.colors.secondaryColor}/>} />
                     </List.Accordion>
 
                     : <List.Accordion
                         theme={{ colors: { primary: '#00c774' } }}
                         title='Light Event'
                         left={(props) => <Icon {...props} name="lightbulb-outline" size={30} />}>
-                            <List.Item title={props.task.alarm_days} titleStyle={{color: theme.colors.font}} left={(props) => <List.Icon {...props} icon='calendar-week' />}/>
-                            <List.Item title={props.task.alarm_time} titleStyle={{color: theme.colors.font}} left={(props) => <List.Icon {...props} icon='alarm' />}/>
+                            <List.Item title={props.task.alarm_days} titleStyle={{color: theme.colors.secondaryFont}} left={(props) => <List.Icon {...props} icon='calendar-week'  color={theme.colors.secondaryColor}/>}/>
+                            <List.Item title={props.task.alarm_time} titleStyle={{color: theme.colors.secondaryFont}} left={(props) => <List.Icon {...props} icon='alarm'  color={theme.colors.secondaryColor}/>}/>
                     </List.Accordion>
             }
         </>

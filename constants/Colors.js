@@ -26,8 +26,9 @@ export const darkTheme = {
 
     divider: '#282828',
     primaryFont: 'white',
-    font: '#bababa',
+    secondaryFont: '#bababa',
     text: '#bababa',
+    font: 'white',
     
     
     surfaceVariant: "rgb(67, 72, 63)",
@@ -81,8 +82,9 @@ export const lightTheme = {
 
     divider: '#D0D0D0',
     primaryFont: '#000000',
-    font: '#101010',
+    secondaryFont: '#101010',
     text: '#101010',
+    font: '#000000',
     
     
     surfaceVariant: "rgb(67, 72, 63)",

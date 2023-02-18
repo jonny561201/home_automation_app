@@ -37,13 +37,13 @@ export default function GaragePanel() {
             <View style={styles.titleGroup}>
                 <Image style={styles.iconImage} source={GarageIcon} />
                 <View style={styles.garageHeader}>
-                    <Text style={[styles.statusTextBold, {color: theme.colors.font}]}>Garage</Text>
+                    <Text style={[styles.statusTextBold, {color: theme.colors.primaryFont}]}>Garage</Text>
                     {
                         !open &&
                         state.garageDoors.map(x => {
                             return <View style={styles.smallTextGroup} key={`door-notify-${x.doorName}`}>
-                                <Text style={[styles.smallText, {color: theme.colors.font}]}>{x.doorName}:</Text>
-                                <Text style={[styles.smallText, {color: theme.colors.font}, x.isOpen ? styles.openText : null]}>{x.isOpen ? 'Open' : 'Closed'}</Text>
+                                <Text style={[styles.smallText, {color: theme.colors.secondaryFont}]}>{x.doorName}:</Text>
+                                <Text style={[styles.smallText, {color: theme.colors.secondaryFont}, x.isOpen ? styles.openText : null]}>{x.isOpen ? 'Open' : 'Closed'}</Text>
                             </View>
                         })
                     }
@@ -53,12 +53,12 @@ export default function GaragePanel() {
             {state.devicesToRegister.garage.newDevice
                 ? <View style={styles.registerDoor}>
                     <View style={styles.registerGroup}>
-                        <Text style={[styles.statusTextBold, styles.registerText, {color: theme.colors.font}]}>Register Garage Opener</Text>
+                        <Text style={[styles.statusTextBold, styles.registerText, {color: theme.colors.secondaryFont}]}>Register Garage Opener</Text>
                         <Divider />
                     </View>
                     <View style={styles.registerBody}>
                         <View style={styles.registerGroup}>
-                            <Text style={[styles.statusText, styles.registerText, {color: theme.colors.font}]}>A new device has been detected and needs to be registered.</Text>
+                            <Text style={[styles.statusText, styles.registerText, {color: theme.colors.secondaryFont}]}>A new device has been detected and needs to be registered.</Text>
                         </View>
                         <View>
                             <GreenButton onPress={() => setDisplayRegister(true)}>Register</GreenButton>

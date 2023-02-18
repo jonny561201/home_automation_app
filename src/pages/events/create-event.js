@@ -14,10 +14,10 @@ export default function CreateEvent(props) {
 
     return (
         <>
-            <Dialog.Title style={{color: theme.colors.font}}>Create Event</Dialog.Title>
-            <Divider style={[styles.dividerHeader, {backgroundColor: theme.colors.font}]} />
+            <Dialog.Title style={{color: theme.colors.primaryFont}}>Create Event</Dialog.Title>
+            <Divider style={[styles.dividerHeader, {backgroundColor: theme.colors.secondaryFont}]} />
             <Dialog.Content>
-                <Text style={{color: theme.colors.font}}>This is a Test</Text>
+                <Text style={{color: theme.colors.secondaryFont}}>This is a Test</Text>
             </Dialog.Content>
 
             <Dialog.Actions style={styles.dialogButtonContainer}>

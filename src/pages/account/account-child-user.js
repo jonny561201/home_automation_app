@@ -2,10 +2,9 @@ import React, { useContext, useState } from 'react';
 import { deleteUserChildAccount } from '../../utilities/rest-api';
 import { Context } from '../../state/store';
 import { Text, View, TouchableOpacity } from 'react-native';
-import { List } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { SwipeListView } from 'react-native-swipe-list-view';
-import { Portal, Dialog, useTheme } from 'react-native-paper';
+import { Portal, Dialog, useTheme, List } from 'react-native-paper';
 import CreateChildAccount from './create-child-account';
 import styles from './account-child-user.styles';
 
@@ -46,7 +45,7 @@ export default function AccountChildUser(props) {
 
     return (
         <View style={{ flex: 1, paddingRight: 10 }}>
-            <Text style={[styles.accountHeader, {color: theme.colors.font}]}>Account Users</Text>
+            <Text style={[styles.accountHeader, {color: theme.colors.primaryFont}]}>Account Users</Text>
             <SwipeListView
                 data={props.childAccounts}
                 rightOpenValue={-150}
@@ -63,15 +62,15 @@ export default function AccountChildUser(props) {
                             {
                                 data.item.roles.map((x, i) => {
                                     if (x === 'lighting')
-                                        return <List.Item style={getStyle(data, i)} key={`role-${x}}`} title={x} titleStyle={{color: theme.colors.font}} left={(props) => <List.Icon {...props} icon='lightbulb-on-outline' />} />
+                                        return <List.Item style={getStyle(data, i)} key={`role-${x}}`} title={x} titleStyle={{color: theme.colors.secondaryFont}} left={(props) => <List.Icon {...props} icon='lightbulb-on-outline' color={theme.colors.primaryFont}/>} />
                                     else if (x === 'garage_door')
-                                        return <List.Item style={getStyle(data, i)} key={`role-${x}}`} title={x} titleStyle={{color: theme.colors.font}} left={(props) => <List.Icon {...props} icon='garage-variant' />} />
+                                        return <List.Item style={getStyle(data, i)} key={`role-${x}}`} title={x} titleStyle={{color: theme.colors.secondaryFont}} left={(props) => <List.Icon {...props} icon='garage-variant'  color={theme.colors.primaryFont}/>} />
                                     else if (x === 'thermostat')
-                                        return <List.Item style={getStyle(data, i)} key={`role-${x}}`} title={x} titleStyle={{color: theme.colors.font}} left={(props) => <List.Icon {...props} icon='thermostat' />} />
+                                        return <List.Item style={getStyle(data, i)} key={`role-${x}}`} title={x} titleStyle={{color: theme.colors.secondaryFont}} left={(props) => <List.Icon {...props} icon='thermostat'  color={theme.colors.primaryFont}/>} />
                                     else if (x === 'security')
-                                        return <List.Item style={getStyle(data, i)} key={`role-${x}}`} title={x} titleStyle={{color: theme.colors.font}} left={(props) => <List.Icon {...props} icon='security' />} />
+                                        return <List.Item style={getStyle(data, i)} key={`role-${x}}`} title={x} titleStyle={{color: theme.colors.secondaryFont}} left={(props) => <List.Icon {...props} icon='security'  color={theme.colors.primaryFont}/>} />
                                     else if (x === 'sump_pump')
-                                        return <List.Item style={getStyle(data, i)} key={`role-${x}}`} title={x} titleStyle={{color: theme.colors.font}} left={(props) => <List.Icon {...props} icon='water-pump' />} />
+                                        return <List.Item style={getStyle(data, i)} key={`role-${x}}`} title={x} titleStyle={{color: theme.colors.secondaryFont}} left={(props) => <List.Icon {...props} icon='water-pump'  color={theme.colors.primaryFont}/>} />
                                 })
                             }
                         </List.Accordion>

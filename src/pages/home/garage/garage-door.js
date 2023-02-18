@@ -44,13 +44,13 @@ export default function GarageDoor(props) {
     return (
         <View style={styles.garageDoorContainer}>
             <View style={styles.statusTextGroup}>
-                <Text style={[styles.garageTextBold, {color: theme.colors.font}]}>{props.device.doorName}</Text>
+                <Text style={[styles.garageTextBold, {color: theme.colors.secondaryFont}]}>{props.device.doorName}</Text>
                 {props.device.isOpen
-                    ? <Text style={[styles.garageBigText, {color: theme.colors.font}]}>Opened</Text>
-                    : <Text style={[styles.garageBigText, {color: theme.colors.font}]}>Closed</Text>}
+                    ? <Text style={[styles.garageBigText, {color: theme.colors.primaryFont}]}>Opened</Text>
+                    : <Text style={[styles.garageBigText, {color: theme.colors.primaryFont}]}>Closed</Text>}
                 {statusDays === 0
-                    ? <Text style={[styles.timeText, {color: theme.colors.font}]}>{statusHours}Hrs {statusMins}Min</Text>
-                    : <Text style={[styles.timeText, {color: theme.colors.font}]}>{statusDays}Days {statusHours}Hrs</Text>}
+                    ? <Text style={[styles.timeText, {color: theme.colors.secondaryFont}]}>{statusHours}Hrs {statusMins}Min</Text>
+                    : <Text style={[styles.timeText, {color: theme.colors.secondaryFont}]}>{statusDays}Days {statusHours}Hrs</Text>}
             </View >
             <View style={styles.statusButtonGroup}>
                 {props.device.isOpen

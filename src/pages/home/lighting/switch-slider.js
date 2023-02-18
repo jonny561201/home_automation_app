@@ -44,9 +44,9 @@ export default function SwitchSlider(props) {
         <View style={styles.lightGroup}>
             <View style={styles.lightSpacerOne}/>
             <TouchableRipple onPress={toggleLight} borderless={true} style={styles.lightButton}>
-                <Text style={[styles.lightTextSmall, {color: theme.colors.font}]}>{light.lightName}</Text>
+                <Text style={[styles.lightTextSmall, {color: theme.colors.secondaryFont}]}>{light.lightName}</Text>
             </TouchableRipple>
-            <Slider value={light?.brightness} onSlidingComplete={updateSlider} style={{ width: 200 }} minimumTrackTintColor={theme.colors.primary} maximumTrackTintColor={theme.colors.font} thumbTintColor='white' maximumValue={100}/>
+            <Slider value={light?.brightness} onSlidingComplete={updateSlider} style={{ width: 200 }} minimumTrackTintColor={theme.colors.primary} maximumTrackTintColor={theme.colors.secondaryFont} thumbTintColor='white' maximumValue={100}/>
 
             <View style={styles.lightSpacerTwo}/>
         </View>

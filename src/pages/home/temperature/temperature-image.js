@@ -64,14 +64,14 @@ export default function TemperatureImage() {
             <View style={styles.tempExternalContainer}>
                 <Image style={styles.weatherIcon} alt="description" source={weatherIcon} />
                 <View style={styles.externalTemp}>
-                    <Text style={{color: theme.colors.font}}>{state.forecastData.maxTemp}</Text>
-                    <Text style={[styles.external, {color: theme.colors.font}]}>{state.forecastData.temp}&deg;</Text>
-                    <Text style={{color: theme.colors.font}}>{state.forecastData.minTemp}</Text>
+                    <Text style={{color: theme.colors.secondaryFont}}>{state.forecastData.maxTemp}</Text>
+                    <Text style={[styles.external, {color: theme.colors.primaryFont}]}>{state.forecastData.temp}&deg;</Text>
+                    <Text style={{color: theme.colors.secondaryFont}}>{state.forecastData.minTemp}</Text>
                 </View>
             </View>
             <View style={styles.tempHomeContainer}>
                 <Image style={styles.homeIcon} alt="home" source={HomeIcon} />
-                <Text style={[styles.internalTemp, {color: theme.colors.font}]}>72&deg;</Text>
+                <Text style={[styles.internalTemp, {color: theme.colors.primaryFont}]}>72&deg;</Text>
             </View>
         </View>
     );

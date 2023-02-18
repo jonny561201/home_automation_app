@@ -35,19 +35,19 @@ export default function CreateChildAccount(props) {
 
     return (
         <>
-            <Dialog.Title style={{ color: theme.colors.font }}>{props.roles?.length === 0 ? 'Add User' : 'Edit User'}</Dialog.Title>
-            <Divider style={[styles.dividerHeader, { backgroundColor: theme.colors.font }]} />
+            <Dialog.Title style={{ color: theme.colors.primaryFont }}>{props.roles?.length === 0 ? 'Add User' : 'Edit User'}</Dialog.Title>
+            <Divider style={[styles.dividerHeader, { backgroundColor: theme.colors.secondaryFont }]} />
             <Dialog.Content>
                 <TextInput
                     value={email}
                     error={isEmailInvalid}
                     onChangeText={(input) => validateEmail(input)}
                     mode='outlined'
-                    textColor={theme.colors.font}
+                    textColor={theme.colors.secondaryFont}
                     activeOutlineColor={theme.colors.primary}
                     label="Email" />
                 {
-                    roles.map(x => <Checkbox.Item key={x.role_name} label={x.role_name} status={x.checked ? 'checked' : 'unchecked'} onPress={() => updateRole(x)} labelStyle={{ color: theme.colors.font }} />)
+                    roles.map(x => <Checkbox.Item key={x.role_name} label={x.role_name} status={x.checked ? 'checked' : 'unchecked'} onPress={() => updateRole(x)} labelStyle={{ color: theme.colors.secondaryFont }} />)
                 }
             </Dialog.Content>
 

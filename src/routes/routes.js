@@ -25,22 +25,22 @@ export default function Routes() {
                         <Drawer.Screen
                             name="Home"
                             component={Home}
-                            options={{ drawerIcon: ({ focused }) => (<Icon name="home" size={20} color={focused ? theme.colors.primary : theme.colors.font} />) }}
+                            options={{ drawerIcon: ({ focused }) => (<Icon name="home" size={20} color={focused ? theme.colors.primary : theme.colors.primaryFont} />) }}
                         />
                         <Drawer.Screen
                             name="Events"
                             component={Events}
-                            options={{ drawerIcon: ({ focused }) => (<Icon name="event" size={20} color={focused ? theme.colors.primary : theme.colors.font} />) }}
+                            options={{ drawerIcon: ({ focused }) => (<Icon name="event" size={20} color={focused ? theme.colors.primary : theme.colors.primaryFont} />) }}
                         />
                         <Drawer.Screen
                             name="Settings"
                             component={Settings}
-                            options={{ drawerIcon: ({ focused }) => (<Icon name="settings" size={20} color={focused ? theme.colors.primary : theme.colors.font} />) }}
+                            options={{ drawerIcon: ({ focused }) => (<Icon name="settings" size={20} color={focused ? theme.colors.primary : theme.colors.primaryFont} />) }}
                         />
                         <Drawer.Screen
                             name="Account"
                             component={Account}
-                            options={{ drawerIcon: ({ focused }) => (<Icon name="account-circle" size={20} color={focused ? theme.colors.primary : theme.colors.font} />) }}
+                            options={{ drawerIcon: ({ focused }) => (<Icon name="account-circle" size={20} color={focused ? theme.colors.primary : theme.colors.primaryFont} />) }}
                         />
                     </>
                     : <Drawer.Screen name="Login" component={Login} />

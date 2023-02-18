@@ -50,17 +50,17 @@ export default function TemperaturePanel() {
             <View style={styles.titleGroup}>
                 <Image style={styles.iconImage} source={TempIcon} />
                 <View style={styles.securityHeader}>
-                    <Text style={[styles.statusTextBold, {color: theme.colors.font}]}>Temperature</Text>
+                    <Text style={[styles.statusTextBold, {color: theme.colors.primaryFont}]}>Temperature</Text>
                     {
                         !open &&
                         <>
                             <View style={styles.smallTextGroup}>
-                                <Text style={[styles.smallText, {color: theme.colors.font}]}>Outside:</Text>
-                                <Text style={[styles.smallText, {color: theme.colors.font}]}>{state.forecastData.temp}&deg;</Text>
+                                <Text style={[styles.smallText, {color: theme.colors.secondaryFont}]}>Outside:</Text>
+                                <Text style={[styles.smallText, {color: theme.colors.secondaryFont}]}>{state.forecastData.temp}&deg;</Text>
                             </View>
                             <View style={styles.smallTextGroup}>
-                                <Text style={[styles.smallText, {color: theme.colors.font}]}>Inside:</Text>
-                                <Text style={[styles.smallText, {color: theme.colors.font}]}>{state.tempData.currentTemp}&deg;</Text>
+                                <Text style={[styles.smallText, {color: theme.colors.secondaryFont}]}>Inside:</Text>
+                                <Text style={[styles.smallText, {color: theme.colors.secondaryFont}]}>{state.tempData.currentTemp}&deg;</Text>
                             </View>
                         </>
                     }
@@ -74,7 +74,7 @@ export default function TemperaturePanel() {
                         </View>
                         <View style={{ alignItems: 'center' }}>
                             <ThermostatDial onChange={setDesiredTemp} desiredTemp={desiredTemp} disabled={disabled} color={color}/>
-                            <ThermostatToggle hasHvac={hasHvacTask} value={state.tempData.modeValue} slideComplete={modeToggle} />
+                            <ThermostatToggle value={state.tempData.modeValue} slideComplete={modeToggle} />
                         </View>
                     </View>
                 </View>
