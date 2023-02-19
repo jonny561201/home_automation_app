@@ -30,7 +30,11 @@ const initialState = {
         {doorId: 1, doorName: "Jons", isOpen: true }, {doorId: 2, doorName: "Kalynns", isOpen: true }
     ],
     userCoords: null,
-    lights: [],
+    //TODO: !!!!! lights apio needs to be updated to do the translation between 0 - 255 from 0 - 100
+    lights: [{groupId: 1, groupName: 'Living Room', brightness: 100, on: true, lights: [
+        {brightness: 80, lightName: 'lamp', lightId: 2, groupId: 1, on: true},
+        {brightness: 10, lightName: 'desk', lightId: 3, groupId: 1, on: true},
+    ]}],
     sumpData: {
         warningLevel: 0,
         currentDepth: 0.0,
