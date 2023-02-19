@@ -35,10 +35,8 @@ export default StyleSheet.create({
         borderColor: 'lightgrey',
         borderWidth: 1,
         borderRadius: 10,
-        alignItems: 'center',
-        alignSelf: 'center',
-        alignContent: 'center',
-        justifyContent: 'center',
+        marginLeft: 4,
+        marginRight: 10,
     },
 
     lightText: {

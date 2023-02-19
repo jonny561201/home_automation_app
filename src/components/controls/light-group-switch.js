@@ -2,11 +2,10 @@ import React, { useState, useContext } from 'react';
 import { View, Text } from 'react-native';
 import { Context } from '../../state/store';
 import { ExpandButton } from './buttons';
-import { MaterialIcons } from '@expo/vector-icons';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { setLightGroupState } from '../../utilities/rest-api';
 import { TouchableRipple, useTheme } from 'react-native-paper';
-import Slider from '@react-native-community/slider';
+import { Slider } from '@miblanchard/react-native-slider';
 import SwitchSlider from "../../pages/home/lighting/switch-slider";
 import styles from './light-group-switch.styles'
 
@@ -23,9 +22,10 @@ export default function LightGroupSwitch(props) {
     const [areLightsOpen, setLightsOpen] = useState(false);
 
     const slideLightGroup = async (value) => {
-        setLightGroupState(state.auth.bearer, groupId, true, value);
-        updateGroup(value);
-        setIsOn(value > 0);
+        const brightness = value[0]
+        setLightGroupState(state.auth.bearer, groupId, true, brightness);
+        updateGroup(brightness);
+        setIsOn(brightness > 0);
     };
 
     const toggleLightGroup = async () => {
@@ -58,7 +58,16 @@ export default function LightGroupSwitch(props) {
                 <TouchableRipple style={styles.lightButton} onPress={toggleLightGroup} borderless={true}>
                     <Text numberOfLines={1} style={[styles.lightText, {color: theme.colors.primaryFont}]}>{groupName}</Text>
                 </TouchableRipple>
-                <Slider value={brightness} onSlidingComplete={slideLightGroup} style={{ width: 200 }} minimumTrackTintColor={theme.colors.primary} maximumTrackTintColor={theme.colors.secondaryFont} thumbTintColor='white' maximumValue={100} />
+                <Slider
+                    style={{ marginRight: 40 }}
+                    value={brightness}
+                    onSlidingComplete={slideLightGroup}
+                    trackStyle={{ width: 200 }}
+                    minimumTrackTintColor={theme.colors.primary}
+                    maximumTrackTintColor={theme.colors.secondaryFont}
+                    thumbTintColor='white'
+                    minimumValue={0}
+                    maximumValue={100} />
                 <Icon name='brightness-medium' style={styles.brightnessIcon} color={theme.colors.primaryFont}/>
             </View>
             {
