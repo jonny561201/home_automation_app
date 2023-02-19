@@ -19,6 +19,7 @@ export default function SwitchSlider(props) {
         const group = state.lights.find(x => x.groupId === props.groupId);
         if (group?.lights)
             setLight(group.lights.find(y => y.lightId === props.lightId));
+
     });
 
     const updateSlider = async (value) => {
@@ -46,7 +47,14 @@ export default function SwitchSlider(props) {
             <TouchableRipple onPress={toggleLight} borderless={true} style={styles.lightButton}>
                 <Text style={[styles.lightTextSmall, {color: theme.colors.secondaryFont}]}>{light.lightName}</Text>
             </TouchableRipple>
-            <Slider value={light?.brightness} onSlidingComplete={updateSlider} style={{ width: 200 }} minimumTrackTintColor={theme.colors.primary} maximumTrackTintColor={theme.colors.secondaryFont} thumbTintColor='white' maximumValue={100}/>
+            <Slider
+                value={light?.brightness}
+                onSlidingComplete={updateSlider}
+                style={{ width: 210 }}
+                minimumTrackTintColor={theme.colors.primary}
+                maximumTrackTintColor={theme.colors.primaryFont}
+                thumbTintColor='white'
+                maximumValue={100} />
 
             <View style={styles.lightSpacerTwo}/>
         </View>

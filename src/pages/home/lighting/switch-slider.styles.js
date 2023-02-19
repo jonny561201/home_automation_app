@@ -29,9 +29,11 @@ export default StyleSheet.create({
         borderColor: 'lightgrey',
         borderWidth: 1,
         borderRadius: 8,
-        alignItems: 'center',
-        alignSelf: 'center',
-        alignContent: 'center',
-        justifyContent: 'center'
+        // marginRight: 16,
+        marginRight: 10,
+        // alignItems: 'center',
+        // alignSelf: 'center',
+        // alignContent: 'center',
+        // justifyContent: 'center'
     },
 });

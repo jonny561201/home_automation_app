@@ -26,12 +26,7 @@ export default function ThermostatToggle(props) {
     }
 
     const calculateColor = (position) => {
-        if (position === 1)
-            setColor('#db5127') //hot
-        else if (position === 2)
-            setColor('#27AEDB')  //cool
-        else if (position === 3)
-            setColor('#00c774')  //green
+        position === 1 ? setColor('#db5127') : setColor('#27AEDB');
     }
 
     const trackMark = () => {
