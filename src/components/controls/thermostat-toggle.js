@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useTheme } from 'react-native-paper';
 import { Text, View } from 'react-native';
 import { Slider } from '@miblanchard/react-native-slider';
@@ -6,13 +6,9 @@ import styles from './thermostat-toggle.sytles';
 
 
 export default function ThermostatToggle(props) {
+    const modes = {'off': 0, 'heating': 1, 'cooling': 2, 'auto': 3}
     const theme = useTheme();
-    const [value, setValue] = useState(props.value);
-    const [color, setColor] = useState('#00c774');
-
-    useEffect(() => {
-        calculateColor(props.value);
-    });
+    const [value, setValue] = useState(modes[props.mode]);
 
     const onSlideComplete = (item) => {
         const position = item[0];
@@ -20,21 +16,8 @@ export default function ThermostatToggle(props) {
         props.slideComplete(position);
     }
 
-    const updateColor = (item) => {
-        const position = item[0];
-        calculateColor(position)
-    }
-
-    const calculateColor = (position) => {
-        position === 1 ? setColor('#db5127') : setColor('#27AEDB');
-    }
-
     const trackMark = () => {
-        return (
-            <View style={styles.trackMark}>
-                <View></View>
-            </View>
-        )
+        return (<View style={styles.trackMark}></View>)
     }
 
     return (
@@ -48,15 +31,15 @@ export default function ThermostatToggle(props) {
                 <Slider
                     minimumValue={0}
                     maximumValue={2}
-                    minimumTrackTintColor={color}
+                    minimumTrackTintColor={props.color}
                     step={1}
+                    disabled={props.disabled}
                     thumbStyle={{ height: 40, width: 60, backgroundColor: 'white', elevation: 5 }}
                     trackStyle={{ height: 40, borderRadius: 10 }}
                     trackMarks={[0, 1, 2]}
                     value={value}
                     onSlidingComplete={onSlideComplete}
                     renderTrackMarkComponent={trackMark}
-                    onValueChange={updateColor}
                 />
             </View>
         </>
