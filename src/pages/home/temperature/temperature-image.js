@@ -71,7 +71,7 @@ export default function TemperatureImage() {
             </View>
             <View style={styles.tempHomeContainer}>
                 <Image style={styles.homeIcon} alt="home" source={HomeIcon} />
-                <Text style={[styles.internalTemp, {color: theme.colors.primaryFont}]}>72&deg;</Text>
+                <Text style={[styles.internalTemp, {color: theme.colors.primaryFont}]}>{state.tempData.currentTemp}&deg;</Text>
             </View>
         </View>
     );
