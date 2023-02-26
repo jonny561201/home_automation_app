@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { Image, Text, View } from 'react-native';
-import { useTheme } from 'react-native-paper';
+import { useTheme, Switch } from 'react-native-paper';
 import { setUserTemperature } from '../../../utilities/rest-api'
 import Accordion from '../../../components/accordion';
 import TempIcon from '../../../resources/panelIcons/TemperatureIcon.png';
@@ -14,35 +14,48 @@ import styles from './temperature-panel.styles';
 export default function TemperaturePanel() {
     const theme = useTheme();
     const [state, dispatch] = useContext(Context);
-    const [open, setOpen] = useState(false);
-    const [color, setColor] = useState('#E5E5E5');
     const hasHvacTask = state.tasks.some(x => x.task_type === 'hvac');
-    const [desiredTemp, setDesiredTemp] = useState(state.tempData.currentDesiredTemp);
+    const [open, setOpen] = useState(false);
+    const [auto, setAuto] = useState(state.tempData.mode === 'auto' && hasHvacTask);
+    const [color, setColor] = useState('#E5E5E5');
+    const [previousMode, setPreviousMode] = useState(state.tempData.mode);
+    const [previousColor, setPreviousColor] = useState('#E5E5E5');
+    const [mode, setMode] = useState(state.tempData);
+    const [desiredTemp, setDesiredTemp] = useState(state.tempData.desiredTemp);
     const [disabled, setDisabled] = useState(state.tempData.mode === 'auto' || state.tempData.mode === 'off');
 
-    const knobChange = () => {
-        dispatch({ type: 'SET_TEMP_DATA', payload: { ...state.tempData, desiredTemp: desiredTemp } });
-        setUserTemperature(state.user.userId, state.auth.bearer, desiredTemp, state.tempData.mode, state.tempData.isFahrenheit);
+    const knobChange = (value) => {
+        dispatch({ type: 'SET_TEMP_DATA', payload: { ...state.tempData, desiredTemp: value } });
+        setDesiredTemp(value);
+        setUserTemperature(state.user.userId, state.auth.bearer, value, state.tempData.mode, state.tempData.isFahrenheit);
     }
 
     const modeToggle = async (newModeValue) => {
+        setPreviousMode(state.tempData.mode)
         setDisabled(newModeValue === 0 || newModeValue === 3)
-        if (newModeValue === 1) {
-            await dispatch({ type: 'SET_TEMP_DATA', payload: { ...state.tempData, mode: 'heating', modeValue: newModeValue } });
-            setColor('#db5127'); //hot
+        if (newModeValue === 1) 
+            setTempMode('heating', '#db5127');
+        else if (newModeValue === 2)
+            setTempMode('cooling', '#27AEDB');
+        else 
+            setTempMode('off', '#E5E5E5');
+    }
+
+    const toggleAuto = async () => {
+        const isAuto = !auto;
+        const previous = state.tempData.mode || 'off';
+        if (isAuto) {
+            setPreviousMode(previous);
+            setPreviousColor(color);
         }
-        else if (newModeValue === 2) {
-            await dispatch({ type: 'SET_TEMP_DATA', payload: { ...state.tempData, mode: 'cooling', modeValue: newModeValue } });
-            setColor('#27AEDB'); //cool
-        }
-        else if (newModeValue === 3) {
-            await dispatch({ type: 'SET_TEMP_DATA', payload: { ...state.tempData, mode: 'auto', modeValue: newModeValue } });
-            setColor('#00c774');  //green
-        }
-        else {
-            await dispatch({ type: 'SET_TEMP_DATA', payload: { ...state.tempData, mode: 'off', modeValue: 0 } });
-            setColor('#E5E5E5');  //grey
-        }
+        setMode(isAuto ? 'auto' : previousMode);
+        setTempMode(isAuto ? 'auto' : previous, isAuto ? '#00c774' : previousColor);
+        setAuto(isAuto)
+    }
+
+    const setTempMode = async (mode, color) => {
+        await dispatch({ type: 'SET_TEMP_DATA', payload: { ...state.tempData, mode: mode } });
+        setColor(color);
     }
 
     return (
@@ -73,8 +86,12 @@ export default function TemperaturePanel() {
                             <TemperatureImage value={0} />
                         </View>
                         <View style={{ alignItems: 'center' }}>
-                            <ThermostatDial onChange={setDesiredTemp} desiredTemp={desiredTemp} disabled={disabled} color={color}/>
-                            <ThermostatToggle value={state.tempData.modeValue} slideComplete={modeToggle} />
+                            <ThermostatDial onChange={knobChange} desiredTemp={desiredTemp} disabled={disabled} color={color}/>
+                            <Switch value={auto} onValueChange={toggleAuto}/>
+                            {
+                                !auto &&
+                                <ThermostatToggle mode={mode} slideComplete={modeToggle} disabled={auto} color={color} />
+                            }
                         </View>
                     </View>
                 </View>

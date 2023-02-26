@@ -41,7 +41,7 @@ const initialState = {
         averageDepth: 0.0,
         depthUnit: 'in',
     },
-    tempData: { currentDesiredTemp: 70.0, modeValue: 0, mode: 'off' },
+    tempData: { desiredTemp: 70.0, currentTemp: 69.0, modeValue: 0, mode: 'off' },
     forecastData: { description: '' },
     preferences: {},
     tasks: [
