@@ -19,23 +19,23 @@ export default function ThermostatDial(props) {
         //80 = #AE6854
         //85 = #C45D3E
 
-        if (value < 60)
+        if (value < 53)
             setColor('#27AEDB');
-        else if (value <= 55)
+        else if (value <= 57)
             setColor('#3DA3C5');
         else if (value <= 60)
             setColor('#5497AE');
-        else if (value <= 65)
+        else if (value <= 63)
             setColor('#6A8B98');
-        else if (value <= 70)
+        else if (value <= 66)
             setColor('#817F81');
-        else if (value <= 75)
+        else if (value <= 69)
             setColor('#97746B');
-        else if (value <= 80)
+        else if (value <= 74)
             setColor('#AE6854');
-        else if (value <= 85)
+        else if (value <= 78)
             setColor('#C45D3E');
-        else if (value >= 80)
+        else if (value >= 82)
             setColor('#db5127');
     }
 
