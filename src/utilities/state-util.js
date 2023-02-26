@@ -64,6 +64,7 @@ export default function StateUtil() {
             ...temp,
             desiredTemp: Math.round(temp.desiredTemp),
             currentTemp: Math.round(temp.currentTemp),
+            mode: temp.mode || 'off'
         };
         dispatch({ type: 'SET_TEMP_DATA', payload: updatedTemp });
     }
