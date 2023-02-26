@@ -31,7 +31,7 @@ export default function TemperaturePanel() {
     }
 
     const modeToggle = async (newModeValue) => {
-        setPreviousMode(state.tempData.mode)
+        setPreviousMode(state.tempData.mode);
         setDisabled(newModeValue === 0 || newModeValue === 3)
         if (newModeValue === 1) 
             setTempMode('heating', '#db5127');
@@ -49,7 +49,7 @@ export default function TemperaturePanel() {
             setPreviousColor(color);
         }
         setMode(isAuto ? 'auto' : previousMode);
-        setTempMode(isAuto ? 'auto' : previous, isAuto ? '#00c774' : previousColor);
+        setTempMode(isAuto ? 'auto' : previousMode, isAuto ? '#00c774' : previousColor);
         setAuto(isAuto)
     }
 
@@ -87,7 +87,10 @@ export default function TemperaturePanel() {
                         </View>
                         <View style={{ alignItems: 'center' }}>
                             <ThermostatDial onChange={knobChange} desiredTemp={desiredTemp} disabled={disabled} color={color}/>
-                            <Switch value={auto} onValueChange={toggleAuto}/>
+                            <View style={{alignItems: 'center'}}>
+                                <Text style={[styles.settingsLabelText, { color: theme.colors.secondaryFont }]}>Auto</Text>
+                                <Switch value={auto} onValueChange={toggleAuto} />
+                            </View>
                             {
                                 !auto &&
                                 <ThermostatToggle mode={mode} slideComplete={modeToggle} disabled={auto} color={color} />
