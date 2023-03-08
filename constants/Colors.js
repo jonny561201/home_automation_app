@@ -23,6 +23,7 @@ export const darkTheme = {
     onBackground: "#181616",
     surface: "#6e6e6e",
     onSurface: "#6e6e6e",
+    selected: '#2c3138',
 
     divider: '#282828',
     primaryFont: 'white',
@@ -30,6 +31,7 @@ export const darkTheme = {
     text: '#bababa',
     font: 'white',
     
+
     
     surfaceVariant: "rgb(67, 72, 63)",
     onSurfaceVariant: "rgb(195, 200, 188)",
@@ -50,7 +52,7 @@ export const darkTheme = {
     },
     surfaceDisabled: "rgba(226, 227, 220, 0.12)",
     onSurfaceDisabled: "rgba(226, 227, 220, 0.38)",
-    backdrop: "rgba(44, 50, 41, 0.4)" //color when fade out like dialog open
+    backdrop: "rgba(44, 50, 41, 0.4)"  //color when fade out like dialog open or modals
   }
 }
 
@@ -86,7 +88,6 @@ export const lightTheme = {
     text: '#101010',
     font: '#000000',
     
-    
     surfaceVariant: "rgb(67, 72, 63)",
     onSurfaceVariant: "rgb(195, 200, 188)",
     outline: "rgb(141, 147, 135)",
@@ -106,6 +107,6 @@ export const lightTheme = {
     },
     surfaceDisabled: "rgba(226, 227, 220, 0.12)",
     onSurfaceDisabled: "rgba(226, 227, 220, 0.38)",
-    backdrop: "rgba(44, 50, 41, 0.4)" //color when fade out like dialog open
+    backdrop: "rgba(44, 50, 41, 0.4)" //color when fade out like dialog open or modals
   }
 }

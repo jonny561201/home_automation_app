@@ -25,7 +25,6 @@ export default function Event(props) {
             {
                 props.task.task_type === 'hvac'
                     ? <List.Accordion
-                        theme={{ colors: { primary: '#00c774' } }}
                         title='Temp Event'
                         left={(props) => <Icon {...props} name="hvac" size={30} />}>
                             <List.Item title={props.task.alarm_days} titleStyle={{color: theme.colors.secondaryFont}} left={(props) => <List.Icon {...props} icon='calendar-week' color={theme.colors.primaryFont}/>} />
@@ -36,7 +35,6 @@ export default function Event(props) {
                     </List.Accordion>
 
                     : <List.Accordion
-                        theme={{ colors: { primary: '#00c774' } }}
                         title='Light Event'
                         left={(props) => <Icon {...props} name="lightbulb-outline" size={30} />}>
                             <List.Item title={props.task.alarm_days} titleStyle={{color: theme.colors.secondaryFont}} left={(props) => <List.Icon {...props} icon='calendar-week'  color={theme.colors.primaryFont}/>}/>

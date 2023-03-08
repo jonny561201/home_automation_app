@@ -10,16 +10,17 @@ import Header from '../../header/header';
 import styles from './events.styles';
 import Event from './event';
 import CreateEvent from './create-event';
+import DropDown from '../../components/controls/drop-down';
 
 
 export default function Events(props) {
+    const theme = useTheme();
     const [state, dispatch] = useContext(Context);
     const [visible, setVisible] = useState(false);
     const [events, setEvents] = useState([]);
-    const theme = useTheme();
 
     useEffect(() => {
-        setEvents(state.tasks.map((x, i) => ({...x, key: `${i}`})));
+        setEvents(state.tasks.map((x, i) => ({ ...x, key: `${i}` })));
     }, []);
 
     useFocusEffect(
@@ -40,12 +41,15 @@ export default function Events(props) {
 
     const closeDialog = () => setVisible(false);
 
+    // const data = ['bedroom', 'bathroom', 'living room']
+    const data = [{label: 'Bedroom', value: 'bedroom'}, {label: 'Bathroom', value: 'bathroom'}, {label: 'Living Room', value: 'living room'}];
+
     return (
         <>
             <Header toggleMenu={props.navigation.toggleDrawer} />
-            <View style={[styles.pageContainer, {backgroundColor: theme.colors.background}]}>
+            <View style={[styles.pageContainer, { backgroundColor: theme.colors.background }]}>
                 <View style={styles.eventsBody}>
-                    <Text style={[styles.eventsHeader, {color: theme.colors.primaryFont}]}>Schedule Events</Text>
+                    <Text style={[styles.eventsHeader, { color: theme.colors.primaryFont }]}>Schedule Events</Text>
                     <SwipeListView
                         data={events}
                         rightOpenValue={-150}
@@ -56,7 +60,7 @@ export default function Events(props) {
                             <Event task={data.item} key={`${data.item.task_type}-${data.item.alarm_days}-${data.item.enabled}`} />
                         )}
                         renderHiddenItem={(data) => (
-                            <View style={[styles.swipeContainer, {backgroundColor: theme.colors.surface}]}>
+                            <View style={[styles.swipeContainer, { backgroundColor: theme.colors.surface }]}>
                                 <TouchableOpacity style={styles.swipeEdit} onPress={() => editEvent(data.item)}>
                                     <Icon name='edit' size={30} style={styles.swipeText} />
                                 </TouchableOpacity>
@@ -66,12 +70,13 @@ export default function Events(props) {
                             </View>
                         )}
                     />
-                        <Portal style={{backgroundColor: theme.colors.background}}>
-                            <Dialog visible={visible} onDismiss={closeDialog}>
-                                <CreateEvent close={closeDialog}/>
-                            </Dialog>
-                        </Portal>
+                    <Portal style={{ backgroundColor: theme.colors.background }}>
+                        <Dialog visible={visible} onDismiss={closeDialog}>
+                            <CreateEvent close={closeDialog} />
+                        </Dialog>
+                    </Portal>
                 </View>
+                <DropDown data={data} />
             </View>
 
             <FAB style={styles.fab} onPress={() => setVisible(!visible)} label='Create Event' icon={(props) => <Icon {...props} name='calendar-today' />} color='#ffffff' />

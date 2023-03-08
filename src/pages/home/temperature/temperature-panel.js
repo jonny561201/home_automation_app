@@ -88,7 +88,7 @@ export default function TemperaturePanel() {
                         <View style={{ alignItems: 'center' }}>
                             <ThermostatDial onChange={knobChange} desiredTemp={desiredTemp} disabled={disabled} color={color}/>
                             <View style={{alignItems: 'center'}}>
-                                <Text style={[styles.settingsLabelText, { color: theme.colors.secondaryFont }]}>Auto</Text>
+                                <Text style={[styles.smallText, { color: theme.colors.secondaryFont }]}>Auto</Text>
                                 <Switch value={auto} onValueChange={toggleAuto} />
                             </View>
                             {

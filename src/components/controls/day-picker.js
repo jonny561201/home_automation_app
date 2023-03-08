@@ -14,8 +14,6 @@ export default function DayPicker(props) {
         props.toggleDay(props.day, updatedState);
         setOn(updatedState);
         props.setEdited();
-
-        console.log(props.day)
     }
 
     return (
@@ -25,7 +23,7 @@ export default function DayPicker(props) {
                 onPress={toggleDay}
                 borderless={true}
                 rippleColor='#4ce0a3'>
-                <Text style={[{textAlign: 'center', fontWeight: 'bold' }, on ? {color: theme.colors.primary} : { color: theme.colors.primaryFont}]}>{props.day.day}</Text>
+                <Text style={[{textAlign: 'center', fontWeight: 'bold', fontSize: 18 }, on ? {color: theme.colors.primary} : { color: theme.colors.primaryFont}]}>{props.day.day}</Text>
             </TouchableRipple>
         </View>
     )

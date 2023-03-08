@@ -26,19 +26,19 @@ export default function Accordion(props) {
         // LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
         const shouldExpand = !expanded;
         setExpanded(shouldExpand);
-        // shouldExpand
-        //     ? expand()
-        //     : collapse()
+        shouldExpand
+            ? expand()
+            : collapse()
         // doStuff();
     }
 
-    const doStuff = () => {
-        const shouldSlide = !slideDown;
-        setSlideDown(shouldSlide);
-        shouldSlide
-            ? Animated.timing(slide, {toValue: 0, useNativeDriver: true, duration: 200}).start()
-            : Animated.timing(slide, {toValue: -100, useNativeDriver: true, duration: 200}).start()
-    }
+    // const doStuff = () => {
+    //     const shouldSlide = !slideDown;
+    //     setSlideDown(shouldSlide);
+    //     shouldSlide
+    //         ? Animated.timing(slide, {toValue: 0, useNativeDriver: true, duration: 200}).start()
+    //         : Animated.timing(slide, {toValue: -100, useNativeDriver: true, duration: 200}).start()
+    // }
 
     const expand = () => {
         Animated.timing(slide, {toValue: 0, duration: 250, useNativeDriver: true}).start(() => slide.setValue(0));

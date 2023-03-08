@@ -33,6 +33,7 @@ export default StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    
     tempImages: {
         marginLeft: -94,
     },
