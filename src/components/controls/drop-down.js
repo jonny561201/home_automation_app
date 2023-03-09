@@ -1,14 +1,21 @@
-import React, { useState } from 'react';
-import { View, Text } from 'react-native';
-import { Dropdown } from 'react-native-element-dropdown';
-import { useTheme } from 'react-native-paper';
+import React, {useEffect, useState} from 'react';
+import {Text, View} from 'react-native';
+import {Dropdown} from 'react-native-element-dropdown';
+import {useTheme} from 'react-native-paper';
 import styles from './drop-down.styles';
 
 
 export default function DropDown(props) {
     const theme = useTheme();
+    const [data, setData] = useState([]);
     const [value, setValue] = useState(null);
     const [isFocus, setIsFocus] = useState(false);
+
+    useEffect(() => {
+        if (!props.data.value) {
+            setData(props.data.map(x => ({label: x, value: x})))
+        }
+    }, []);
 
     const renderLabel = () => {
         if (value || isFocus) {
@@ -21,7 +28,7 @@ export default function DropDown(props) {
 
   
     return (
-        <View style={[styles.container, {backgroundColor: theme.colors.background, borderColor: theme.colors.primaryFont }]}>
+        <View style={[styles.container, props.style, {backgroundColor: theme.colors.background, borderColor: theme.colors.primaryFont }]}>
         {renderLabel()}
                 <Dropdown
                     style={[styles.dropdown, {borderColor: theme.colors.primaryFont}, isFocus && { borderColor: theme.colors.primary }]}
@@ -29,7 +36,7 @@ export default function DropDown(props) {
                     placeholderStyle={{fontSize: 16, color: theme.colors.primaryFont}}
                     selectedTextStyle={[styles.selectedTextStyle, {color: theme.colors.primaryFont}]}
                     // iconStyle={styles.iconStyle}
-                    data={props.data}
+                    data={data}
                     containerStyle={{backgroundColor: theme.colors.background}}
                     itemTextStyle={{color: theme.colors.primaryFont}}
                     maxHeight={300}
@@ -43,14 +50,6 @@ export default function DropDown(props) {
                         setValue(item.value);
                         setIsFocus(false);
                     }}
-                    // renderLeftIcon={() => (
-                    //     <AntDesign
-                    //         style={styles.icon}
-                    //         color={isFocus ? 'blue' : 'black'}
-                    //         name="Safety"
-                    //         size={20}
-                    //     />
-                    // )}
                 />
                 </View>
     );
