@@ -8,7 +8,6 @@ import styles from './drop-down.styles';
 export default function DropDown(props) {
     const theme = useTheme();
     const [data, setData] = useState([]);
-    const [value, setValue] = useState(null);
     const [isFocus, setIsFocus] = useState(false);
 
     useEffect(() => {
@@ -17,8 +16,12 @@ export default function DropDown(props) {
         }
     }, []);
 
+    const onChange = (item) => {
+        props.onChange(item.value);
+    };
+
     const renderLabel = () => {
-        if (value || isFocus) {
+        if (props.value || isFocus) {
           return (
             <Text style={[styles.label, {backgroundColor: theme.colors.background, color: theme.colors.secondaryFont}, isFocus && { color: theme.colors.primary }]}>Room</Text>
           );
@@ -43,13 +46,10 @@ export default function DropDown(props) {
                     activeColor={theme.colors.selected}
                     labelField="label"
                     valueField="value"
-                    value={value}
+                    value={props.value}
                     onFocus={() => setIsFocus(true)}
                     onBlur={() => setIsFocus(false)}
-                    onChange={item => {
-                        setValue(item.value);
-                        setIsFocus(false);
-                    }}
+                    onChange={onChange}
                 />
                 </View>
     );
