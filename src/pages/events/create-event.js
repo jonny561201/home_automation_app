@@ -12,7 +12,7 @@ import styles from './create-event.styles';
 export default function CreateEvent(props) {
     const theme = useTheme(new Date());
     const [state, dispatch] = useContext(Context);
-    const [pickerFocused, setPickerFocused] = useState(false);
+    // const [pickerFocused, setPickerFocused] = useState(false);
     const [selectedTaskType, setSelectedTaskType] = useState('');
 
     const submitEvent = () => {
@@ -31,33 +31,7 @@ export default function CreateEvent(props) {
             <Dialog.Title style={{color: theme.colors.primaryFont}}>Create Event</Dialog.Title>
             <Divider style={[styles.dividerHeader, {backgroundColor: theme.colors.secondaryFont}]} />
             <Dialog.Content style={styles.eventContainer}>
-                <View style={[styles.pickerContainer, {borderColor: theme.colors.secondaryFont}]}>
-                    <Picker
-                        style={[styles.picker, {backgroundColor: theme.colors.background, color: theme.colors.secondaryFont}]}
-                        selectedValue={selectedTaskType}
-                        onValueChange={setSelectedTaskType}
-                        onFocus={() => setPickerFocused(true)}
-                        onBlur={() => setPickerFocused(false)}>
-                        <Picker.Item label='Task Type' value='' enabled={!pickerFocused} style={{ backgroundColor: theme.colors.background, color: theme.colors.secondaryFont }} />
-                        {
-                            state.taskTypes.map(x => {
-                                return <Picker.Item key={x} label={x} value={x} style={{ backgroundColor: theme.colors.background, color: theme.colors.secondaryFont }} />
-                            })
-                        }
-                    </Picker>
-
-                </View>
-                {/* <TextInput
-                    // value={value}
-                    outlineColor={theme.colors.primaryFont}
-                    // onChange={handleChange}
-                    mode='outlined'
-                    style={{ width: 200, marginLeft: 10 }}
-                    textColor={theme.colors.secondaryFont}
-                    activeOutlineColor={theme.colors.primary}
-                    right={<TextInput.Icon icon='triangle' color={theme.colors.primaryFont} onPress={() => console.log('test')} />}
-                    label="Time" /> */}
-                
+                <DropDown style={styles.pickerContainer} data={state.taskTypes} onChange={setSelectedTaskType} value={selectedTaskType}/>
                 {selectedComponents()}
             </Dialog.Content>
 

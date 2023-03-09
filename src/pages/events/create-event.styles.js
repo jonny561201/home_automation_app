@@ -15,8 +15,6 @@ export default StyleSheet.create({
     },
 
     pickerContainer: {
-        borderRadius: 4,
-        borderWidth: 1,
         width: '100%',
         margin: 10,
     },
