@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react';
 import { Dialog, Divider, useTheme } from 'react-native-paper';
-import { GreenButton, RedButton } from '../../components/controls/buttons';
 import DropDown from '../../components/controls/drop-down';
 import { Context } from '../../state/store';
 import styles from './create-event.styles';
@@ -12,15 +11,12 @@ export default function CreateEvent(props) {
     const [state, dispatch] = useContext(Context);
     const [selectedTaskType, setSelectedTaskType] = useState('');
 
-    const submitEvent = () => {
-        props.close();
-    }
 
     const selectedComponents = () => {
         if (selectedTaskType === 'hvac')
-            return <CreateHvacActivity type={selectedTaskType} cancel={props.close} save={props.saveNewTask} />
+            return <CreateHvacActivity close={props.close} type={selectedTaskType}/>
         else if (selectedTaskType !== '')
-            return <CreateLightEvent type={selectedTaskType} cancel={props.close} save={props.saveNewTask} />
+            return <CreateLightEvent close={props.close} type={selectedTaskType}/>
     }
 
     return (
@@ -31,11 +27,6 @@ export default function CreateEvent(props) {
                 <DropDown style={styles.pickerContainer} data={state.taskTypes} onChange={setSelectedTaskType} value={selectedTaskType} label="Task Type" placeholder="Select Task"/>
                 {selectedComponents()}
             </Dialog.Content>
-
-            <Dialog.Actions style={styles.dialogButtonContainer}>
-                <RedButton onPress={props.close}>Cancel</RedButton>
-                <GreenButton onPress={submitEvent}>Add</GreenButton>
-            </Dialog.Actions>
         </>
     )
 }
