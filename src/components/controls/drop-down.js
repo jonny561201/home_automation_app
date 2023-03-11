@@ -23,7 +23,7 @@ export default function DropDown(props) {
     const renderLabel = () => {
         if (props.value || isFocus) {
           return (
-            <Text style={[styles.label, {backgroundColor: theme.colors.background, color: theme.colors.secondaryFont}, isFocus && { color: theme.colors.primary }]}>Room</Text>
+            <Text style={[styles.label, {backgroundColor: theme.colors.background, color: theme.colors.secondaryFont}, isFocus && { color: theme.colors.primary }]}>{props.label}</Text>
           );
         }
         return null;
@@ -34,8 +34,8 @@ export default function DropDown(props) {
         <View style={[styles.container, props.style, { borderColor: theme.colors.primaryFont }]}>
         {renderLabel()}
                 <Dropdown
-                    style={[styles.dropdown, {borderColor: theme.colors.primaryFont}, isFocus && { borderColor: theme.colors.primary }]}
-                    placeholder={!isFocus ? 'Select Room' : ''}
+                    style={[styles.dropdown, {borderColor: theme.colors.primaryFont, backgroundColor: theme.colors.background}, isFocus && { borderColor: theme.colors.primary }]}
+                    placeholder={!isFocus ? props.placeholder : ''}
                     placeholderStyle={{fontSize: 16, color: theme.colors.primaryFont}}
                     selectedTextStyle={[styles.selectedTextStyle, {color: theme.colors.primaryFont}]}
                     // iconStyle={styles.iconStyle}

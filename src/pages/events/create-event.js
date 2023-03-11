@@ -31,7 +31,7 @@ export default function CreateEvent(props) {
             <Dialog.Title style={{color: theme.colors.primaryFont}}>Create Event</Dialog.Title>
             <Divider style={[styles.dividerHeader, {backgroundColor: theme.colors.secondaryFont}]} />
             <Dialog.Content style={styles.eventContainer}>
-                <DropDown style={styles.pickerContainer} data={state.taskTypes} onChange={setSelectedTaskType} value={selectedTaskType}/>
+                <DropDown style={styles.pickerContainer} data={state.taskTypes} onChange={setSelectedTaskType} value={selectedTaskType} label="Task Type" placeholder="Select Task"/>
                 {selectedComponents()}
             </Dialog.Content>
 
