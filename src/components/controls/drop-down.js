@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react';
-import {Text, View} from 'react-native';
-import {Dropdown} from 'react-native-element-dropdown';
-import {useTheme} from 'react-native-paper';
+import React, { useEffect, useState } from 'react';
+import { Text, View } from 'react-native';
+import { Dropdown } from 'react-native-element-dropdown';
+import { useTheme } from 'react-native-paper';
 import styles from './drop-down.styles';
 
 
@@ -34,7 +34,7 @@ export default function DropDown(props) {
         <View style={[styles.container, props.style, { borderColor: theme.colors.primaryFont }]}>
         {renderLabel()}
                 <Dropdown
-                    style={[styles.dropdown, {borderColor: theme.colors.primaryFont, backgroundColor: theme.colors.background}, isFocus && { borderColor: theme.colors.primary }]}
+                    style={[styles.dropdown, {borderColor: theme.colors.primaryFont, backgroundColor: theme.colors.background}, isFocus && { borderColor: theme.colors.primary, borderWidth: 2 }]}
                     placeholder={!isFocus ? props.placeholder : ''}
                     placeholderStyle={{fontSize: 16, color: theme.colors.primaryFont}}
                     selectedTextStyle={[styles.selectedTextStyle, {color: theme.colors.primaryFont}]}
