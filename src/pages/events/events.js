@@ -10,7 +10,6 @@ import Header from '../../header/header';
 import styles from './events.styles';
 import Event from './event';
 import CreateEvent from './create-event';
-import DropDown from '../../components/controls/drop-down';
 
 
 export default function Events(props) {

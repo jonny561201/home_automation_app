@@ -1,18 +1,15 @@
 import React, { useContext, useState } from 'react';
+import { Dialog, Divider, useTheme } from 'react-native-paper';
+import { GreenButton, RedButton } from '../../components/controls/buttons';
 import DropDown from '../../components/controls/drop-down';
 import { Context } from '../../state/store';
-import { Text, View } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
-import { Button, Dialog, Divider, TextInput, useTheme } from 'react-native-paper';
-import { RedButton, GreenButton } from '../../components/controls/buttons';
-import CreateLightEvent from './create-light-event';
 import styles from './create-event.styles';
+import CreateLightEvent from './create-light-event';
 
 
 export default function CreateEvent(props) {
     const theme = useTheme(new Date());
     const [state, dispatch] = useContext(Context);
-    // const [pickerFocused, setPickerFocused] = useState(false);
     const [selectedTaskType, setSelectedTaskType] = useState('');
 
     const submitEvent = () => {

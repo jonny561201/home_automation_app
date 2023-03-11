@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
     eventContainer: {
-        // alignItems: 'center'
+        justifyContent: 'center',
     },
 
     dividerHeader: {
@@ -15,7 +15,8 @@ export default StyleSheet.create({
     },
 
     pickerContainer: {
-        width: '100%',
+        width: '110%',
+        marginLeft: -16,
         // margin: 10,
     },
 

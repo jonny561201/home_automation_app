@@ -1,13 +1,11 @@
-import React, { useState, useContext } from 'react';
-import { Context } from '../../state/store';
-import { View, SafeAreaView } from "react-native"
 import moment from 'moment/moment';
-import { Picker } from '@react-native-picker/picker';
-import DropDown from "react-native-paper-dropdown";
-import { useTheme, TextInput, Provider } from 'react-native-paper';
+import React, { useContext, useState } from 'react';
+import { View } from "react-native";
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
-import styles from './create-light-event.sytles'
+import { TextInput, useTheme } from 'react-native-paper';
+import DropDown from '../../components/controls/drop-down';
 import WeekPicker from '../../components/controls/week-picker';
+import { Context } from '../../state/store';
 
 
 export default function CreateLightEvent() {
@@ -16,14 +14,12 @@ export default function CreateLightEvent() {
     const [state, dispatch] = useContext(Context);
     const [days, setDays] = useState();
     const [open, setOpen] = useState(false);
-    const [openSelect, setOpenSelect] = useState(false);
+    const [rooms, setRooms] = useState(state.lights.map((x) => x.groupName));
     const [edited, setEdited] = useState(false);
     const [selectedRoom, setSelectedRoom] = useState();
     const [daysOfWeek, setDaysOfWeek] = useState(initialDays);
     const [selectedTime, setSelectedTime] = useState(new Date());
     const [value, setValue] = useState(moment(selectedTime).format('hh:mm a'));
-
-    const test = [{ label: 'light room', value: 'light room' }, { label: 'bedroom', value: 'bedroom' }, { label: 'bathroom', value: 'bathroom' }]
 
     const handleConfirm = (date) => {
         setSelectedTime(date);
@@ -45,20 +41,22 @@ export default function CreateLightEvent() {
 
     return (
         <>
-            <View style={{ justifyContent: 'center' }}>
-
-
-                <TextInput
-                    value={value}
-                    outlineColor={theme.colors.primaryFont}
-                    onChange={handleChange}
-                    mode='outlined'
-                    style={{width: 160, marginLeft: 10}}
-                    textColor={theme.colors.secondaryFont}
-                    activeOutlineColor={theme.colors.primary}
-                    right={<TextInput.Icon icon='clock-outline' color={theme.colors.primaryFont} onPress={() => setOpen(true)} />}
-                    label="Time" />
+            <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+                <View style={{ justifyContent: 'center' }}>
+                    <TextInput
+                        value={value}
+                        outlineColor={theme.colors.primaryFont}
+                        onChange={handleChange}
+                        mode='outlined'
+                        style={{ width: 140, marginLeft: 10 }}
+                        textColor={theme.colors.secondaryFont}
+                        activeOutlineColor={theme.colors.primary}
+                        right={<TextInput.Icon icon='clock-outline' color={theme.colors.primaryFont} onPress={() => setOpen(true)} />}
+                        label="Time" />
+                </View>
+                <DropDown style={{width: '60%'}} value={selectedRoom} label="Room" onChange={setSelectedRoom} data={rooms} placeholder='Room' />
             </View>
+
             <WeekPicker daysOfWeek={initialDays} toggleDay={toggleDay} setEdited={() => setEdited(true)} />
 
             <DateTimePickerModal
