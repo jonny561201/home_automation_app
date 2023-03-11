@@ -37,7 +37,6 @@ export default function CreateLightEvent() {
         );
         setDaysOfWeek(newProjects);
         setDays(newProjects.filter(x => x.on === true).map(y => y.id).join(''));
-        console.log(newProjects)
     }
 
     const handleChange = (newValue) => {
@@ -47,37 +46,6 @@ export default function CreateLightEvent() {
     return (
         <>
             <View style={{ justifyContent: 'center' }}>
-                {/* <View style={[styles.pickerContainer, {borderColor: theme.colors.secondaryFont}]}>
-                <Picker
-                    style={[styles.picker, { backgroundColor: theme.colors.background, color: theme.colors.secondaryFont }]}
-                    selectedValue={selectedRoom}
-                    onValueChange={setSelectedRoom}>
-                    <Picker.Item label='None' value='None' style={{ backgroundColor: theme.colors.background, color: theme.colors.secondaryFont }} />
-                    {
-                        state.lights.map(x => {
-                            return <Picker.Item key={x.groupId} label={x.groupName} value={x.groupName} style={{ backgroundColor: theme.colors.background, color: theme.colors.secondaryFont }} />
-                        })
-                    }
-                </Picker>
-            </View> */}
-
-
-                {/* <Provider>
-                    <SafeAreaView>
-                        <DropDown
-                            // dropDownStyle={{ width: '100%'}}
-                            placeholder={"Select Room"}
-                            label={"Room"}
-                            mode={"outlined"}
-                            visible={openSelect}
-                            showDropDown={() => setOpenSelect(true)}
-                            onDismiss={() => setOpenSelect(false)}
-                            value={selectedRoom}
-                            setValue={setSelectedRoom}
-                            list={test}
-                        />
-                    </SafeAreaView>
-                </Provider> */}
 
 
                 <TextInput
@@ -85,13 +53,13 @@ export default function CreateLightEvent() {
                     outlineColor={theme.colors.primaryFont}
                     onChange={handleChange}
                     mode='outlined'
-                    style={{width: 200, marginLeft: 10}}
+                    style={{width: 160, marginLeft: 10}}
                     textColor={theme.colors.secondaryFont}
                     activeOutlineColor={theme.colors.primary}
                     right={<TextInput.Icon icon='clock-outline' color={theme.colors.primaryFont} onPress={() => setOpen(true)} />}
                     label="Time" />
-            <WeekPicker daysOfWeek={initialDays} toggleDay={toggleDay} setEdited={() => setEdited(true)} />
             </View>
+            <WeekPicker daysOfWeek={initialDays} toggleDay={toggleDay} setEdited={() => setEdited(true)} />
 
             <DateTimePickerModal
                 date={selectedTime}

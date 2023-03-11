@@ -41,9 +41,6 @@ export default function Events(props) {
 
     const closeDialog = () => setVisible(false);
 
-    // const data = ['bedroom', 'bathroom', 'living room']
-    const data = [{label: 'Bedroom', value: 'bedroom'}, {label: 'Bathroom', value: 'bathroom'}, {label: 'Living Room', value: 'living room'}];
-
     return (
         <>
             <Header toggleMenu={props.navigation.toggleDrawer} />
@@ -76,7 +73,6 @@ export default function Events(props) {
                         </Dialog>
                     </Portal>
                 </View>
-                <DropDown data={data} />
             </View>
 
             <FAB style={styles.fab} onPress={() => setVisible(!visible)} label='Create Event' icon={(props) => <Icon {...props} name='calendar-today' />} color='#ffffff' />

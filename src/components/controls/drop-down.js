@@ -31,7 +31,7 @@ export default function DropDown(props) {
 
   
     return (
-        <View style={[styles.container, props.style, {backgroundColor: theme.colors.background, borderColor: theme.colors.primaryFont }]}>
+        <View style={[styles.container, props.style, { borderColor: theme.colors.primaryFont }]}>
         {renderLabel()}
                 <Dropdown
                     style={[styles.dropdown, {borderColor: theme.colors.primaryFont}, isFocus && { borderColor: theme.colors.primary }]}
