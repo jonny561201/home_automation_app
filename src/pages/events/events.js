@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useState, useEffect } from 'react';
-import { useFocusEffect } from "@react-navigation/native";
+import { useFocusEffect } from '@react-navigation/native';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { SwipeListView } from 'react-native-swipe-list-view';
 import { Context } from "../../state/store";
@@ -7,9 +7,9 @@ import { FAB, Portal, Dialog, useTheme } from 'react-native-paper';
 import { deleteScheduledTask } from '../../utilities/rest-api';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Header from '../../header/header';
-import styles from './events.styles';
 import Event from './event';
 import CreateEvent from './create-event';
+import styles from './events.styles';
 
 
 export default function Events(props) {
