@@ -4,6 +4,7 @@ import DropDown from '../../components/controls/drop-down';
 import { Context } from '../../state/store';
 import styles from './create-event.styles';
 import CreateLightEvent from './create-light-event';
+import CreateHvacEvent from "./create-hvac-event";
 
 
 export default function CreateEvent(props) {
@@ -14,7 +15,7 @@ export default function CreateEvent(props) {
 
     const selectedComponents = () => {
         if (selectedTaskType === 'hvac')
-            return <CreateHvacActivity close={props.close} type={selectedTaskType}/>
+            return <CreateHvacEvent close={props.close} type={selectedTaskType}/>
         else if (selectedTaskType !== '')
             return <CreateLightEvent close={props.close} type={selectedTaskType}/>
     }
