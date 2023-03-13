@@ -10,7 +10,22 @@ export default StyleSheet.create({
         margin: 10,
     },
 
-    picker: {
-        // width: '50%'
+    eventRow: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+    },
+
+    timePicker: {
+        width: 140,
+    },
+
+    dropDown: {
+        width: '60%',
+    },
+
+    buttonRow: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop: 20,
     },
 });

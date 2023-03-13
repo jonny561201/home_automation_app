@@ -9,7 +9,7 @@ import CreateHvacEvent from "./create-hvac-event";
 
 export default function CreateEvent(props) {
     const theme = useTheme(new Date());
-    const [state, dispatch] = useContext(Context);
+    const [state, _] = useContext(Context);
     const [selectedTaskType, setSelectedTaskType] = useState('');
 
 

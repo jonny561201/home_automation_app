@@ -1,11 +1,12 @@
 import React, { useContext, useState } from 'react';
-import { View } from "react-native";
+import { View } from 'react-native';
 import { GreenButton, RedButton } from '../../components/controls/buttons';
 import DropDown from '../../components/controls/drop-down';
 import TimePicker from '../../components/controls/time-picker';
 import WeekPicker from '../../components/controls/week-picker';
 import { Context } from '../../state/store';
 import { insertLightTask } from '../../utilities/rest-api';
+import styles from './create-light-event.sytles';
 
 
 export default function CreateLightEvent(props) {
@@ -36,14 +37,14 @@ export default function CreateLightEvent(props) {
 
     return (
         <>
-            <View style={{flexDirection: 'row', justifyContent: 'center'}}>
-                <TimePicker style={{width: 140}} value={selectedTime} onChange={setSelectedTime}/>
-                <DropDown style={{width: '60%'}} value={selectedRoom} label="Room" onChange={setSelectedRoom} data={rooms} placeholder='Room' />
+            <View style={styles.eventRow}>
+                <TimePicker style={styles.timePicker} value={selectedTime} onChange={setSelectedTime}/>
+                <DropDown style={styles.dropDown} value={selectedRoom} label="Room" onChange={setSelectedRoom} data={rooms} placeholder='Room' />
             </View>
 
             <WeekPicker daysOfWeek={initialDays} toggleDay={toggleDay} setEdited={() => setEdited(true)} />
 
-            <View style={{flexDirection: 'row', justifyContent: 'space-between', marginTop: 20}}>
+            <View style={styles.buttonRow}>
                 <RedButton onPress={props.close}>Cancel</RedButton>
                 <GreenButton onPress={submitEvent}>Add</GreenButton>
             </View>
