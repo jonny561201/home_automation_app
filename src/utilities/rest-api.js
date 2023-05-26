@@ -14,9 +14,13 @@ export const getBearerToken = async (username, password) => {
         body: JSON.stringify(request)
     };
 
-    const response = await fetch(`${baseUrl}/token`, options);
+    try {
+        const response = await fetch(`${baseUrl}/token`, options);
+        return response.ok ? await response.json() : null;
 
-    return response.ok ? await response.json() : null;
+    } catch (e) {
+        return null;
+    }
 }
 
 export const getRefreshedBearerToken = async (refreshToken) => {
