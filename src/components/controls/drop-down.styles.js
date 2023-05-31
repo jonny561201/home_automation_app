@@ -3,8 +3,8 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
     container: {
-        padding: 16,
-        marginTop: 8,
+        paddingTop: 16,
+        // marginTop: 8,
       },
 
       dropdown: {
@@ -21,7 +21,7 @@ export default StyleSheet.create({
 
       label: {
         position: 'absolute',
-        left: 22,
+        left: 8,
         top: 8,
         zIndex: 999,
         paddingHorizontal: 8,
