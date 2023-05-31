@@ -10,6 +10,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import Account from "../pages/account/account";
 import Events from '../pages/events/events';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import Devices from "../pages/devices/devices";
 
 
 export default function Routes() {
@@ -41,6 +42,11 @@ export default function Routes() {
                             name="Account"
                             component={Account}
                             options={{ drawerIcon: ({ focused }) => (<Icon name="account-circle" size={20} color={focused ? theme.colors.primary : theme.colors.primaryFont} />) }}
+                        />
+                        <Drawer.Screen
+                            name="Devices"
+                            component={Devices}
+                            options={{ drawerIcon: ({ focused }) => (<Icon name="qr-code-scanner" size={20} color={focused ? theme.colors.primary : theme.colors.primaryFont} />) }}
                         />
                     </>
                     : <Drawer.Screen name="Login" component={Login} />
