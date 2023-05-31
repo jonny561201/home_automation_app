@@ -5,11 +5,12 @@ import {Dialog, FAB, Portal, useTheme} from "react-native-paper";
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {useFocusEffect} from "@react-navigation/native";
 import {Context} from "../../state/store";
-import styles from "./devices.styles";
 import {scanLights} from "../../utilities/rest-api";
 import {SwipeListView} from "react-native-swipe-list-view";
 import Event from "../events/event";
 import RegisterDevice from "./register-device";
+import Device from "./device";
+import styles from "./devices.styles";
 
 
 export default function Devices(props) {
@@ -26,11 +27,10 @@ export default function Devices(props) {
     );
 
     const scan = async () => {
-        setTimeout(async () => {
-            console.log('pressed me');
-            const newDevices = await scanLights();
-            setLoading(!loading);
-        }, 5000);
+        setLoading(true);
+        const newDevices = await scanLights();
+        setDevices(newDevices.map((x, i) => ({ ...x, key: `${i}` })));
+        setLoading(false);
     }
 
     return (
@@ -43,13 +43,12 @@ export default function Devices(props) {
                     <ActivityIndicator animating={loading} size='large' color='#00c774'/>
                     <SwipeListView
                         data={devices}
-                        rightOpenValue={-150}
+                        rightOpenValue={-75}
                         disableRightSwipe
                         previewRowKey={'0'}
                         style={{marginBottom: 20}}
                         renderItem={(data) => (
-                            <Event task={data.item}
-                                   key={`${data.item.task_type}-${data.item.alarm_days}-${data.item.enabled}`}/>
+                            <Device key={`${data.item.name}-${data.item.ipAddress}`} device={data.item}/>
                         )}
                         renderHiddenItem={(data) => (
                             <View style={[styles.swipeContainer, {backgroundColor: theme.colors.surface}]}>
