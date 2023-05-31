@@ -20,7 +20,7 @@ export default function StateUtil() {
     useInterval(async () => {
         getTempData();
         getForecastData();
-        // getLights();
+        getLights();
     }, 60000);
 
     useInterval(async () => {
@@ -31,7 +31,7 @@ export default function StateUtil() {
 
     useEffect(() => {
         if (!state.loadedUtils) {
-            // getLights();
+            getLights();
             getGarageData();
             getSumpData();
             getTempData();
