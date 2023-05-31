@@ -26,6 +26,10 @@ export default function Devices(props) {
         }, [dispatch])
     );
 
+    const register = (device) => {
+        setVisible(true);
+    }
+
     const scan = async () => {
         setLoading(true);
         const newDevices = await scanLights();
@@ -52,7 +56,7 @@ export default function Devices(props) {
                         )}
                         renderHiddenItem={(data) => (
                             <View style={[styles.swipeContainer, {backgroundColor: theme.colors.surface}]}>
-                                <TouchableOpacity style={styles.swipeEdit} onPress={() => editEvent(data.item)}>
+                                <TouchableOpacity style={styles.swipeEdit} onPress={() => register(data.item)}>
                                     <Icon name='playlist-add' size={30} style={styles.swipeText}/>
                                 </TouchableOpacity>
                             </View>

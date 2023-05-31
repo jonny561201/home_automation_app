@@ -2,9 +2,9 @@ import React, { useContext, useState } from 'react';
 import { Dialog, Divider, useTheme } from 'react-native-paper';
 import DropDown from '../../components/controls/drop-down';
 import { Context } from '../../state/store';
-import styles from './create-event.styles';
 import CreateLightEvent from './create-light-event';
 import CreateHvacEvent from "./create-hvac-event";
+import styles from './create-event.styles';
 
 
 export default function CreateEvent(props) {

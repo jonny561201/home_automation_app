@@ -14,11 +14,11 @@ export default StyleSheet.create({
         width: 250,
     },
 
-    // buttonRow: {
-    //     flexDirection: 'row',
-    //     justifyContent: 'space-between',
-    //     marginTop: 20,
-    // },
+    buttonRow: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop: 20,
+    },
 
     deviceRow: {
         flexDirection: 'column',

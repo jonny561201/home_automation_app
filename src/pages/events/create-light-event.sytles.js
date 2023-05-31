@@ -21,6 +21,10 @@ export default StyleSheet.create({
 
     dropDown: {
         width: '60%',
+        marginTop: 8,
+        paddingBottom: 16,
+        paddingLeft: 16,
+        paddingRight: 16
     },
 
     buttonRow: {

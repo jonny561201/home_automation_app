@@ -33,10 +33,10 @@ export default function RegisterDevice(props) {
                     <DropDown value={selectedType} label="Type" onChange={setSelectedType} data={types} style={styles.deviceItem} placeholder='Type' />
                 </View>
 
-                <Dialog.Actions>
-                        <RedButton onPress={props.close}>Cancel</RedButton>
-                        <GreenButton onPress={registerSwitch}>Add</GreenButton>
-                </Dialog.Actions>
+                <View style={styles.buttonRow}>
+                    <RedButton onPress={props.close}>Cancel</RedButton>
+                    <GreenButton onPress={registerSwitch}>Add</GreenButton>
+                </View>
             </Dialog.Content>
         </>
     )

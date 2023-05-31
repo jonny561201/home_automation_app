@@ -17,6 +17,10 @@ export default StyleSheet.create({
     pickerContainer: {
         width: '110%',
         marginLeft: -16,
+        marginTop: 8,
+        paddingBottom: 16,
+        paddingLeft: 16,
+        paddingRight: 16
         // margin: 10,
     },
 
