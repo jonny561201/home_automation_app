@@ -20,7 +20,7 @@ export default StyleSheet.create({
     },
 
     lightTextSmall: {
-        width: 60,
+        width: 66,
         padding: 6,
         textAlign: 'center',
     },

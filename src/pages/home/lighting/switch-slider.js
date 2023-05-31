@@ -45,7 +45,7 @@ export default function SwitchSlider(props) {
         <View style={styles.lightGroup}>
             <View style={styles.lightSpacerOne}/>
             <TouchableRipple onPress={toggleLight} borderless={true} style={styles.lightButton}>
-                <Text style={[styles.lightTextSmall, {color: theme.colors.secondaryFont}]}>{light.lightName}</Text>
+                <Text numberOfLines={1} style={[styles.lightTextSmall, {color: theme.colors.secondaryFont}]}>{light.lightName}</Text>
             </TouchableRipple>
             <Slider
                 value={light?.brightness}

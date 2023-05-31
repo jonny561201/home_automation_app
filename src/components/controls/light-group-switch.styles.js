@@ -41,7 +41,7 @@ export default StyleSheet.create({
 
     lightText: {
         padding: 6,
-        width: 70,
+        width: 76,
         fontSize: 14,
     },
 });
