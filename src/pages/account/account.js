@@ -47,7 +47,7 @@ export default function Account(props) {
 
 
                 <Portal>
-                    <Dialog visible={display} onDismiss={closeDialog}>
+                    <Dialog visible={display} onDismiss={closeDialog} style={{backgroundColor: theme.colors.background}}>
                         <CreateChildAccount close={closeDialog} addChild={setChildAccounts} roles={[]} />
                     </Dialog>
                 </Portal>
